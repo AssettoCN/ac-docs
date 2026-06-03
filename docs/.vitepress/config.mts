@@ -3,6 +3,10 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: '神力科莎开发文档',
 
+  // GitHub Pages: /<repo-name>/
+  // 自定义域名时改为 '/'
+  base: '/ac-docs/',
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
   ],
@@ -39,7 +43,7 @@ export default defineConfig({
           },
           {
             text: 'GitHub',
-            link: 'https://github.com/ac-custom-shaders-patch/acc-extension-config',
+            link: 'https://github.com/Ereebay/ac-docs',
           },
         ],
 
@@ -319,7 +323,7 @@ export default defineConfig({
           },
           {
             text: 'GitHub',
-            link: 'https://github.com/ac-custom-shaders-patch/acc-extension-config',
+            link: 'https://github.com/Ereebay/ac-docs',
           },
         ],
 
@@ -384,7 +388,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/ac-custom-shaders-patch/acc-extension-config',
+        link: 'https://github.com/Ereebay/ac-docs',
       },
     ],
 
