@@ -3,9 +3,9 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: '神力科莎开发文档',
 
-  // GitHub Pages: /<repo-name>/
-  // 自定义域名时改为 '/'
-  base: '/ac-docs/',
+  // 自定义域名 docs.assetto.cn → base 为 '/'
+  // GitHub Pages 默认域名时改为 '/<repo-name>/'
+  base: '/',
 
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
