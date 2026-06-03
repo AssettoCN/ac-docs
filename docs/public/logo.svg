@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 20">
+  <!-- Dark charcoal background -->
+  <rect width="36" height="20" rx="3" fill="#1a1a1a"/>
+
+  <!-- U: left rising stroke (bold angular parallelogram) -->
+  <polygon points="2,16 4,3 8,3 6,16" fill="#fff"/>
+
+  <!-- U: bottom connecting stroke -->
+  <polygon points="6,16 16,16 15,12 7,12" fill="#fff"/>
+
+  <!-- U: short rising right stroke -->
+  <polygon points="15,12 17,5 20,5 18,12" fill="#fff"/>
+
+  <!-- D: strong vertical left cut (divider between U and D) -->
+  <polygon points="18,12 20,4 22,4 20,12" fill="#fff"/>
+
+  <!-- D: top-right angular contour -->
+  <polygon points="20,4 23,2 31,2 34,5 31,4 23,5 21,6" fill="#fff"/>
+
+  <!-- D: right outer angular contour -->
+  <polygon points="34,5 35,9 35,13 34,17 31,18 24,18 21,16 22,12 24,14 29,14 31,13 32,10 31,7" fill="#fff"/>
+
+  <!-- Red diagonal speed slash through center -->
+  <polygon points="5,11 31,7 31,9 5,13" fill="#e00"/>
+</svg>

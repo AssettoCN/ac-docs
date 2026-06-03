@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Build output
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+
+# Temp files
+*.tmp
+*.temp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docx unpacked temp (source files kept in evo/)
+**/unpacked/
+
+# Logs
+*.log
+npm-debug.log*
+
+
+evo/*
