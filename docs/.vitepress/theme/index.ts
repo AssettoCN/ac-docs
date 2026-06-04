@@ -3,6 +3,7 @@ import mediumZoom from 'medium-zoom'
 import { onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vitepress'
 import type { Theme } from 'vitepress'
+import './index.css'
 
 export default {
   extends: DefaultTheme,

@@ -1,0 +1,31 @@
+/* medium-zoom: fix zoomed image clipped by parent overflow */
+.medium-zoom-overlay {
+  z-index: 999;
+}
+
+.medium-zoom-image--opened {
+  z-index: 1000;
+}
+
+/* Remove overflow clipping on content containers during zoom */
+.VPContent.has-active-menu,
+.VPDoc .content-container {
+  overflow: visible !important;
+}
+
+/* Ensure sidebar and nav don't overlap zoom */
+.VPSidebar,
+.VPLocalNav,
+.VPNavBar {
+  position: relative;
+  z-index: 10;
+}
+
+/* Zoomed image cursor */
+.main img {
+  cursor: zoom-in;
+}
+
+.medium-zoom-image--opened {
+  cursor: zoom-out;
+}
