@@ -402,7 +402,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    logo: '/logo.svg',
+    logo: '/favicon.svg',
 
     socialLinks: [
       {
