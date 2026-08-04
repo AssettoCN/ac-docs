@@ -23,6 +23,7 @@ export default defineConfig({
             items: [
               { text: '入门指南', link: '/guide/' },
               { text: 'INIpp 配置', link: '/inipp/' },
+              { text: 'Ext 配置模板', link: '/ext-templates/' },
               { text: '车辆配置', link: '/car/visual/general-options' },
               { text: '赛道配置', link: '/track/general-options' },
               { text: '通用参考', link: '/general/' },
@@ -274,6 +275,24 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: '自定义 AI 系统', link: '/custom-ai/' },
+              ],
+            },
+          ],
+
+          '/ext-templates/': [
+            {
+              text: '常用 Ext 配置模板',
+              collapsed: false,
+              items: [
+                { text: '概述', link: '/ext-templates/' },
+                { text: '01. Ext 基础', link: '/ext-templates/01-Ext基础' },
+                { text: '02. 材质类', link: '/ext-templates/02-材质类' },
+                { text: '03. 灯光类', link: '/ext-templates/03-灯光类' },
+                { text: '04. 模拟仪表类', link: '/ext-templates/04-模拟仪表类' },
+                { text: '05. 动画类', link: '/ext-templates/05-动画类' },
+                { text: '06. 特效类', link: '/ext-templates/06-特效类' },
+                { text: '07. 赛道和地图类', link: '/ext-templates/07-赛道和地图类' },
+                { text: '08. 交互与逻辑类', link: '/ext-templates/08-交互与逻辑类' },
               ],
             },
           ],
