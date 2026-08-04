@@ -29,3 +29,9 @@ npm-debug.log*
 
 
 evo/*
+
+.agents
+.claude
+.junie
+assets
+skills-lock.json
