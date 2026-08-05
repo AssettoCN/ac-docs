@@ -321,6 +321,11 @@ export default defineConfig({
         darkModeSwitchLabel: '主题',
         lightModeSwitchTitle: '切换到浅色模式',
         darkModeSwitchTitle: '切换到深色模式',
+
+        editLink: {
+          pattern: 'https://github.com/Ereebay/ac-docs/edit/main/docs/:path',
+          text: '在 GitHub 上编辑此页',
+        },
       },
     },
 
@@ -397,6 +402,11 @@ export default defineConfig({
         darkModeSwitchLabel: 'Theme',
         lightModeSwitchTitle: 'Switch to light theme',
         darkModeSwitchTitle: 'Switch to dark theme',
+
+        editLink: {
+          pattern: 'https://github.com/Ereebay/ac-docs/edit/main/docs/:path',
+          text: 'Edit this page on GitHub',
+        },
       },
     },
   },
