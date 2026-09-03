@@ -34,6 +34,10 @@ export default defineConfig({
             ],
           },
           {
+            text: '官方车辆管线',
+            link: '/pipeline/',
+          },
+          {
             text: 'AC EVO',
             items: [
               { text: '车辆模组', link: '/evo/car/' },
@@ -293,6 +297,25 @@ export default defineConfig({
                 { text: '06. 特效类', link: '/ext-templates/06-特效类' },
                 { text: '07. 赛道和地图类', link: '/ext-templates/07-赛道和地图类' },
                 { text: '08. 交互与逻辑类', link: '/ext-templates/08-交互与逻辑类' },
+              ],
+            },
+          ],
+
+          '/pipeline/': [
+            {
+              text: 'AC 官方车辆管线 R2.0',
+              collapsed: false,
+              items: [
+                { text: '概述', link: '/pipeline/' },
+                { text: '1. Requirements', link: '/pipeline/01-requirements' },
+                { text: '2. Basic Guidelines', link: '/pipeline/02-basic-guidelines' },
+                { text: '3. Scene Structure', link: '/pipeline/03-scene-structure' },
+                { text: '4. Functional Mesh Elements', link: '/pipeline/04-functional-mesh-elements' },
+                { text: '5. Functional Textures', link: '/pipeline/05-functional-textures' },
+                { text: '6. Texturing Guidelines', link: '/pipeline/06-texturing-guidelines' },
+                { text: '7. Animations', link: '/pipeline/07-animations' },
+                { text: '8. Materials and AC Editor', link: '/pipeline/08-materials-ac-editor' },
+                { text: '9. In-game Console Commands', link: '/pipeline/09-console-commands' },
               ],
             },
           ],
