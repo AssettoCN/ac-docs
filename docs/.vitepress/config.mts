@@ -48,7 +48,7 @@ export default defineConfig({
           },
           {
             text: 'GitHub',
-            link: 'https://github.com/Ereebay/ac-docs',
+            link: 'https://github.com/AssettoCN/ac-docs',
           },
         ],
 
@@ -346,7 +346,7 @@ export default defineConfig({
         darkModeSwitchTitle: '切换到深色模式',
 
         editLink: {
-          pattern: 'https://github.com/Ereebay/ac-docs/edit/main/docs/:path',
+          pattern: 'https://github.com/AssettoCN/ac-docs/edit/main/docs/:path',
           text: '在 GitHub 上编辑此页',
         },
       },
@@ -370,7 +370,7 @@ export default defineConfig({
           },
           {
             text: 'GitHub',
-            link: 'https://github.com/Ereebay/ac-docs',
+            link: 'https://github.com/AssettoCN/ac-docs',
           },
         ],
 
@@ -427,7 +427,7 @@ export default defineConfig({
         darkModeSwitchTitle: 'Switch to dark theme',
 
         editLink: {
-          pattern: 'https://github.com/Ereebay/ac-docs/edit/main/docs/:path',
+          pattern: 'https://github.com/AssettoCN/ac-docs/edit/main/docs/:path',
           text: 'Edit this page on GitHub',
         },
       },
@@ -440,7 +440,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/Ereebay/ac-docs',
+        link: 'https://github.com/AssettoCN/ac-docs',
       },
     ],
 
