@@ -34,6 +34,10 @@ export default defineConfig({
             ],
           },
           {
+            text: '网络与遥测',
+            link: '/networking/',
+          },
+          {
             text: '官方车辆管线',
             link: '/pipeline/',
           },
@@ -319,6 +323,17 @@ export default defineConfig({
               ],
             },
           ],
+
+          '/networking/': [
+            {
+              text: '网络与遥测',
+              collapsed: false,
+              items: [
+                { text: '概述', link: '/networking/' },
+                { text: 'UDP 远程遥测', link: '/networking/udp-remote-telemetry' },
+              ],
+            },
+          ],
         },
 
         footer: {
@@ -369,6 +384,10 @@ export default defineConfig({
             ],
           },
           {
+            text: 'Networking',
+            link: '/en/networking/',
+          },
+          {
             text: 'GitHub',
             link: 'https://github.com/AssettoCN/ac-docs',
           },
@@ -397,6 +416,17 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: 'Animation Pipeline', link: '/en/evo/driver/' },
+              ],
+            },
+          ],
+
+          '/en/networking/': [
+            {
+              text: 'Networking & Telemetry',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/en/networking/' },
+                { text: 'UDP Remote Telemetry', link: '/en/networking/udp-remote-telemetry' },
               ],
             },
           ],

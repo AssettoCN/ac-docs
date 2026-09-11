@@ -8,7 +8,7 @@
 
 | ID | 资料 | 类型 | 作者/来源 | 获取日期 | 本地存档 | 引用位置 | 原始 URL |
 |----|------|------|-----------|----------|----------|----------|----------|
-| R-001 | AC Remote Telemetry Documentation（AC UDP 遥测协议） | 协议文档（Google Docs 发布版） | Giovanni Romagnoli（Kunos Simulazioni） | 2026-09-11 | [reference/ac-udp-remote-telemetry/ac-remote-telemetry.md](reference/ac-udp-remote-telemetry/ac-remote-telemetry.md) | 计划中：UDP 遥测文档（待编写） | <https://docs.google.com/document/d/1KfkZiIluXZ6mMhLWfDX1qAGbvhGRC3ZUzjVIt5FQpp4/pub> |
+| R-001 | AC Remote Telemetry Documentation（AC UDP 遥测协议） | 协议文档（Google Docs 发布版） | Giovanni Romagnoli（Kunos Simulazioni） | 2026-09-11 | [reference/ac-udp-remote-telemetry/ac-remote-telemetry.md](reference/ac-udp-remote-telemetry/ac-remote-telemetry.md) | [docs/networking/udp-remote-telemetry.md](docs/networking/udp-remote-telemetry.md)（中）/ [docs/en/networking/udp-remote-telemetry.md](docs/en/networking/udp-remote-telemetry.md)（英） | <https://docs.google.com/document/d/1KfkZiIluXZ6mMhLWfDX1qAGbvhGRC3ZUzjVIt5FQpp4/pub> |
 | R-001a | [DOC] AC UDP Remote Telemetry（发现该协议文档的论坛帖，2014-07-28，已关闭） | 论坛帖存档 | assettocorsamods.net 官方搬运账号 | 2026-09-11 | [reference/ac-udp-remote-telemetry/thread-assettocorsamods.md](reference/ac-udp-remote-telemetry/thread-assettocorsamods.md) | 同 R-001（入口出处） | <https://assettocorsamods.net/threads/doc-ac-udp-remote-telemetry.60/> |
 
 ## 条目详情
