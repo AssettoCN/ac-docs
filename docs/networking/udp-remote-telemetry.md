@@ -2,6 +2,8 @@
 title: UDP 远程遥测
 ---
 
+# UDP 远程遥测
+
 > **出处**：本文翻译自 Kunos Simulazioni 程序员 Giovanni Romagnoli 撰写的 AC 官方遥测协议文档（2014 年原版）。
 > [原文（Google Docs）](https://docs.google.com/document/d/1KfkZiIluXZ6mMhLWfDX1qAGbvhGRC3ZUzjVIt5FQpp4/pub) · [本地原始存档](https://github.com/AssettoCN/ac-docs/blob/main/reference/ac-udp-remote-telemetry/ac-remote-telemetry.md) · [发现渠道：assettocorsamods 论坛帖（2014-07-28）](https://assettocorsamods.net/threads/doc-ac-udp-remote-telemetry.60/)
 >

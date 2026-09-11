@@ -369,6 +369,7 @@ export default defineConfig({
 
     en: {
       label: 'English',
+      title: 'Assetto Corsa Dev Docs',
       lang: 'en-US',
       link: '/en/',
       description: 'Assetto Corsa modding and CSP development documentation',
@@ -384,7 +385,7 @@ export default defineConfig({
             ],
           },
           {
-            text: 'Networking',
+            text: 'Networking & Telemetry',
             link: '/en/networking/',
           },
           {
