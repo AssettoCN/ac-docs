@@ -1,10 +1,14 @@
 ---
-title: 排气管火焰
+title: 排气火焰
 ---
 
-# 排气管火焰（Exhaust Flames）
 
-CSP 火焰的配置参数列表。
+> 汉化标题：车辆 – 排气火焰  
+> 原文页面：Cars-–-Exhaust-flames  
+> 原文锚点：6785038  
+> 汉化时间：2026-09-12T00:00:00+08:00  
+
+CSP 火焰可用配置参数列表：
 
 ```ini
 [EXHAUST_FLAMES]
@@ -44,10 +48,3 @@ LIMITER_INTENSITY=1
 LIMITER_RPM_THRESHOLD=0
 ```
 
-相关内容：[排气烟雾](./exhaust-smoke)。
-
-## 引用来源
-
-- [CSP 官方 Wiki 原文](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-–-Exhaust-flames) — 内容来源
-- [acc-extension-config 仓库](https://github.com/ac-custom-shaders-patch/acc-extension-config) — CSP 官方配置文件
-- [INIpp 配置语法](https://github.com/ac-custom-shaders-patch/inipp) — 配置格式参考

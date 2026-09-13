@@ -2,19 +2,19 @@
 title: 应用图标
 ---
 
-为了更方便地分发应用，CSP 现在允许将应用图标保存在应用文件夹内。
 
-将 PNG 文件存储在 "apps/python/\<appfolder\>/icons" 中，格式为 PNG。CSP 会查找与应用名称（在 `ac.newApp()` 中使用的名称）同名的文件，如果找不到，则会尝试加载 "app.png"。
+> 汉化标题：Python 应用 – 应用图标  
+> 原文页面：Python-Apps-–-App-icons  
+> 原文锚点：3b33eea  
+> 汉化时间：2026-09-12T19:00:00+08:00  
 
-::: tip 提示
-与原始 AC 图标需要同时提供激活和未激活两个版本不同，这里只需要一个版本。也不要使用圆形裁剪，直接使用覆盖整个区域的常规图片即可。CSP 会在需要时自动生成其余部分（当新任务栏样式被禁用时）。
-:::
+为了让应用的分发更简单，CSP 现在支持把应用图标放在应用文件夹内。
 
-以下是图标的外观示例及其文件位置：
+为此，请把 PNG 文件存放在 “apps/python/\<appfolder>/icons”（PNG 格式）。CSP 会查找与应用名称同名的文件（即 `ac.newApp()` 使用的那个名称），如果找不到，则会尝试加载 “app.png”。
 
-<img src="https://i.imgur.com/Ph3nYgr.png" />
+请注意：与原版 AC 图标不同（原版需要为激活和未激活状态各准备一张），这里只需要一个版本。另外也不要用那种圆形造型，直接用一张覆盖整个区域的普通图片即可。必要时 CSP 会自动生成其余部分（例如在禁用了新任务栏样式的情况下）。
 
-## 引用来源
+下面是一个示例，展示了图标的外观及其存放位置：
 
-- [CSP 官方 Wiki 原文](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Python-Apps-–-App-icons) — 内容来源
-- [acc-extension-config 仓库](https://github.com/ac-custom-shaders-patch/acc-extension-config) — CSP 官方配置文件
+<img src="https://i.imgur.com/Ph3nYgr.png">
+

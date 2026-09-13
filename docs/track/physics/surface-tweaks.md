@@ -1,42 +1,32 @@
 ---
-title: 表面微调
+title: 表面调整
 ---
 
-# 表面微调
 
-除了常规的表面属性（如 `FRICTION` 或 `DAMPING`）之外，CSP 还新增了一些额外的属性。
+> 汉化标题：赛道 – 表面调整  
+> 原文页面：Tracks-–-Surface-tweaks  
+> 原文锚点：b970c57  
+> 汉化时间：2026-09-11T23:59:00+08:00  
+> 译注：octave 译作「倍频」，persistence 译作「持续度」  
 
-## 可用属性
+除了 `FRICTION`、`DAMPING` 等常规表面属性外，CSP 现在还添加了一些额外的属性。
 
 - `_EXT_SURFACE_TYPE`：表面类型（覆盖基于 `WAV` 的猜测）。
-  - `EXTRATURF`
-  - `GRASS`
-  - `GRAVEL`
-  - `KERB`
-  - `OLD`
-  - `SAND`
-  - `ICE`（0.2.5 新增）
-  - `SNOW`（0.2.5 新增）
+  - `EXTRATURF`；
+  - `GRASS`；
+  - `GRAVEL`；
+  - `KERB`；
+  - `OLD`；
+  - `SAND`；
+  - `ICE`（0.2.5 新增）；
+  - `SNOW`（0.2.5 新增）。
+- `_EXT_SURFACE_TYPE_MODIFIER`：调整 SurfacesFX 在沙地、草地和碎石上的行为。默认值为 `REGULAR`。
+  - `LOOSE`；
+  - `REGULAR`；
+  - `FIRM`。
+- `_EXT_PERLIN_NOISE`：设为 0 可确保无视 CSP 设置、始终使用正弦噪声；设为 1 则用 Perlin 噪声替换正弦噪声（`SIN_HEIGHT` 和 `SIN_LENGTH` 仍会被使用，只是改为作用于 Perlin 噪声）。
+- `_EXT_PERLIN_OCTAVES`：Perlin 噪声的倍频数，范围为 1 到 10。
+- `_EXT_PERLIN_PERSISTENCE`：Perlin 噪声的持续度（后续倍频的振幅乘数）。
 
-- `_EXT_SURFACE_TYPE_MODIFIER`：调整 SurfacesFX 对沙地、草地和砾石的行为。默认值为 `REGULAR`。
-  - `LOOSE`
-  - `REGULAR`
-  - `FIRM`
+注意：如果未显式设置表面类型，SurfacesFX 的碎石效果（在启用了 SurfacesFX 模块，或存在任何带有 `TYPE_HINT=GRAVEL` 的轮胎时）将作用于 `DIRT_ADDITIVE ≥ 0.7` 的表面，或 `DIRT_ADDITIVE ≥ 0.3` 且（`FRICTION < 0.9` 或 `WAV` 设为 “grass.wav”、“gravel.wav” 或 “sand.wav”）的表面。
 
-- `_EXT_PERLIN_NOISE`：设为 0 确保使用正弦噪声（尽管 CSP 设置），或设为 1 将正弦噪声替换为柏林噪声（`SIN_HEIGHT` 和 `SIN_LENGTH` 仍会使用，但用于柏林噪声）。
-
-- `_EXT_PERLIN_OCTAVES`：柏林噪声的八度数，从 1 到 10。
-
-- `_EXT_PERLIN_PERSISTENCE`：柏林噪声的持久度（后续八度的振幅乘数）。
-
-::: info 注意
-如果表面类型未显式设置，SurfacesFX 砾石效果（如果 SurfacesFX 模块已启用，或存在任何 `TYPE_HINT=GRAVEL` 的轮胎）将在以下条件下激活：
-- `DIRT_ADDITIVE ≥ 0.7` 的表面，或
-- `DIRT_ADDITIVE ≥ 0.3` 且（`FRICTION < 0.9` 或 `WAV` 设置为 "grass.wav"、"gravel.wav" 或 "sand.wav"）的表面。
-:::
-
-## 引用来源
-
-- [CSP 官方 Wiki 原文](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Tracks-–-Surface-tweaks) — 内容来源
-- [acc-extension-config 仓库](https://github.com/ac-custom-shaders-patch/acc-extension-config) — CSP 官方配置文件
-- [INIpp 配置语法](https://github.com/ac-custom-shaders-patch/inipp) — 配置格式参考

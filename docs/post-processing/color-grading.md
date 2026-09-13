@@ -2,35 +2,39 @@
 title: 色彩分级详解
 ---
 
-假设我们有某个滤镜产生了这样的画面，而我们对它不满意：
 
-![Boring old picture](https://i.imgur.com/HOLWR3b.jpg)
+> 汉化标题：后期处理 – 色彩分级详解  
+> 原文页面：Post-processing-–-More-about-color-grading  
+> 原文锚点：474ceed  
+> 汉化时间：2026-09-12T19:00:00+08:00  
 
-**第一步：** 截图，就像上面的那样。然后在你的图片编辑器中打开它，并将[中性色彩分级图片](https://i.imgur.com/fTxYwA0.png)粘贴到它的某个角落上：
+假设我们有一个滤镜，渲染出来的画面是这样的，而我们不喜欢它：
 
-![Screenshot of some image editor](https://i.imgur.com/OoE0sIC.png)
+![无聊的旧画面](https://i.imgur.com/HOLWR3b.jpg)
 
-不要忘记合并图层，这样你就可以同时调整两者的颜色：
+第一步：给它截一张图，就像这里的这张。然后，用你喜欢的图像编辑器打开它，并把[中性色彩分级图片](https://i.imgur.com/fTxYwA0.png)粘贴到它的某个角落上：
 
-![Merged layers](https://i.imgur.com/0DQ9V6d.png)
+![某图像编辑器的截图](https://i.imgur.com/OoE0sIC.png)
 
-之后，进行你喜欢的任何色彩变换。曲线、饱和度、对比度、自动色彩、自动对比度、色相、色调——任何基于原始像素颜色的效果都可以：
+别忘了合并图层，这样你就能同时调整两者的颜色：
 
-![Curves transformation](https://i.imgur.com/X3LHD0S.png)
+![合并图层](https://i.imgur.com/0DQ9V6d.png)
 
-然后，小心地裁剪出你的色彩分级图片并单独保存为 PNG 文件：
+之后，随意进行任何你喜欢的色彩变换。曲线、饱和度、对比度、自动颜色、自动对比度、色相、色调，以及任何只依赖原始像素颜色、不依赖其他信息的效果：
 
-![Cutting carefully…](https://i.imgur.com/PvJ3KBk.png)
+![曲线变换](https://i.imgur.com/X3LHD0S.png)
 
-::: warning 注意
-请在此步骤格外小心。色彩分级纹理的分辨率应为 16×256 或 32×1024（即 N×N²），其他分辨率不起作用。
-:::
+然后，小心地把你的色彩分级图片抠出来，单独保存为 PNG 文件：
 
-前往 [这里](http://b64.io/)，将新创建的图片拖放到绿色区域，然后将生成的包含完整图片数据的 [base64 链接](https://en.wikipedia.org/wiki/Base64) 复制到剪贴板：
+![小心地抠图…](https://i.imgur.com/PvJ3KBk.png)
 
-![Copying link](https://i.imgur.com/Pu8zadc.png)
+*这一步请格外小心。色彩分级纹理的分辨率应当形如 16×256 或 32×1024（换句话说，N×N²），其他任何分辨率都无法工作。*
 
-将其粘贴到你的 PP 滤镜中的 `EXT_COLOR_GRADING/FILE` 即可（你可以在 AC 运行时完成所有这些操作）：
+打开[这个网站](http://b64.io/)，把刚生成的图片拖放到那块绿色区域上，然后把包含整张图片的 [base64 链接](https://en.wikipedia.org/wiki/Base64)复制到剪贴板：
+
+![复制链接](https://i.imgur.com/Pu8zadc.png)
+
+最后，直接把它作为 `EXT_COLOR_GRADING/FILE` 粘贴到你的 PP 滤镜里即可（这一切都可以在 AC 运行时进行）：
 
 ```ini
 [EXT_COLOR_GRADING]
@@ -38,11 +42,7 @@ ENABLED = 1
 FILE = data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAAgCAIAAAADnJ3xAAABYUlEQVR42u3cu27CQBQE0PEDEvmxhv//2VQUSZFui/U9RxRUI2sK5BFrT0mSLMmeHMmebElLjqQlLbmS8/O9Ja9kT1qyJV+fz5KsyZzMyZRfpu75a+f8q3P+1jn/3Tl/75x/uv5b57fO+cfg178P/vtzDH79o+c/Ouc/B89f5P+bPw+ePw2e3/f+eQ4AAFDG+ncRAAAAdx4ATQkAAFBnAOxKAACAOgPgUAIAANQZAKcSAACgzgBwBAgAAAoNAEeAAACg0AC4lAAAAHUGgH8AAACg0ADwEDAAABQaAI4AAQBAoQHgLUAAAFBoALyUAAAAdQaAh4ABAKDQAGhKAACAOgPAMwAAAFBoAHgNKAAAFBoAmxIAAKDOAPhWAgAAGAAAAMANB8BTCQAAUGcAPJQAAAB1BsCqBAAAqDMAZiUAAIABAAAAGAAAAMDIA2BSAgAAGAAAAMDtOAAEAAAGAAAAcEc/8uQidWnw6SkAAAAASUVORK5CYII=
 ```
 
-享受新的外观吧！
+享受新画面吧！
 
-![Screenshot with color grading applied](https://i.imgur.com/iiYrx0e.jpg)
+![应用色彩分级后的截图](https://i.imgur.com/iiYrx0e.jpg)
 
-## 引用来源
-
-- [CSP 官方 Wiki 原文](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Post-processing-–-More-about-color-grading) — 内容来源
-- [acc-extension-config 仓库](https://github.com/ac-custom-shaders-patch/acc-extension-config) — CSP 官方配置文件

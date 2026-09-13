@@ -1,31 +1,29 @@
 ---
-title: 颈部效果
+title: 颈部 FX
 ---
 
-# 颈部效果（Neck FX）
 
-使用这些选项，你可以调整第一人称视角中驾驶员头部的移动方式（需启用 Neck FX）。
+> 汉化标题：车辆 – 颈部 FX  
+> 原文页面：Cars-–-Neck-FX  
+> 原文锚点：dce83dd  
+> 汉化时间：2026-09-12T00:00:00+08:00  
 
-## 语法
+启用 Neck FX 后，可以通过这些选项调整第一人称视角下驾驶员头部的运动方式。
+
+### 语法
 
 ```ini
 [NECK]
-HELMET_OFFSET = 0, 0, 0             ; 添加此选项以设置自定义头盔偏移（如果已启用）
-BOUNDS_HORIZONAL = -130, 130        ; 头部在 Y 轴上允许旋转的角度范围
-BOUNDS_VERTICAL = -50, 50           ; 头部在 X 轴上允许旋转的角度范围
-LOOK_BACK_OFFSET = 0.24, 0.0, 0.15  ; 回头看时的头部偏移（减少被车辆遮挡：例如，在 F1 赛车中，
-                                     ; 你可能想要增加 Y 值）
-PAN_LIMIT = 0.15, 0.1               ; 平移的边界，X 和 Y 方向，单位为米
+HELMET_OFFSET = 0, 0, 0             ; 若启用，添加此选项可设置自定义头盔偏移
+BOUNDS_HORIZONAL = -130, 130        ; 头部允许绕 Y 轴旋转的角度范围
+BOUNDS_VERTICAL = -50, 50           ; 头部允许绕 X 轴旋转的角度范围
+LOOK_BACK_OFFSET = 0.24, 0.0, 0.15  ; 向后看时的头部偏移（用于减少车身遮挡：例如 F1 赛车可能需要增大 Y 值）
+PAN_LIMIT = 0.15, 0.1               ; 平移的边界，X 与 Y 方向，单位米
 ```
 
-你可以在比赛或回放期间更改这些设置，以便更精确地调整。
+可以在比赛或回放过程中更改这些设置，以便调整到更理想的效果。
 
-## 自动猜测
+### 猜测
 
-开放式车轮的 `LOOK_BACK_OFFSET` 的 Y 值默认为 0.07。此外，`PAN_LIMIT` 为 0.08, 0.06。其他所有设置与语法部分中显示的一致。
+开轮式赛车的 `LOOK_BACK_OFFSET` 的 Y 值默认为 0.07，`PAN_LIMIT` 则为 0.08, 0.06。其余设置与**语法**节中所示一致。
 
-## 引用来源
-
-- [CSP 官方 Wiki 原文](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-–-Neck-FX) — 内容来源
-- [acc-extension-config 仓库](https://github.com/ac-custom-shaders-patch/acc-extension-config) — CSP 官方配置文件
-- [INIpp 配置语法](https://github.com/ac-custom-shaders-patch/inipp) — 配置格式参考

@@ -98,27 +98,27 @@ export default defineConfig({
               text: '车辆配置实操',
               collapsed: false,
               items: [
-                { text: '基础选项', link: '/car/visual/general-options' },
-                { text: '灯光系统', link: '/car/visual/lights' },
-                { text: '轮胎效果', link: '/car/visual/tyres-fx' },
+                { text: '通用选项', link: '/car/visual/general-options' },
+                { text: '灯光', link: '/car/visual/lights' },
+                { text: '轮胎 FX', link: '/car/visual/tyres-fx' },
               ],
             },
             {
               text: '赛道配置实操',
               collapsed: false,
               items: [
-                { text: '基础选项', link: '/track/general-options' },
-                { text: 'GrassFX 草地', link: '/track/grass-fx' },
-                { text: 'RainFX 雨天', link: '/track/rain-fx' },
-                { text: '条件系统', link: '/track/conditions' },
+                { text: '通用选项', link: '/track/general-options' },
+                { text: '草地 FX', link: '/track/grass-fx' },
+                { text: '雨 FX', link: '/track/rain-fx' },
+                { text: '条件', link: '/track/conditions' },
               ],
             },
             {
               text: '技巧与排错',
               collapsed: false,
               items: [
-                { text: '过滤系统', link: '/general/filtering' },
-                { text: 'Shader 替换', link: '/general/shader-replacements' },
+                { text: '过滤', link: '/general/filtering' },
+                { text: '着色器替换', link: '/general/shader-replacements' },
                 { text: '故障排除', link: '/general/troubleshooting' },
               ],
             },
@@ -148,16 +148,16 @@ export default defineConfig({
               items: [
                 { text: '概述', link: '/general/' },
                 { text: '故障排除', link: '/general/troubleshooting' },
-                { text: '过滤系统', link: '/general/filtering' },
+                { text: '过滤', link: '/general/filtering' },
                 { text: '线性色彩空间', link: '/general/linear-color-space' },
-                { text: 'Shader 替换', link: '/general/shader-replacements' },
+                { text: '着色器替换', link: '/general/shader-replacements' },
                 { text: '模型替换', link: '/general/model-replacements' },
                 { text: '场景查询', link: '/general/scene-queries' },
                 { text: 'Extra FX 标志', link: '/general/extra-fx-flags' },
-                { text: 'Extra FX 自发光', link: '/general/extra-fx-emissive' },
-                { text: 'UV2 贴图', link: '/general/uv2' },
+                { text: '额外 FX 自发光', link: '/general/extra-fx-emissive' },
+                { text: 'UV2', link: '/general/uv2' },
                 { text: '网格调整', link: '/general/mesh-adjustment' },
-                { text: '截图命名格式', link: '/general/screenshots-name-format' },
+                { text: '截图名称格式', link: '/general/screenshots-name-format' },
               ],
             },
           ],
@@ -169,7 +169,7 @@ export default defineConfig({
               items: [
                 { text: '启用扩展物理', link: '/car/physics/enabling' },
                 { text: '动力系统', link: '/car/physics/powertrain' },
-                { text: '悬挂系统', link: '/car/physics/suspension' },
+                { text: '悬挂', link: '/car/physics/suspension' },
                 { text: '转向', link: '/car/physics/steering' },
                 { text: '轮胎物理', link: '/car/physics/tyre-physics' },
                 { text: '牵引力控制', link: '/car/physics/traction-control' },
@@ -183,14 +183,14 @@ export default defineConfig({
               text: '车辆视觉配置',
               collapsed: false,
               items: [
-                { text: '基础选项', link: '/car/visual/general-options' },
-                { text: '灯光系统', link: '/car/visual/lights' },
-                { text: '轮胎效果', link: '/car/visual/tyres-fx' },
+                { text: '通用选项', link: '/car/visual/general-options' },
+                { text: '灯光', link: '/car/visual/lights' },
+                { text: '轮胎 FX', link: '/car/visual/tyres-fx' },
                 { text: '车轮', link: '/car/visual/wheels' },
-                { text: '排气管火焰', link: '/car/visual/exhaust-flames' },
-                { text: '排气管烟雾', link: '/car/visual/exhaust-smoke' },
+                { text: '排气火焰', link: '/car/visual/exhaust-flames' },
+                { text: '排气烟雾', link: '/car/visual/exhaust-smoke' },
                 { text: '火花', link: '/car/visual/sparks' },
-                { text: '颈部效果', link: '/car/visual/neck-fx' },
+                { text: '颈部 FX', link: '/car/visual/neck-fx' },
               ],
             },
           ],
@@ -214,16 +214,16 @@ export default defineConfig({
               text: '赛道配置',
               collapsed: false,
               items: [
-                { text: '基础选项', link: '/track/general-options' },
-                { text: '草地效果 (GrassFX)', link: '/track/grass-fx' },
-                { text: '雨天效果 (RainFX)', link: '/track/rain-fx' },
-                { text: '树木系统', link: '/track/trees' },
-                { text: '水面着色器', link: '/track/water-shader' },
+                { text: '通用选项', link: '/track/general-options' },
+                { text: '草地 FX', link: '/track/grass-fx' },
+                { text: '雨 FX', link: '/track/rain-fx' },
+                { text: '树木', link: '/track/trees' },
+                { text: '水着色器', link: '/track/water-shader' },
                 { text: '动画对象', link: '/track/animated-objects' },
-                { text: '环境光照', link: '/track/bounced-light' },
-                { text: '显示屏', link: '/track/displays' },
-                { text: '条件系统', link: '/track/conditions' },
-                { text: '音频事件', link: '/track/audio' },
+                { text: '反射光', link: '/track/bounced-light' },
+                { text: '显示', link: '/track/displays' },
+                { text: '条件', link: '/track/conditions' },
+                { text: '音频', link: '/track/audio' },
               ],
             },
           ],
@@ -233,7 +233,7 @@ export default defineConfig({
               text: '赛道物理',
               collapsed: false,
               items: [
-                { text: '扩展物理选项', link: '/track/physics/general-options' },
+                { text: '通用扩展物理选项', link: '/track/physics/general-options' },
                 { text: '自定义射线检测', link: '/track/physics/custom-raycasting' },
                 { text: '碰撞参数', link: '/track/physics/collision-parameters' },
                 { text: '动态物理对象', link: '/track/physics/dynamic-physics-objects' },
@@ -249,7 +249,7 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: '额外选项', link: '/post-processing/extra-options' },
-                { text: '色彩校正', link: '/post-processing/color-grading' },
+                { text: '色彩分级详解', link: '/post-processing/color-grading' },
               ],
             },
           ],
@@ -259,9 +259,9 @@ export default defineConfig({
               text: 'Python 应用',
               collapsed: false,
               items: [
-                { text: '新增 API', link: '/python/new-functions' },
+                { text: '新增函数', link: '/python/new-functions' },
                 { text: '应用图标', link: '/python/app-icons' },
-                { text: '热重载', link: '/python/live-reload' },
+                { text: '实时重载', link: '/python/live-reload' },
                 { text: '严格模式', link: '/python/strict-mode' },
               ],
             },
@@ -272,7 +272,7 @@ export default defineConfig({
               text: '服务器配置',
               collapsed: false,
               items: [
-                { text: '服务器选项', link: '/server/options' },
+                { text: '服务器额外选项', link: '/server/options' },
               ],
             },
           ],
@@ -376,6 +376,18 @@ export default defineConfig({
       themeConfig: {
         nav: [
           {
+            text: 'CSP',
+            items: [
+              { text: 'Car Configs', link: '/en/car/visual/general-options' },
+              { text: 'Track Configs', link: '/en/track/general-options' },
+              { text: 'General Reference', link: '/en/general/' },
+              { text: 'Post-processing', link: '/en/post-processing/extra-options' },
+              { text: 'Python', link: '/en/python/new-functions' },
+              { text: 'Server', link: '/en/server/options' },
+              { text: 'Custom AI', link: '/en/custom-ai/' },
+            ],
+          },
+          {
             text: 'AC EVO',
             items: [
               { text: 'Car Modding', link: '/en/evo/car/' },
@@ -428,6 +440,152 @@ export default defineConfig({
               items: [
                 { text: 'Overview', link: '/en/networking/' },
                 { text: 'UDP Remote Telemetry', link: '/en/networking/udp-remote-telemetry' },
+              ],
+            },
+          ],
+
+          '/en/car/physics/': [
+            {
+              text: 'Car Physics',
+              collapsed: false,
+              items: [
+                { text: 'Enabling Extended Physics', link: '/en/car/physics/enabling' },
+                { text: 'Powertrain', link: '/en/car/physics/powertrain' },
+                { text: 'Suspension', link: '/en/car/physics/suspension' },
+                { text: 'Steering', link: '/en/car/physics/steering' },
+                { text: 'Tyre Physics', link: '/en/car/physics/tyre-physics' },
+                { text: 'Traction Control', link: '/en/car/physics/traction-control' },
+                { text: 'Physics Scripts', link: '/en/car/physics/physics-scripts' },
+              ],
+            },
+          ],
+
+          '/en/car/visual/': [
+            {
+              text: 'Car Visual Configs',
+              collapsed: false,
+              items: [
+                { text: 'General Options', link: '/en/car/visual/general-options' },
+                { text: 'Lights', link: '/en/car/visual/lights' },
+                { text: 'Tyres FX', link: '/en/car/visual/tyres-fx' },
+                { text: 'Wheels', link: '/en/car/visual/wheels' },
+                { text: 'Exhaust Flames', link: '/en/car/visual/exhaust-flames' },
+                { text: 'Exhaust Smoke', link: '/en/car/visual/exhaust-smoke' },
+                { text: 'Sparks', link: '/en/car/visual/sparks' },
+                { text: 'Neck FX', link: '/en/car/visual/neck-fx' },
+              ],
+            },
+          ],
+
+          '/en/car/instruments/': [
+            {
+              text: 'Car Instruments',
+              collapsed: false,
+              items: [
+                { text: 'Instruments Options', link: '/en/car/instruments/options' },
+                { text: 'Analog Instruments', link: '/en/car/instruments/analog-instruments' },
+                { text: 'Digital Instruments', link: '/en/car/instruments/digital-instruments' },
+                { text: 'LED Panels', link: '/en/car/instruments/led-panels' },
+                { text: 'Instruments Inputs', link: '/en/car/instruments/inputs' },
+              ],
+            },
+          ],
+
+          '/en/track/': [
+            {
+              text: 'Track Configs',
+              collapsed: false,
+              items: [
+                { text: 'General Options', link: '/en/track/general-options' },
+                { text: 'Grass FX', link: '/en/track/grass-fx' },
+                { text: 'Rain FX', link: '/en/track/rain-fx' },
+                { text: 'Trees', link: '/en/track/trees' },
+                { text: 'Water Shader', link: '/en/track/water-shader' },
+                { text: 'Animated Objects', link: '/en/track/animated-objects' },
+                { text: 'Bounced Light', link: '/en/track/bounced-light' },
+                { text: 'Displays', link: '/en/track/displays' },
+                { text: 'Conditions', link: '/en/track/conditions' },
+                { text: 'Audio', link: '/en/track/audio' },
+              ],
+            },
+          ],
+
+          '/en/track/physics/': [
+            {
+              text: 'Track Physics',
+              collapsed: false,
+              items: [
+                { text: 'Extended Physics Options', link: '/en/track/physics/general-options' },
+                { text: 'Custom Raycasting', link: '/en/track/physics/custom-raycasting' },
+                { text: 'Collision Parameters', link: '/en/track/physics/collision-parameters' },
+                { text: 'Dynamic Physics Objects', link: '/en/track/physics/dynamic-physics-objects' },
+                { text: 'Geometric Colliders', link: '/en/track/physics/geometric-colliders' },
+                { text: 'Surface Tweaks', link: '/en/track/physics/surface-tweaks' },
+              ],
+            },
+          ],
+
+          '/en/general/': [
+            {
+              text: 'General Reference',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/en/general/' },
+                { text: 'Troubleshooting', link: '/en/general/troubleshooting' },
+                { text: 'Filtering', link: '/en/general/filtering' },
+                { text: 'Linear Color Space', link: '/en/general/linear-color-space' },
+                { text: 'Shader Replacements', link: '/en/general/shader-replacements' },
+                { text: 'Model Replacements', link: '/en/general/model-replacements' },
+                { text: 'Scene Queries', link: '/en/general/scene-queries' },
+                { text: 'Extra FX Flags', link: '/en/general/extra-fx-flags' },
+                { text: 'Extra FX Emissive', link: '/en/general/extra-fx-emissive' },
+                { text: 'UV2', link: '/en/general/uv2' },
+                { text: 'Mesh Adjustment', link: '/en/general/mesh-adjustment' },
+                { text: 'Screenshots Name Format', link: '/en/general/screenshots-name-format' },
+              ],
+            },
+          ],
+
+          '/en/post-processing/': [
+            {
+              text: 'Post-processing',
+              collapsed: false,
+              items: [
+                { text: 'Extra Options', link: '/en/post-processing/extra-options' },
+                { text: 'Color Grading', link: '/en/post-processing/color-grading' },
+              ],
+            },
+          ],
+
+          '/en/python/': [
+            {
+              text: 'Python Apps',
+              collapsed: false,
+              items: [
+                { text: 'New Functions', link: '/en/python/new-functions' },
+                { text: 'App Icons', link: '/en/python/app-icons' },
+                { text: 'Live Reload', link: '/en/python/live-reload' },
+                { text: 'Strict Mode', link: '/en/python/strict-mode' },
+              ],
+            },
+          ],
+
+          '/en/server/': [
+            {
+              text: 'Server Configs',
+              collapsed: false,
+              items: [
+                { text: 'Server Options', link: '/en/server/options' },
+              ],
+            },
+          ],
+
+          '/en/custom-ai/': [
+            {
+              text: 'Custom AI',
+              collapsed: false,
+              items: [
+                { text: 'Custom AI System', link: '/en/custom-ai/' },
               ],
             },
           ],

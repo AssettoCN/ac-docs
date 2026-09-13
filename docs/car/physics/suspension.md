@@ -1,32 +1,33 @@
 ---
-title: 悬挂系统
+title: 悬挂
 ---
 
-# 悬挂系统（Suspension）
 
-## 扩展物理的附加悬挂值
+> 汉化标题：车辆 – 悬挂  
+> 原文页面：Cars-–-Suspension  
+> 原文锚点：2b9e66e  
+> 汉化时间：2026-09-11T23:30:00+08:00  
+> 译注：heave 译作「起伏」（车身垂直方向）；double wishbone 译作「双叉臂」；bump stop 译作「缓冲块」、bump rubber 译作「缓冲橡胶」  
 
-请记住先[启用扩展物理](./enabling)。
+## 扩展物理中的附加悬挂参数
 
-### 扭矩施加到悬挂的替代方式
+记得[启用扩展物理](https://github.com/car/physics/enabling)
 
-这是对 Kunos 一个导致反效果几何不准确的 bug 的修复。
+### 向悬挂施加扭矩的替代方式
+这是对一个 Kunos bug 的修复，该 bug 曾导致几何抗效应（anti-effects）不准确。
 
 *suspensions.ini*
 
 ```ini
-[_EXTENSION]				; 从 0.2.3p211 开始，对轴式悬挂类型已完全禁用
+[_EXTENSION]				; 自 0.2.3p211 起，对整体桥（axle）悬挂类型现已完全禁用
 TORQUE_MODE_EX = 0 			; 选项：
-					; 0 为默认/原始，力的施加到轮毂不正确。加速扭矩通过轮毂传递，而实际上不应该是这样。
+					; 0 为默认/原版，力施加到轮毂的方式不正确：加速扭矩会经由轮毂传递，而现实中并非如此。
 					; 1 已损坏
-					; 2 推荐且应在物理上准确。在 CSP 版本中进行了更新以减少 bug 并改善边缘情况行为。
+					; 2 为推荐值，应能做到物理准确。CSP 各版本的更新曾改变其行为，但都只是为了减少 bug、改善边缘情况下的表现。
 ```
-
 ---
-
-### 渐进弹簧率修复
-
-修复另一个 Kunos bug。
+### 渐进弹簧刚度的修复
+修复另一个 Kunos bug
 
 *suspensions.ini*
 
@@ -34,14 +35,10 @@ TORQUE_MODE_EX = 0 			; 选项：
 [_EXTENSION]
 FIX_PROGRESSIVE_RATE = 1
 ```
-
 ---
-
-### 新双叉臂悬挂扩展
-
-包括运动比查找表输入、缓冲块查找表、渐进弹簧率修复，以及更多功能。
-
-#### 示例实现
+### 新的双叉臂悬挂扩展
+包含运动比查找表与缓冲块查找表的输入、渐进刚度修复，后续还会加入更多
+示例实现：
 
 *suspensions.ini*
 
@@ -50,9 +47,9 @@ FIX_PROGRESSIVE_RATE = 1
 USE_DWB2 = 1
 
 [FRONT]
-MOTION_RATIO = motion_ratio_f.lut	; 运动比查找表（从零点偏转|运动比）
-BUMP_STOP_LUT = bsf.lut    		; 偏转|力 - 必须以 0|0 开始
-					; 旧版实现。请参阅页面下方的当前实现。
+MOTION_RATIO = motion_ratio_f.lut	; 运动比查找表（偏离零点的变形量|运动比）
+BUMP_STOP_LUT = bsf.lut    		; 变形量|力 - 必须以 0|0 开头
+					; 旧版实现。当前实现见页面下方。
 [HEAVE_FRONT]
 MOTION_RATIO = motion_ratio_hf.lut
 BUMP_STOP_LUT = bshf.lut
@@ -67,91 +64,78 @@ BUMP_STOP_LUT = bshr.lut
 ```
 
 ---
-
-### 使用 DWB2 的车辆的新标签弹簧调整
-
-#### 示例实现
-
+### 使用 DWB2 的车辆的新增标签弹簧调整
+示例实现：
 注意：*suspensions.ini* 格式不变。
-
 *setup.ini*
 
 ```ini
-[SPRING_LF] 				; LF, RF, RR, LR - 替换旧的 SPRING_RATE_LF 条目
+[SPRING_LF] 				; LF、RF、RR、LR - 替换旧的 SPRING_RATE_LF 条目
 SHOW_CLICKS = 0
 TAB = SUSPENSIONS
 NAME = Spring Rate LF
-LUT = suspension_springs.lut 		; 格式：name|rate
+LUT = suspension_springs.lut 		; 格式：名称|刚度
 POS_X = 0
 POS_Y = 1
-HELP = HELP_LF_WHEELRATE 		; 与原始 AC 选项相同，目前..
-DISPLAY_VALUE_IN_BRACKETS = 1 		; 1 - 在设置窗口中名称旁边以括号显示值
+HELP = HELP_LF_WHEELRATE 		; 暂时与原版 AC 选项相同..
+DISPLAY_VALUE_IN_BRACKETS = 1 		; 1 - 在设置窗口中名称旁以括号显示数值。
 ```
 
 ---
-
-### 添加防倾杆运动比
+### 新增防倾杆运动比
 
 ---
-
-### 扩展车辆的新标签防倾杆调整
-
-#### 示例实现
+### 扩展车辆的新增标签防倾杆调整
+示例实现：
 
 *suspensions.ini*
 
 ```ini
 [ARB]
-EXTEND = 1 				; 启用扩展 ARB 所需
+EXTEND = 1 				; 启用扩展 ARB 所必需
 FRONT_MOTION_RATIO = 1.0
-FRONT = 100000 				; 前防倾杆刚度，N/m
+FRONT = 100000 				; 前防倾杆刚度（N/m）
 REAR_MOTION_RATIO = 1.0
-REAR = 10000 				; 后防倾杆刚度，N/m
+REAR = 10000 				; 后防倾杆刚度（N/m）
 ```
 
-**注意：** `setup.ini` 条目不是运动比功能所必需的，但 `[ARB]` 下的 `EXTEND` 行是必需的。
+**注意：** 运动比生效不需要 setup.ini 条目，但 [ARB] 下的 EXTEND 行是必需的。
 
 *setup.ini*
 
 ```ini
-[ARB_F] 				; F, R - 替换旧的原始 AC 条目
+[ARB_F] 				; F、R - 替换旧的原版 AC 条目
 SHOW_CLICKS = 0
 TAB = SUSPENSIONS
 NAME = ARB Front
-LUT = suspension_arb_front.lut 		; 格式：name|rate
+LUT = suspension_arb_front.lut 		; 格式：名称|刚度
 POS_X = 0.5
 POS_Y = 0
-HELP = HELP_FRONT_ARB 			; 与原始 AC 选项相同，目前...
-DISPLAY_VALUE_IN_BRACKETS = 0 		; 1 - 在设置窗口中名称旁边以括号显示值
+HELP = HELP_FRONT_ARB 			; 暂时与原版 AC 选项相同...
+DISPLAY_VALUE_IN_BRACKETS = 0 		; 1 - 在设置窗口中名称旁以括号显示数值。
 ```
 
 ---
-
-### 转向比设置调整（注意会破坏 AI 和动画，因此不推荐）
-
-#### 截至 2022 年 5 月已损坏/不支持
-
-#### 示例实现
-
+### 转向比设置调整（注意会破坏 AI 和动画，故不推荐）
+#### 自 2022 年 5 月起已损坏/不受支持
+示例实现：
 *setup.ini*
 
 ```ini
 [STEERING_RATIO]
 SHOW_CLICKS = 0
-TAB = SUSPENSIONS 			; 目标标签
+TAB = SUSPENSIONS 			; 目标选项卡
 NAME = Steering Ratio
-LUT = suspension_steer.lut 		; 格式：display_name|ratio
+LUT = suspension_steer.lut 		; 格式：显示名|转向比
 POS_X = 0.5
 POS_Y = 4
 HELP = NULL 				; 目前没有合适的选项
-DISPLAY_VALUE_IN_BRACKETS = 1 		; 1 - 在设置窗口中名称旁边以括号显示值
+DISPLAY_VALUE_IN_BRACKETS = 1 		; 1 - 在设置窗口中名称旁以括号显示数值。
 ```
 
 ---
-
 ### 可调双叉臂悬挂几何（需要 DWB2）
-
-#### 示例实现
+示例实现：
 
 *setup.ini*
 
@@ -160,10 +144,10 @@ DISPLAY_VALUE_IN_BRACKETS = 1 		; 1 - 在设置窗口中名称旁边以括号显
 SHOW_CLICKS = 0
 TAB = SUSPENSIONS
 NAME = Front Geometry
-LUT = setup_front_geometry.lut		; name|index
-GEO_0 = suspensions_front_1.ini		; 包含更改项的 INI 文件（选项：hub_mass 和所有连接点）
-GEO_1 = suspensions_front_2.ini		; 与 suspensions.ini 格式相同 - 仅需要修改的项
-					; （如果值不存在，将从 suspensions.ini 加载）
+LUT = setup_front_geometry.lut		; 名称|索引
+GEO_0 = suspensions_front_1.ini		; 包含所更改项的 INI 文件（可选：hub_mass 和所有 pickup 点）
+GEO_1 = suspensions_front_2.ini		; 与 suspensions.ini 格式相同 - 只需写入修改过的项
+					; （若值缺失，将从 suspensions.ini 加载）
 DEFAULT = 0				; 默认加载的 GEO_ 索引
 POS_X = 0.5
 POS_Y = 3
@@ -183,32 +167,30 @@ HELP = NULL
 ```
 
 ---
-
-### 使用 DWB2 悬挂的车辆阻尼器查找表（注意运动比将应用于阻尼器）
-
-#### 示例实现
+### 使用 DWB2 悬挂的车辆的阻尼器查找表（注意运动比将应用于阻尼器）
+示例实现：
 
 *suspensions.ini*
 
 ```ini
 [_EXTENSION]
-DAMPER_LUTS = 1    			; 当前需要
+DAMPER_LUTS = 1    			; 目前为必需
 ```
 
-创建新文件：
-*dampers.ini* 
+创建一个新文件：
+*dampers.ini*
 
 ```ini
 [HEADER]
-ENABLE = 1 				; 0 禁用
+ENABLE = 1 				; 0 为禁用
 
 [FRONT]
-BUMP_SLOW_0 = damp_bump_slowf_0.lut	; 格式：速度 (m/s) | 力（牛顿 - 符号无关紧要）
-BUMP_SLOW_4 = damp_bump_slowf_4.lut	; 注意：SLOW 条目不外推，仅 FAST 外推。如果仅使用 SLOW，请确保速度足够高以满足预期用途。建议至少高达 5 m/s 作为基线。
-BUMP_SLOW_9 = damp_bump_slowf_9.lut	; 你必须至少有第一个和最后一个调整的 LUT
-REBOUND_SLOW_0 = damp_reb_slowf_0.lut	; （如果不可调，你只需要 _0 条目）。
-REBOUND_SLOW_4 = damp_reb_slowf_4.lut	; 对于不存在的条目，将在周围的条目之间进行线性插值
-REBOUND_SLOW_9 = damp_reb_slowf_9.lut	;（此示例中的 1-3 和 5-8）。
+BUMP_SLOW_0 = damp_bump_slowf_0.lut	; 格式：速度（m/s）| 力（牛顿——正负号无关）。
+BUMP_SLOW_4 = damp_bump_slowf_4.lut	; 注意：SLOW 条目不做外推，只有 FAST 条目会外推。若仅使用 SLOW，请确保速度范围足以覆盖预期用途。建议至少以 5 m/s 为基线。
+BUMP_SLOW_9 = damp_bump_slowf_9.lut	; 至少要为第一个和最后一个调整档位各提供一个 LUT
+REBOUND_SLOW_0 = damp_reb_slowf_0.lut	; （若不可调，则只需要 _0 条目）。
+REBOUND_SLOW_4 = damp_reb_slowf_4.lut	; 缺失的条目将由相邻条目线性插值得到
+REBOUND_SLOW_9 = damp_reb_slowf_9.lut	; （本例中为 1-3 和 5-8）。
 BUMP_FAST_0 = damp_bump_fastf_0.lut
 REBOUND_FAST_0 = damp_reb_fastf_0.lut
 ```
@@ -216,51 +198,48 @@ REBOUND_FAST_0 = damp_reb_fastf_0.lut
 *setup.ini*
 
 ```ini
-[DAMPER_BUMP_LF]    			; 名称与 Kunos 条目相同，只是 DAMP 已替换为 DAMPER
+[DAMPER_BUMP_LF]    			; 名称与 Kunos 条目相同，只是 DAMP 已被替换为 DAMPER
 SHOW_CLICKS = 2
 TAB = DAMPERS
 NAME = Bump
-MIN = 0					; 最小设置
-MAX = 11				; 最大设置
+MIN = 0					; 最小设置值
+MAX = 11				; 最大设置值
 STEP = 1
-DEFAULT = 7				; 默认设置
+DEFAULT = 7				; 默认设置值
 POS_X = 0
 POS_Y = 0
 HELP = HELP_LF_DAMPER_BUMP
 ```
 
 ---
+### 使用 DWB2 悬挂的车辆的缓冲块/缓冲橡胶查找表（自 v1.74 起可用）
 
-### 使用 DWB2 悬挂的车辆的缓冲块/橡胶查找表（从 v1.74 起可用）
+对于起伏（heave）元件，新增了额外功能。你可以把旧的垫块（packer）刚度用作第三弹簧，把新的缓冲块刚度用作缓冲橡胶，二者各有对应的间隙。两者的间隙均为落地状态（即车辆处于静态变形时）的间隙。垫块行程（packer range）用作角弹簧的缓冲块间隙，其工作方式与原版 AC 相同。
 
-对于 heave 元件，添加了额外功能。你可以将旧的 packer rate 用作第三弹簧，将新的 bumpstop rate 用作缓冲橡胶，两者都有相关的间隙。每个间隙都在地面处（即当车辆处于静态偏转时）。Packer range 用作角弹簧的 bumpstop gap，其工作方式与原始 AC 相同。
+另注：缓冲块查找表的旧实现仍然有效。
 
-进一步说明：缓冲块查找表的旧版实现仍然有效。
-
-#### 示例实现
+示例实现：
 
 *suspensions.ini*
-
 ```ini
 [_EXTENSION]
-SEPARATE_BSH_GAPS = 1 			; 如果为 0 或行不存在，bumpstop_gap = packer_range
+SEPARATE_BSH_GAPS = 1 			; 若为 0 或该行不存在，则 bumpstop_gap = packer_range
 
 [HEAVE_FRONT]
-BUMPSTOP_GAP = 0.1 			; 静态载荷下缓冲块的间隙，单位为米
+BUMPSTOP_GAP = 0.1 			; 静态载荷下到缓冲块的间隙（米）
 
 [HEAVE_REAR]
-BUMPSTOP_GAP = 0.1 			; 静态载荷下缓冲块的间隙，单位为米
+BUMPSTOP_GAP = 0.1 			; 静态载荷下到缓冲块的间隙（米）
 ```
 
-创建新文件：
+创建一个新文件：
 *bumpstops.ini*
-
 ```ini
 [HEADER]
 ENABLE = 1
 
 [FRONT]
-DEFAULT = 0 				; 默认索引/缓冲橡胶选择
+DEFAULT = 0 				; 缓冲橡胶的默认索引/选项
 STACK = 1 				; 堆叠的橡胶数量
 [REAR]
 DEFAULT = 0
@@ -273,9 +252,9 @@ STACK = 2
 DEFAULT = 1
 STACK = 3
 
-[FRONT_0] 				; 可以有任意多个
-LUT = filename.lut 			; 偏转（米）|力（牛顿）。必须以 0|0 开始
-[FRONT_1]				; （"弹簧"在任何情况下都不应在 0 偏转时产生力）
+[FRONT_0] 				; 数量按需任意添加
+LUT = filename.lut 			; 变形量（米）|力（牛顿）。必须以 0|0 开头
+[FRONT_1]				; （「弹簧」在任何情况下都不应在 0 变形时出力）
 LUT = filename.lut
 
 [REAR_0]
@@ -297,16 +276,16 @@ LUT = filename.lut
 *setup.ini*
 
 ```ini
-[BUMPSTOP_HF] 				; HF, HR
+[BUMPSTOP_HF] 				; HF、HR
 SHOW_CLICKS = 0
 TAB = SUSPENSION HEAVE
 NAME = Bump Rubber F
-LUT = bs_setup.lut 			; 可用于为每个橡胶分配名称。格式：Name|index
+LUT = bs_setup.lut 			; 可用它为每块橡胶分配名称。格式：名称|索引
 POS_X = 1
 POS_Y = 0
 HELP = HELP_HR_WHEELRATE
 
-[BUMPSTOP_GAP_HF] 			; HF, HR
+[BUMPSTOP_GAP_HF] 			; HF、HR
 SHOW_CLICKS = 0
 TAB = SUSPENSION HEAVE
 NAME = Bump Rubber Gap
@@ -317,7 +296,7 @@ POS_X = 1
 POS_Y = 1
 HELP = HELP_HF_TRAVEL_RANGE
 
-[BUMPSTOP_NUM_HF] 			; HF, HR
+[BUMPSTOP_NUM_HF] 			; HF、HR
 SHOW_CLICKS = 0
 TAB = SUSPENSION HEAVE
 NAME = Bump Rubber Stack
@@ -328,7 +307,7 @@ POS_X = 0.5
 POS_Y = 2
 HELP = Null
 
-[BUMPSTOP_LF]				; LF, RF, LR, RR
+[BUMPSTOP_LF]				; LF、RF、LR、RR
 SHOW_CLICKS = 0
 TAB = SUSPENSION ADV.
 NAME = Bump Rubber LF
@@ -337,7 +316,7 @@ POS_X = 0
 POS_Y = 0
 HELP = HELP_LF_BUMP_STOP_RATE
 
-[BUMPSTOP_NUM_LF]			; LF, RF, LR, RR
+[BUMPSTOP_NUM_LF]			; LF、RF、LR、RR
 SHOW_CLICKS = 0
 TAB = SUSPENSION ADV.
 NAME = Rubber Stack LF
@@ -348,7 +327,7 @@ POS_X = 0
 POS_Y = 1
 HELP = Null
 
-[PACKER_RANGE_LF] 			; LF, RF, LR, RR - 与原始相同
+[PACKER_RANGE_LF] 			; LF、RF、LR、RR - 与原版相同
 SHOW_CLICKS = 0
 TAB = SUSPENSION ADV.
 NAME = Bump Rubber Gap LF
@@ -360,10 +339,3 @@ POS_Y = 2
 HELP = HELP_LF_TRAVEL_RANGE
 ```
 
-相关内容：[启用扩展物理](./enabling)、[转向系统](./steering)。
-
-## 引用来源
-
-- [CSP 官方 Wiki 原文](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-–-Suspension) — 内容来源
-- [acc-extension-config 仓库](https://github.com/ac-custom-shaders-patch/acc-extension-config) — CSP 官方配置文件
-- [INIpp 配置语法](https://github.com/ac-custom-shaders-patch/inipp) — 配置格式参考
