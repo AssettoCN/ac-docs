@@ -354,7 +354,7 @@ Mark “flag” labels inputs which return 1.0 or 0.0 depending on condition (wh
 
 ### Format
 
-To use certain types of inputs, like the ones returning lap times, properly for digital displays, some formatting is necessary. Such types usually have it set by default, but you can override that behaviour, or make regular input formatted. More information is available [here](/en/car/instruments/digital-instruments).
+To use certain types of inputs, like the ones returning lap times, properly for digital displays, some formatting is necessary. Such types usually have it set by default, but you can override that behaviour, or make regular input formatted. More information is available [here](https://github.com/en/car/instruments/digital-instruments).
 
 ### More complex expressions
 

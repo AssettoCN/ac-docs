@@ -10,7 +10,7 @@ title: 轮胎 FX
 
 # 主要设置
 
-轮胎 FX 模块为轮胎外观添加了一些内容，例如视觉形变、损伤和磨损。CSP 会尝试自动猜测设置，但有时手动调整可能更有帮助。请记住，您可以查看[猜测配置](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-–-About-guessed-configs)来了解猜测出的值。
+轮胎 FX 模块为轮胎外观添加了一些内容，例如视觉形变、损伤和磨损。CSP 会尝试自动猜测设置，但有时手动调整可能更有帮助。请记住，您可以查看[猜测配置](https://github.com/car/guessed-configs)来了解猜测出的值。
 
 ### 语法
 

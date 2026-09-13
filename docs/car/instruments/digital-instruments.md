@@ -28,7 +28,7 @@ DIGITAL_ITEM = 2
 DIGITAL_ITEM_NUMBER_FORMAT = GEAR  ; 仅 v0.1.61 起支持
 ```
 
-首先，[输入类型](/car/instruments/inputs)是在节名中设定的（出于向后兼容等原因）。之后即可照常在该节中设置其他输入选项，例如 `INPUT_LAG`。
+首先，[输入类型](https://github.com/car/instruments/inputs)是在节名中设定的（出于向后兼容等原因）。之后即可照常在该节中设置其他输入选项，例如 `INPUT_LAG`。
 
 另一个关键值 `DIGITAL_ITEM` 指向 “data/digital_instruments.ini” 中数字仪表的索引。直接使用其节名中 “_” 之后的数字即可。
 

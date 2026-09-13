@@ -59,7 +59,7 @@ LAYER = 255          ; Collider layer
 COLOR = R, G, B, A   ; Color for outline visible with debug mode
 ```
 
-More information about collision params is available [here](/en/track/physics/collision-parameters). As for layers, colliders with the same layer will be grouped together and when checking intersection between a car and colliders CSP would first check for the intersection between a car and collider groups, so it might be a good idea to group nearby colliders into a separate layer. Don’t worry about it too much though: I’m hoping in future to add something so that CSP would group colliders into optimal groups automatically.
+More information about collision params is available [here](https://github.com/en/track/physics/collision-parameters). As for layers, colliders with the same layer will be grouped together and when checking intersection between a car and colliders CSP would first check for the intersection between a car and collider groups, so it might be a good idea to group nearby colliders into a separate layer. Don’t worry about it too much though: I’m hoping in future to add something so that CSP would group colliders into optimal groups automatically.
 
 Note: you can use new Render Stats app with its “Other threads” button to see how much time it takes for physics to do its collision checking step.
 

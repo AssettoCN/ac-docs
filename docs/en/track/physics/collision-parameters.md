@@ -27,6 +27,6 @@ RIGID_WITH_BOXES = 0   ; If set to 1, collisions with boxes (usually used for ca
                        ; would be fully rigid
 ```
 
-Same logic applies to `[CUSTOM_COLLISIONS]` of [extra server options](/en/server/options), or to geometric colliders and dynamic objects configuration. More information about geometric colliders is available [here](/en/track/physics/geometric-colliders).
+Same logic applies to `[CUSTOM_COLLISIONS]` of [extra server options](https://github.com/en/server/options), or to geometric colliders and dynamic objects configuration. More information about geometric colliders is available [here](https://github.com/en/track/physics/geometric-colliders).
 
-Note: if you’re making a soft tyre wall or something like that, you can also [get deformation to apply visually](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Tracks-–-Deforming-walls).
+Note: if you’re making a soft tyre wall or something like that, you can also [get deformation to apply visually](https://github.com/en/track/deforming-walls).

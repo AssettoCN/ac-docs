@@ -47,7 +47,7 @@ RANDOMIZED_CARS_POSITIONING = 0.1, 0.1  ; Slightly randomize car positions and o
 PIT_ALTITUDE = 0          ; based on pits, set real altitude of a track in meters, see at the end for another method
 ```
 
-Also, enabling custom track physics automatically activates box collider detection for [dynamic physics objects](/en/track/physics/dynamic-physics-objects).
+Also, enabling custom track physics automatically activates box collider detection for [dynamic physics objects](https://github.com/en/track/physics/dynamic-physics-objects).
 
 ### Base collision tweaks (disabled by default)
 
@@ -58,7 +58,7 @@ RIGID_WALLS_COLLISIONS = 0  ; Use rigid (hard) collisions with walls
 RIGID_DIRT_COLLISIONS = 0   ; Use rigid (hard) collisions with dirty floor areas
 ```
 
-It’s not that good of an idea to use any of it, but it might help with cars falling through ground. For more precise configuration check out [separate post about configuring collision parameters in detail](/en/track/physics/collision-parameters).
+It’s not that good of an idea to use any of it, but it might help with cars falling through ground. For more precise configuration check out [separate post about configuring collision parameters in detail](https://github.com/en/track/physics/collision-parameters).
 
 ### Integrity verification
 
@@ -91,7 +91,7 @@ ALLOW_TRACK_SCRIPTS_DYNAMIC_OBJECTS = 0  ; Set to 1 to any script to create and 
 ALLOW_CUSTOM_AI_MANIPULATION = 0  ; Set to 1 to allow custom AIs on this track
 ```
 
-More information about custom AIs is available [here](/en/custom-ai/index).
+More information about custom AIs is available [here](https://github.com/en/custom-ai/index).
 
 ### Miscellaneous
 

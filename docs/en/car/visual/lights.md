@@ -351,7 +351,7 @@ Supported `LAYOUT` values:
 
 Extra lights are custom light sources, useful for underglow, neons, interior dashboard light and similar effects. The first extra light (index 0, `[LIGHT_EXTRA]`) is the automatically guessed dashboard light. Additional ones can be added with `[LIGHT_EXTRA_...]` (using the settings iterator syntax, e.g. `[LIGHT_EXTRA_UNDERGLOW]`, `[LIGHT_EXTRA_1]`, etc.).
 
-For a quick reference on extra lights syntax, see [Extra Lights](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Extra-Lights).
+For a quick reference on extra lights syntax, see [Extra Lights](https://github.com/en/car/visual/extra-lights).
 
 ```ini
 [LIGHT_EXTRA_...]

@@ -3,7 +3,7 @@ title: Cars – Tyres FX
 ---
 
 
-Tyres FX module adds a few things to tyres look, such as visual flex, damage and wear. CSP will try and guess settings automatically, but sometimes it might be helpful to adjust settings manually. Remember, you can check out [guessed config](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-–-About-guessed-configs) to see the guessed values.
+Tyres FX module adds a few things to tyres look, such as visual flex, damage and wear. CSP will try and guess settings automatically, but sometimes it might be helpful to adjust settings manually. Remember, you can check out [guessed config](https://github.com/en/car/guessed-configs) to see the guessed values.
 
 ### Syntax
 

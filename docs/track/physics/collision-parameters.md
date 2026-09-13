@@ -33,7 +33,7 @@ RIGID_WITH_BOXES = 0   ; 设为 1 时，与盒形碰撞体（通常用于车辆�
                        ; 的碰撞将完全刚性
 ```
 
-相同的逻辑也适用于[额外服务器选项](/server/options)的 `[CUSTOM_COLLISIONS]`，以及几何碰撞体和动态对象的配置。有关几何碰撞体的更多信息请见[这里](/track/physics/geometric-colliders)。
+相同的逻辑也适用于[额外服务器选项](https://github.com/server/options)的 `[CUSTOM_COLLISIONS]`，以及几何碰撞体和动态对象的配置。有关几何碰撞体的更多信息请见[这里](https://github.com/track/physics/geometric-colliders)。
 
-注意：如果你要制作柔软的轮胎墙或类似的东西，还可以[让形变在视觉上呈现出来](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Tracks-–-Deforming-walls)。
+注意：如果你要制作柔软的轮胎墙或类似的东西，还可以[让形变在视觉上呈现出来](https://github.com/track/deforming-walls)。
 

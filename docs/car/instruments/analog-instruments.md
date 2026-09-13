@@ -8,7 +8,7 @@ title: 模拟仪表
 > 原文锚点：dce83dd  
 > 汉化时间：2026-09-12T00:00:00+08:00  
 
-可以通过扩展配置设置新的模拟仪表，数量不限，并支持多种自定义。支持[该列表](/car/instruments/inputs)中的任何输入。
+可以通过扩展配置设置新的模拟仪表，数量不限，并支持多种自定义。支持[该列表](https://github.com/car/instruments/inputs)中的任何输入。
 
 ### 语法
 
@@ -56,5 +56,5 @@ MIN_VALUE = 60
 - 使用 `INPUT_DEBUG` 确保输入值正确映射到表盘；
 - 借助 `POS_OFFSET_START` 和 `POS_OFFSET_END`，可以修正指针位置，或为其添加移动效果，甚至完全用移动代替旋转；
 - 如果不希望指针转过 360° 后回到 0°，可将 `RANGE` 设为 359.99；
-- 使用新系统，无需真正借助[复古转速表](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-–-Vintage-tachometers)功能即可将其复刻出来。
+- 使用新系统，无需真正借助[复古转速表](https://github.com/car/instruments/vintage-tachometers)功能即可将其复刻出来。
 

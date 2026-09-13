@@ -65,5 +65,5 @@ COVERED_BY = …           ; 当指定名称的网格可见时停止自发光
 
 - 如果你在设置车辆 LED 的发光，可能会遇到 LED 相互遮挡的问题（例如 488 GT3 的情况）。使用 `COVERED_BY = …`（如 `COVERED_BY = RPM_LED_LIMITER_1`）可以让被遮挡的下层 LED 停止照亮周围。
 
-- 要让大灯网格在大灯内部投射光线，可以用 `[EXTRA_FX] MASK_GBUFFER = headlight_glass_mesh_name` 将其表面设为遮罩 G 缓冲区而不将其遮挡（这样应该能让 SSLR 生效）。[详情见此处](/general/extra-fx-flags)。
+- 要让大灯网格在大灯内部投射光线，可以用 `[EXTRA_FX] MASK_GBUFFER = headlight_glass_mesh_name` 将其表面设为遮罩 G 缓冲区而不将其遮挡（这样应该能让 SSLR 生效）。[详情见此处](https://github.com/general/extra-fx-flags)。
 

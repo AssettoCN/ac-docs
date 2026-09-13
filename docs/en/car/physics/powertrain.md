@@ -112,7 +112,7 @@ FLOW_ON_CUT=0.6             ; How much exhaust energy remains on an ignition cut
 An issue with the original KS code was how electronic throttle cuts were handled. AC treated fuel/ignition cuts in the same way as throttle body movement. That meant that on cuts for gears (and for TC), it would act as though the throttle was slammed closed, reducing exhaust flow to ~0, thus letting the the turbo unspool rapidly. In reality, the throttle stays open and there is still significant airflow on ignition cuts (or timing retardation etc, anything that cuts power and isn't the throttle), allowing the turbo to maintain RPM quite well. The net exhaust energy is of course lower, as fuel is not being burned, but the airflow does certainly not go to zero. CPHYS turbo was written to correct this behavior (in a simple, easy to use manner). In short, it stops the boost dropping large amounts on electronic gear shift cuts and TC cuts like in vanilla code, allowing for the use of more realistic lag down and up times.
 
 ## New in 2019
-Patch adds new options for turbo, only available [with extended physics](/en/car/physics/enabling): LUT for gas pedal and spin delay.
+Patch adds new options for turbo, only available [with extended physics](https://github.com/en/car/physics/enabling): LUT for gas pedal and spin delay.
 
 ```ini
 [TURBO_0]

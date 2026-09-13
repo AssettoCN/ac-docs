@@ -12,7 +12,7 @@ To activate custom AI:
 
 - Open “assettocorsa/extension/config/new_behaviour.ini”, find `CUSTOM_AI` section and set `ENABLED` to 1. There are also other options you can use to speed up loading and overall performance if needed. (Also, make sure the entire “New Behavior” module is enabled as well.)
 
-- Open “surfaces.ini” of a track you want to use it on, [activate extended physics](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Tracks-–-Enabling-extended-physics) and then add `[_EXTRA_PERMISSIONS] ALLOW_CUSTOM_AI_MANIPULATION=1` to the same file.
+- Open “surfaces.ini” of a track you want to use it on, [activate extended physics](https://github.com/en/track/physics/enabling) and then add `[_EXTRA_PERMISSIONS] ALLOW_CUSTOM_AI_MANIPULATION=1` to the same file.
 
 # First steps
 

@@ -358,7 +358,7 @@ AFFECTS_TRACK = 0
 
 额外灯光是自定义光源，适用于底盘灯、霓虹灯、车内仪表盘灯等类似效果。第一个额外灯光（索引 0，`[LIGHT_EXTRA]`）是自动猜测的仪表盘灯。更多灯光可通过 `[LIGHT_EXTRA_...]` 添加（使用设置迭代器语法，例如 `[LIGHT_EXTRA_UNDERGLOW]`、`[LIGHT_EXTRA_1]` 等）。
 
-有关额外灯光语法的快速参考，请参阅[额外灯光](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Extra-Lights)。
+有关额外灯光语法的快速参考，请参阅[额外灯光](https://github.com/car/visual/extra-lights)。
 
 ```ini
 [LIGHT_EXTRA_...]

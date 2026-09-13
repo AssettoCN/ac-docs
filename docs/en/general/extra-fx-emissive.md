@@ -59,4 +59,4 @@ COVERED_BY = …           ; stop emissive if a mesh with given name is visible
 
 - If you’re setting up glow from car LEDs, you might run into problem with LEDs covering each other (for example, the case with 488 GT3). Use `COVERED_BY = …` (like `COVERED_BY = RPM_LED_LIMITER_1`) to stop underlying LED from illuminating things up when covered.
 
-- To get headlight meshes to cast light within a headlight, you can set its surface to mask G-buffer without blocking it with `[EXTRA_FX] MASK_GBUFFER = headlight_glass_mesh_name` (it should get SSLR to work). [More on that here](/en/general/extra-fx-flags).
+- To get headlight meshes to cast light within a headlight, you can set its surface to mask G-buffer without blocking it with `[EXTRA_FX] MASK_GBUFFER = headlight_glass_mesh_name` (it should get SSLR to work). [More on that here](https://github.com/en/general/extra-fx-flags).

@@ -22,7 +22,7 @@ DIGITAL_ITEM = 2
 DIGITAL_ITEM_NUMBER_FORMAT = GEAR  ; only supported from v0.1.61
 ```
 
-So, first of all, [input type](/en/car/instruments/inputs) is set in section name (for backwards compatibility and what not). After that, you can set other input options, such as `INPUT_LAG`, in that section as usual.
+So, first of all, [input type](https://github.com/en/car/instruments/inputs) is set in section name (for backwards compatibility and what not). After that, you can set other input options, such as `INPUT_LAG`, in that section as usual.
 
 Other key value, `DIGITAL_ITEM`, refers to index of digital instrument in “data/digital_instruments.ini”. Just use the number after “_” in its section name.
 

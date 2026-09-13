@@ -18,7 +18,7 @@ title: 自定义 AI
 
 - 打开 “assettocorsa/extension/config/new_behaviour.ini”，找到 `CUSTOM_AI` 节并将 `ENABLED` 设为 1。其中还有一些其他选项，可在需要时用于加快加载和整体性能。（另外，请确保整个 “New Behavior” 模块也已启用。）
 
-- 打开你想使用自定义 AI 的赛道的 “surfaces.ini”，[激活扩展物理](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Tracks-–-Enabling-extended-physics)，然后在同一文件中添加 `[_EXTRA_PERMISSIONS] ALLOW_CUSTOM_AI_MANIPULATION=1`。
+- 打开你想使用自定义 AI 的赛道的 “surfaces.ini”，[激活扩展物理](https://github.com/track/physics/enabling)，然后在同一文件中添加 `[_EXTRA_PERMISSIONS] ALLOW_CUSTOM_AI_MANIPULATION=1`。
 
 # 第一步
 

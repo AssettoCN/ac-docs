@@ -45,7 +45,7 @@ There properies work with objects of any type.
 
 ##### Material-related properties
 
-There properies work with objects with materials (meshes and skinned meshes). They can also be used in `MATERIALS = …` parameters of, for example, [shader replacements](/en/general/shader-replacements) sections.
+There properies work with objects with materials (meshes and skinned meshes). They can also be used in `MATERIALS = …` parameters of, for example, [shader replacements](https://github.com/en/general/shader-replacements) sections.
 
 - `material:X`: material name;
 - `shader:X`: shader name;

@@ -52,7 +52,7 @@ RANDOMIZED_CARS_POSITIONING = 0.1, 0.1  ; 定位时对车辆的位置和朝向�
 PIT_ALTITUDE = 0          ; 基于维修区位置，以米为单位设置赛道的真实海拔，另一种方法见文末
 ```
 
-此外，启用自定义赛道物理会自动为[动态物理对象](/track/physics/dynamic-physics-objects)启用盒形碰撞体检测。
+此外，启用自定义赛道物理会自动为[动态物理对象](https://github.com/track/physics/dynamic-physics-objects)启用盒形碰撞体检测。
 
 ### 基础碰撞调整（默认禁用）
 
@@ -63,7 +63,7 @@ RIGID_WALLS_COLLISIONS = 0  ; 与墙体采用刚性（硬）碰撞
 RIGID_DIRT_COLLISIONS = 0   ; 与泥土区域采用刚性（硬）碰撞
 ```
 
-使用其中任何一项都不是什么好主意，但它们可能有助于解决车辆穿地的问题。如需更精细的配置，请参阅[关于碰撞参数详细配置的单独文章](/track/physics/collision-parameters)。
+使用其中任何一项都不是什么好主意，但它们可能有助于解决车辆穿地的问题。如需更精细的配置，请参阅[关于碰撞参数详细配置的单独文章](https://github.com/track/physics/collision-parameters)。
 
 ### 完整性校验
 
@@ -96,7 +96,7 @@ ALLOW_TRACK_SCRIPTS_DYNAMIC_OBJECTS = 0  ; 设为 1 时，允许任意脚本创�
 ALLOW_CUSTOM_AI_MANIPULATION = 0  ; 设为 1 允许在此赛道上使用自定义 AI
 ```
 
-有关自定义 AI 的更多信息请见[这里](/custom-ai/index)。
+有关自定义 AI 的更多信息请见[这里](https://github.com/custom-ai/index)。
 
 ### 杂项
 

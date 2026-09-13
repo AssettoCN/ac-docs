@@ -51,7 +51,7 @@ title: 场景查询
 
 ##### 材质相关属性
 
-这些属性适用于带材质的对象（网格和蒙皮网格）。它们也可以用于（例如）[着色器替换](/general/shader-replacements)各节的 `MATERIALS = …` 参数。
+这些属性适用于带材质的对象（网格和蒙皮网格）。它们也可以用于（例如）[着色器替换](https://github.com/general/shader-replacements)各节的 `MATERIALS = …` 参数。
 
 - `material:X`：材质名称；
 - `shader:X`：着色器名称；

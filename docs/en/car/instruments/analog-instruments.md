@@ -2,7 +2,7 @@
 title: Cars – Analog instruments
 ---
 
-You can set new analog instruments with extended config, unlimited amount, with various customizations. Any input from [this list](/en/car/instruments/inputs) is supported.
+You can set new analog instruments with extended config, unlimited amount, with various customizations. Any input from [this list](https://github.com/en/car/instruments/inputs) is supported.
 
 ### Syntax
 
@@ -50,5 +50,5 @@ Keep in mind that new inputs system has a lot of other options like `INPUT_MIN`,
 - Use `INPUT_DEBUG` to make sure input values map to dials properly;
 - With `POS_OFFSET_START` and `POS_OFFSET_END`, you can fix positioning of needle, or add movement. Or even replace rotation with movement alone;
 - If you want needle to stop going through 360° back to 0°, set `RANGE` to 359.99;
-- With new system, you could recreate [vintage tachometers](https://github.com/ac-custom-shaders-patch/acc-extension-config/wiki/Cars-–-Vintage-tachometers) without actually using that feature at all.
+- With new system, you could recreate [vintage tachometers](https://github.com/en/car/instruments/vintage-tachometers) without actually using that feature at all.
 
