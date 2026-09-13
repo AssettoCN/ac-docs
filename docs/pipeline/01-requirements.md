@@ -1,62 +1,46 @@
 ---
-title: 1. Requirements
+title: 1. 需求
 ---
 
-# 1. Requirements
+# 1. 需求
 
-## B. IMPORT/EXPORT SETTINGS
+## B. 导入/导出设置
 
-I. We export all files in the format supported by the FBX version up to the 2014/2015
-plugin for XSI and 3dsMAX. Avoid using attributes that are not supported by this export
-format (such as physics constraint or mesh smooth operators etc.) The 2016 plugin is
-unsupported!
-II. The FBX data used by the AC engine are following:
-● Polygon mesh
-● Normals (custom normals are supported)
-● Texture coordinate UV (one layer only is read from the AC engine)
-● Bones with vertex weight
-● Nulls/dummies/nodes
-● Hierarchy structure
-● Animation data
-● Basic mesh transformation (scale, rotation, position)
-NOTE: The AC engine does not support 2 OBJECTS with the same NAME in the same
-model. This will cause the game to crash. Make sure that you pay attention to this rule. Of
-course, when you have multiple LODs in the same scene, you have to use the same
-names for functional objects and dummies, but there must not be matching names inside
-the same export (i.e. within LOD A for example).
-Every mesh MUST have one TEXTURE UV set.
-The mesh must be (when possible) in quads. Do NOT triangulate the mesh if it is not necessary.
-For a skinned mesh you can have as many bones as needed, but every single vertex can be
-influenced by up to 4 bones and not more.
-During the import process the AC Editor ignores all unnecessary data included in the FBX.
-Below are the settings to use to correctly export the assets with the 2 supported programmes.
-Remember to set up your system units before exporting (in XSI it is not required).
-For 3DS Max the following settings are required:
+I. 我们导出的所有文件均采用 FBX 2014/2015 版插件（用于 XSI 和 3dsMAX）所支持的格式。避免使用该导出格式不支持的属性（如物理约束或 mesh smooth 操作符等）。2016 版插件不受支持！
+II. AC 引擎使用的 FBX 数据如下：
+● 多边形网格（Polygon mesh）
+● 法线（支持自定义法线）
+● 纹理坐标 UV（AC 引擎只读取一层）
+● 带顶点权重的骨骼
+● Null/dummy/节点
+● 层级结构
+● 动画数据
+● 基本网格变换（缩放、旋转、位置）
+注意：AC 引擎不支持同一个模型中出现 2 个同名物体（OBJECTS），否则会导致游戏崩溃。请务必注意这条规则。当然，当你在同一场景中有多个 LOD 时，功能物体和 dummy 必须使用相同的名称，但在同一次导出内部（例如在 LOD A 之内）不得出现重名。
+每个网格必须有且只有一个纹理 UV 集（TEXTURE UV set）。
+网格应（在可能的情况下）保持四边形。如无必要，不要对网格进行三角化。
+对于蒙皮网格，你可以使用任意数量的骨骼，但每个顶点最多只能受 4 根骨骼影响，不能更多。
+在导入过程中，AC 编辑器会忽略 FBX 中包含的所有不必要数据。
+下面是使用这 2 个受支持的程序正确导出资源所需的设置。
+请记住在导出前设置好系统单位（XSI 中不需要）。
+3DS Max 需要进行以下设置：
 
 ![p004_X1](/images/pipeline/p004_X1.png)
 
 ![p004_X0](/images/pipeline/p004_X0.png)
 
-Make sure to set up the system units BEFORE creating the dummies and exporting the car.
-As a limitation in 3DS Max, if the system unit scale is in mm or cm, even if the dimensions are
-correct, the dummies of the exported model will still have the wrong scale. If the model and the
-dummies have been created in the wrong scale, one remedy is to export the model as an .fbx
-and re-import it in a scene using the correct system unit scaling.
-NOTE: Make sure that you reset Xform after every modification that affects scale. It is advised
-not to scale suspension and wheel nulls/dummies.
-In Autodesk SOFTIMAGE XSI 2014 use the following settings:
+请务必在创建 dummy 和导出车辆之前设置好系统单位。由于 3DS Max 的一个限制，如果系统单位比例是 mm 或 cm，即使尺寸正确，导出模型的 dummy 仍会是错误的比例。如果模型和 dummy 是以错误的比例创建的，一种补救办法是将模型导出为 .fbx，然后在使用了正确系统单位比例的场景中重新导入。
+注意：每次影响缩放的修改之后，请务必重置 Xform。建议不要缩放悬挂和车轮的 null/dummy。
+在 Autodesk SOFTIMAGE XSI 2014 中使用以下设置：
 
 ![p005_X0](/images/pipeline/p005_X0.png)
 
-In Autodesk 3DS MAX 2013 use the following export settings:
-a) to export the base asset with no animation b) to export animated nulls/dummies:
+在 Autodesk 3DS MAX 2013 中使用以下导出设置：
+a) 导出不含动画的基础资源 b) 导出带动画的 null/dummy：
 
 ![p006_X0](/images/pipeline/p006_X0.png)
 
 ![p006_X1](/images/pipeline/p006_X1.png)
 
-Important:
-The mesh must be scaled 1:1, rotation must be frozen on the mesh (reset Xform in 3DS Max)
-and objects should not have animated transformations. Only the dummies/nulls may have
-different transformations. When they are animated they can be rotated and scaled, and some of
-them can act as bones for the skinned mesh.
+重要：
+网格必须按 1:1 缩放，网格上的旋转必须被冻结（3DS Max 中重置 Xform），且物体不应有动画变换。只有 dummy/null 可以有不同的变换。当它们带有动画时，可以被旋转和缩放，其中一些还可以作为蒙皮网格的骨骼。

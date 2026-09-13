@@ -1,255 +1,253 @@
 ---
-title: 6. Texturing Guidelines
+title: 6. 贴图准则
 ---
 
-# 6. Texturing Guidelines
+# 6. 贴图准则
 
-The supported texture format is: directX DDS
-This format can be outputted from Photoshop (for example) using the specific nVidia plugin, available
-here: https://developer.nvidia.com/legacy-texture-tools
-As a general rule, we recommend using the DXT5 format with high-resolution textures (with or without
-Alpha) and 8.8.8.8 format for textures with sensitive gradient information (RGB maps, detailed normal
-maps) or small-size detail textures and 8.8.8.8 where Alpha information is included.
-We need for every texture a PSD source with layers inside. The layers must be placed inside layer folders
-with consistent and user-friendly names.
+支持的纹理格式为：directX DDS。
+这种格式可以（例如）用 Photoshop 通过专用的 nVidia 插件输出，插件可在
+此处获取：https://developer.nvidia.com/legacy-texture-tools
+作为一般规则，我们建议高分辨率纹理（带或不带 Alpha）使用 DXT5 格式，对含有敏感
+渐变信息的纹理（RGB 贴图、精细法线贴图）或小尺寸细节纹理使用 8.8.8.8 格式，包含
+Alpha 信息时也使用 8.8.8.8。
+每张纹理我们都需要一份带图层的 PSD 源文件。这些图层必须放置在命名一致且易于理解
+的图层文件夹内。
 
 ![p047_X0](/images/pipeline/p047_X0.png)
 
-Inside every folder we need a base layer that allows us to
-change important features of the texture. Follow these rules:
-a) If the texture has an ALPHA CHANNEL, do not
-collapse transparent features, keep the transparent
-features in a specific layer.
-b) If there is a normal map, provide in the layer also the
-greyscale texture so that it can be re-generated with the nVidia tool
-c) ALWAYS work with DOUBLE resolution (no more no less) of the target image and shrink it to
-the right size only when you export the DDS. Test your results to be sure that the reduction does
-not spoil the image too much (this could happen with tiny texts or symbols).
-d) All PSD files must be in RGB Color 8 bit for channel mode.
-e) Name them correctly following our naming conventions.
+在每个文件夹内，我们需要一个基础图层，让我们能够
+修改纹理的重要特征。请遵循以下规则：
+a) 如果纹理带有 ALPHA 通道，不要
+合并透明元素，把透明元素
+保留在单独的图层中。
+b) 如果有法线贴图，还要在该图层中提供
+灰度纹理，以便用 nVidia 工具重新生成它
+c) 始终以目标图像两倍（不多不少）的分辨率工作，只有在导出
+DDS 时才把它缩小到正确的尺寸。测试你的结果，确保缩小
+不会过度损坏图像（极小的文字或符号可能出现这种情况）。
+d) 所有 PSD 文件的通道模式必须为 RGB 颜色 8 位。
+e) 按照我们的命名规范正确命名。
 
-## TEXTURE NAMING CONVENTIONS FOR PSD SOURCE FILES
+## PSD 源文件的纹理命名规范
 
-Skin.PSD contains the main body textures
-Ambient occlusion
-Wireframe (UV)
-RGB Map (material specular-gloss-ref map)
-Material IDs and zones
-Alpha channel
-Ext_Details.PSD contains rivets, bolts, logos, and decals on the exterior
-Diffuse
-Normal map
-Ambient occlusion
-RGB Map (material specular-gloss-ref map)
-Alpha channel
-Rims.PSD contains rim base and rim blur texture plus the blurred spokes
-Diffuse
-Normal map
-Ambient occlusion
-RGB Map (material specular-gloss-ref map)
-Alpha channel
-Calipers.psd contains the brake caliper texture
-Diffuse
-Normal map
-Ambient occlusion
-RGB Map (material specular-gloss-ref map)
-Alpha channel
-Lights.psd contains the light texture
-Diffuse
-Normal map
-Ambient occlusion
-RGB Map (material specular-gloss-ref map)
-Alpha channel
-Mechanics.psd contains the underside, engine and all the parts that are not included in the skin
-Wireframe (UV)
-Diffuse
-Normal map
-Ambient occlusion
-RGB Map (material specular-gloss-ref map)
-Alpha channel
-Glass.psd contains the glass texture and all similar parts such as black frame
-Diffuse
-Normal map
-Alpha channel
-Grids.psd contains tileable grids and similar textures (use more if needed)
-Diffuse
-Normal map
-Ambient occlusion
-RGB Map (material specular-gloss-ref map)
-Alpha channel
-Tyre.psd contains tyre textures with blur and dirt
-Wireframe (UV)
-Diffuse
-Normal map
-Ambient occlusion
-Alpha channel
-Disc.psd contains the brake disc texture and the glow texture
-Wireframe (UV)
-Diffuse
-RGB Normal map
-Glow map
-Windscreen.psd contains the fake internal glass reflection
-Diffuse
-Alpha channel
-INT_Decals.psd contains dials, dashboard symbols, cockpit details and logos, plates and
-interior bolts and stickers
-Diffuse
-Normal map
-Ambient occlusion
-RGB Map (material specular-gloss-ref map)
-Alpha channel
-INT_Details.psd contains coloured gradients and other details to use for smaller objects
-Diffuse
-Normal map
-Ambient occlusion
-Alpha channel
-INT_Occlusion.psd contains the cockpit ambient occlusion texture
-Wire frame stamp
-Diffuse
-Normal map
-Ambient occlusion
-RGB Map (material specular-gloss-ref map)
-Alpha channel
-Belts.PSD contains cockpit belts
-Diffuse
-Normal map
-Seams.psd contains stitching, seams, and similar textures in tileable form
-Diffuse
-Normal map
-INT_cockpit_LR.psd contains cockpit LOW RESOLUTION texture
-Ambient occlusion
-Wire frame stamp
-RGB Map (material specular-gloss-ref map)
-Material ID and zones
-Alpha channel
-All the extra textures that can occur and are not mentioned here can have a name that explains in brief
-what they contain. To see how to manage textures you can see examples in the example folder in the
-SDK.
+Skin.PSD 包含车身主体纹理
+环境光遮蔽
+线框（UV）
+RGB 贴图（材质 specular-gloss-ref 贴图）
+材质 ID 与分区
+Alpha 通道
+Ext_Details.PSD 包含外部的铆钉、螺栓、标志和贴花
+漫反射贴图
+法线贴图
+环境光遮蔽
+RGB 贴图（材质 specular-gloss-ref 贴图）
+Alpha 通道
+Rims.PSD 包含轮毂基础纹理和轮毂模糊纹理以及模糊的辐条
+漫反射贴图
+法线贴图
+环境光遮蔽
+RGB 贴图（材质 specular-gloss-ref 贴图）
+Alpha 通道
+Calipers.psd 包含制动卡钳纹理
+漫反射贴图
+法线贴图
+环境光遮蔽
+RGB 贴图（材质 specular-gloss-ref 贴图）
+Alpha 通道
+Lights.psd 包含车灯纹理
+漫反射贴图
+法线贴图
+环境光遮蔽
+RGB 贴图（材质 specular-gloss-ref 贴图）
+Alpha 通道
+Mechanics.psd 包含底盘、发动机以及所有未包含在车身蒙皮内的部件
+线框（UV）
+漫反射贴图
+法线贴图
+环境光遮蔽
+RGB 贴图（材质 specular-gloss-ref 贴图）
+Alpha 通道
+Glass.psd 包含玻璃纹理以及所有类似的部件，比如黑色边框
+漫反射贴图
+法线贴图
+Alpha 通道
+Grids.psd 包含可平铺的格栅和类似纹理（如有需要可以使用多张）
+漫反射贴图
+法线贴图
+环境光遮蔽
+RGB 贴图（材质 specular-gloss-ref 贴图）
+Alpha 通道
+Tyre.psd 包含带模糊和污垢的轮胎纹理
+线框（UV）
+漫反射贴图
+法线贴图
+环境光遮蔽
+Alpha 通道
+Disc.psd 包含制动盘纹理和发光纹理
+线框（UV）
+漫反射贴图
+RGB 法线贴图
+发光贴图
+Windscreen.psd 包含伪造的玻璃内部反射
+漫反射贴图
+Alpha 通道
+INT_Decals.psd 包含仪表刻度盘、仪表板符号、座舱细节和标志、铭牌以及
+内饰螺栓和贴纸
+漫反射贴图
+法线贴图
+环境光遮蔽
+RGB 贴图（材质 specular-gloss-ref 贴图）
+Alpha 通道
+INT_Details.psd 包含彩色渐变和其他用于较小物件的细节
+漫反射贴图
+法线贴图
+环境光遮蔽
+Alpha 通道
+INT_Occlusion.psd 包含座舱环境光遮蔽纹理
+线框图章
+漫反射贴图
+法线贴图
+环境光遮蔽
+RGB 贴图（材质 specular-gloss-ref 贴图）
+Alpha 通道
+Belts.PSD 包含座舱安全带
+漫反射贴图
+法线贴图
+Seams.psd 包含缝线、接缝及类似纹理的可平铺版本
+漫反射贴图
+法线贴图
+INT_cockpit_LR.psd 包含座舱低分辨率纹理
+环境光遮蔽
+线框图章
+RGB 贴图（材质 specular-gloss-ref 贴图）
+材质 ID 与分区
+Alpha 通道
+所有可能出现的、此处未提及的额外纹理，都可以使用一个简明说明其内容的名称。
+要了解如何管理纹理，你可以查看 SDK 中 example 文件夹里的示例。
 
-## EXPORTING TEXTURES AND OPTIMISATION
+## 纹理导出与优化
 
-The carname_lod_A.kn5 file of an official car must stay below 44MB, including all textures and mesh. The
-textures have to be very well optimized. When the PC runs out of memory, the game engine starts to
-reduce texture size automatically, however, this is done in a way that does not ensure high quality, so we
-have to avoid it in all cases and stay below the 44MB limit for the LOD A.kn5 file.
-NOTE: As a general guideline, you can use the DXT5 compression for high-resolution textures. Use AL
-(8.8, alpha luminance) mode for grayscale textures with sensitive gradients. Use RGB (8.8.8) mode for
-map textures and ARGB (8.8.8.8) for NM textures with fine details. Remember to keep a complete set of
-ALL of your textures without compression as a backup so that if they have to be outputted again, there
-is no quality loss due to the added compression.
-NEVER use the DXT1 compression mode. Keep the PSD files organized and updated so that they can
-be used to re-output textures if a change is necessary after the delivery of the model. Do not work on
-compressed DDS textures, always make your changes in the PSD and keep it updated along with the
-exported textures so that the latest version of each PSD file corresponds to the latest DDS output.
-Below you can see some examples for texture size. Taking into consideration priorities to maintain a
-high-quality look, you can use larger textures provided that you optimize other textures better and you do
-not go over the limit:
-Skin_00.dds (the main body) must be 2048x2048 when it have sponsor and livery on.
-If is flat, can be 1024x1024 and saved as 8.8. Skin_00_map.dss 512x512 ARGB
-Rim.dds 512x512 It can contain a base material for rim blur non-transparent parts. Rim_map.dds
-is half of the rim size and saved as ARGB. Rim_Spokes.dds 256x256
-INT_Occlusion.dds 512x512 and INT_Occlusion_map .dds 512x512 saved as 8.8.
-INT_Cockpit_LR.dds 512x512 or 1024x1024 depending from the car roof if open or close. DXT5 is
-enough.
-INT_Decals.dds 1024x512 DXT5 - INT_Decals_NM.dds 1024x512 in DXT5 or ARGB.
+官方车辆的 carname_lod_A.kn5 文件必须保持在 44MB 以下，包括所有纹理和网格。
+纹理必须经过非常好的优化。当 PC 内存耗尽时，游戏引擎会开始
+自动缩小纹理尺寸，然而这种方式无法保证高质量，因此
+我们必须在所有情况下都避免这种情况，让 LOD A.kn5 文件保持在 44MB 限制以内。
+注意：作为一般准则，高分辨率纹理可以使用 DXT5 压缩。带敏感渐变的灰度
+纹理使用 AL（8.8，alpha luminance）模式。map 类纹理使用
+RGB（8.8.8）模式，带精细细节的 NM 纹理使用 ARGB（8.8.8.8）。记得保留一套完整的、
+未经压缩的所有纹理作为备份，这样即使需要重新输出，
+也不会因追加的压缩而造成画质损失。
+绝对不要使用 DXT1 压缩模式。保持 PSD 文件有条理且随时更新，以便在
+模型交付之后需要修改时可以重新输出纹理。不要在
+压缩后的 DDS 纹理上工作，始终在 PSD 中进行修改，并让它与
+导出的纹理保持同步，使每个 PSD 文件的最新版本都与最新的 DDS 输出相对应。
+下面是纹理尺寸的一些示例。在考虑保持高画质观感的
+优先级的前提下，你可以使用更大的纹理，前提是你把其他纹理优化得更好，并且
+不超出限制：
+Skin_00.dds（车身主体）在带有赞助商和涂装时必须为 2048x2048。
+如果是素色，可以为 1024x1024 并保存为 8.8。Skin_00_map.dss 512x512 ARGB
+Rim.dds 512x512。它可以包含轮毂模糊不透明部分的基础材质。Rim_map.dds
+为轮毂尺寸的一半并保存为 ARGB。Rim_Spokes.dds 256x256
+INT_Occlusion.dds 512x512，INT_Occlusion_map .dds 512x512 保存为 8.8。
+INT_Cockpit_LR.dds 512x512 或 1024x1024，取决于车顶是敞开还是封闭。DXT5
+就足够了。
+INT_Decals.dds 1024x512 DXT5 - INT_Decals_NM.dds 1024x512 用 DXT5 或 ARGB。
 Lights.dds 512x512 ARGB - Lights_NM.dds 512x512 ARGB - Lights_Map.dds 256x256 ARGB
-Grids tileable and various similar 256x256 or also half, depending on the image detail, export as
-ARGB.
-Tyre_D.dds and Tyre_NM.dds 1024x1024 DXT5
-Tyre_blur_D.dds and Tyre_blur_NM.dds can be 512x512 or 256x256, save NM as ARGB.
-Disc_D.dds and Disc_NM.dds can be 512x512 DXT5 (D) ARGB (NM) when very visible and half when it
-is small and not very visible or when there are no details. Disc_Blur_NM.dds and Disc_Blur_NM.dds
-are half of the non-blurred disc textures. Disc_warm.dds is always 128x128.
-INT_Materials_D.dds and INT_Materials_NM.dds 512x512 or less, depending from image content.
-INT_Materials_map .dds is half of base texture, save all as ARGB (especially NM and RGB map) to
-keep the quality of the gradients.
-Damage.dds 2048x2048 - Damage_NM.dds is 512x512 - Damage_Mask.dds is 256x256 - Dust.dds
-is 1024x1024 DXT5.
-Stiching_D.dds and Stiching_NM.dds can be 256x128 vertically tileable, save as ARGB.
-Belt_D.dds and Belt_NM.dds can be 128x256 ARGB and must be vertically tileable.
-Mechanics_D.dds and Mechanics_NM.dds can be 1024x1024 if contain a visible engine. If not, it can
-be half. Mechanics_map.dds is always half of the diffuse one. Diffuse DXT5, NM ARGB, map RGB.
-Calipers.dds and Calipers_NM.dds can be 256x256 or in some cases can be part of the Mechanics
-textures if your car is a ‘60s open seater racing car. Calipers_map.dds is always half the size of the
-diffuse. DXT5 for diffuse, ARGB for NM and RGB for map texture.
+格栅（Grids）可平铺及各种类似纹理 256x256 或再减半，取决于图像细节，导出为
+ARGB。
+Tyre_D.dds 和 Tyre_NM.dds 1024x1024 DXT5
+Tyre_blur_D.dds 和 Tyre_blur_NM.dds 可以为 512x512 或 256x256，NM 保存为 ARGB。
+Disc_D.dds 和 Disc_NM.dds 在非常显眼时可以为 512x512，D 用 DXT5（D）、ARGB（NM）；当它
+很小、不太显眼或没有细节时减半。Disc_Blur_NM.dds 和 Disc_Blur_NM.dds
+为未模糊制动盘纹理的一半。Disc_warm.dds 始终为 128x128。
+INT_Materials_D.dds 和 INT_Materials_NM.dds 512x512 或更小，取决于图像内容。
+INT_Materials_map .dds 为基础纹理的一半，全部保存为 ARGB（尤其是 NM 和 RGB map），
+以保持渐变的质量。
+Damage.dds 2048x2048 - Damage_NM.dds 为 512x512 - Damage_Mask.dds 为 256x256 - Dust.dds
+为 1024x1024 DXT5。
+Stiching_D.dds 和 Stiching_NM.dds 可以为 256x128，垂直可平铺，保存为 ARGB。
+Belt_D.dds 和 Belt_NM.dds 可以为 128x256 ARGB，且必须垂直可平铺。
+Mechanics_D.dds 和 Mechanics_NM.dds 在包含可见发动机时可以为 1024x1024。否则可以
+减半。Mechanics_map.dds 始终为漫反射贴图的一半。漫反射用 DXT5，NM 用 ARGB，map 用 RGB。
+Calipers.dds 和 Calipers_NM.dds 可以为 256x256，或者如果你的车是'60 年代的开放式
+座舱赛车，在某些情况下可以作为 Mechanics 纹理的一部分。Calipers_map.dds 始终为漫反射
+贴图尺寸的一半。漫反射用 DXT5，NM 用 ARGB，map 纹理用 RGB。
 
-## OPTIMAL USE OF TEXTURE SPACE
+## 纹理空间的最佳利用
 
-When you use your space in the texture you must make sure to optimize everything the best you can.
-Maximum means that all available space must be used. You have to plan before you start to make sure
-that you use your texture space in the most efficient way.
-An example for the Decals_D texture with good use of space:
+在使用纹理中的空间时，你必须确保尽最大努力优化一切。
+最大化意味着所有可用空间都必须被利用。开始之前你必须做好规划，
+确保以最高效的方式使用你的纹理空间。
+下面是 Decals_D 纹理充分利用空间的一个示例：
 
 ![p051_X0](/images/pipeline/p051_X0.png)
 
-Include the alpha channel both in the diffuse and the NORMAL MAP to make sure it suits every
-shader type.
-In the following texture you can see the normal map texture with the alpha channel visible. The
-uncompressed alpha channel defines the outline of the details.
+在漫反射贴图和法线贴图（NORMAL MAP）中都包含 alpha 通道，
+确保它适用于每一种着色器类型。
+在下面的纹理中，你可以看到显示 alpha 通道的法线贴图纹理。
+未压缩的 alpha 通道定义了细节的轮廓。
 
 ![p052_X0](/images/pipeline/p052_X0.png)
 
-Look at the following examples for the occlusion or the car skin textures to see how to optimize the
-available texture space:
+请看以下遮蔽贴图或车身蒙皮纹理的示例，了解如何优化
+可用的纹理空间：
 
 ![p052_X1](/images/pipeline/p052_X1.png)
 
-The parts use the maximum
-space available and and the
-padding (extension borders) fill
-up the remaining space.
-This arrangement allows us to
-reduce the texture to as low as
-512x512 (uncompressed) but
-keep the occlusion gradients at
-an acceptable level of quality.
-It is recommended that all
-interior objects with an AO map
-be mapped on a single texture.
-The same material groups must
-use the same scaling to make
-sure the detail textures appear
-correctly.
-NOTE: You also have to make sure that in the UV map the different UV parts are using the same scale to
-make sure that any detail texture (metal flakes or carbon) appear correctly without any stretching and
-distortion!
-It is recommended that you use a checkered detail texture for mapping the body and interior
-textures that use detail textures.
-Also, and especially on the exterior, textures must be well organized. Look the second example:
+各个部件用满了可用的
+最大空间，填充（扩展边界）
+填满了剩余的空间。
+这种排列方式让我们可以
+把纹理一路缩小到
+512x512（未压缩），同时
+让遮蔽渐变保持在
+可以接受的质量水平。
+建议所有带 AO 贴图的
+内饰物件都映射到
+单张纹理上。
+相同的材质组必须
+使用相同的缩放比例，以
+确保细节纹理正确
+显示。
+注意：你还要确保在 UV 贴图中，不同的 UV 部件使用相同的缩放比例，
+确保任何细节纹理（金属闪粉或碳纤维）都能正确显示，不出现任何拉伸和
+变形！
+建议你对使用细节纹理的车身和内饰纹理，在映射时
+使用带棋盘格的细节纹理。
+此外——尤其是在外观上——纹理必须组织得当。看第二个示例：
 
 ![p053_X0](/images/pipeline/p053_X0.png)
 
-## BAKING THE AMBIENT OCCLUSION
+## 烘焙环境光遮蔽
 
-To have a more realistic illumination effect, we need to bake the ambient occlusion map for the exterior of
-the car, the rims, the lights and the interior of the cockpit.
+为了获得更真实的光照效果，我们需要为车身外观、轮毂、车灯以及座舱内部
+烘焙环境光遮蔽贴图。
 
 ![p054_X1](/images/pipeline/p054_X1.png)
 
-Take the exterior, and remove all the DECALS objects. If you have a movable wing move it a bit far
-from the body. Bake the Ambient Occlusion at double resolution (4096x4096).
-For the cockpit: remove all the DECALS for logos and the stitching. For baking the interior place the doors
-like in the image. For baking the steering wheel, remove everything else and bake it facing UP.
-NOTE: look the pink pieces, they don’t take occlusion, but they influence the cockpit for them. They will
-be placed under a different material.
+取外观模型，并移除所有 DECALS 物件。如果你有可活动的扰流翼，把它移得
+离车身稍远一些。以双倍分辨率（4096x4096）烘焙环境光遮蔽（Ambient Occlusion）。
+对于座舱：移除所有用于标志的 DECALS 和缝线。烘焙内饰时，像图中那样摆放
+车门。烘焙方向盘时，移除其他所有物体，让它朝上（UP）烘焙。
+注意：看那些粉色的部件，它们自身不接收遮蔽，但会对座舱产生影响。它们
+将被归入另一个不同的材质。
 
 ![p054_X0](/images/pipeline/p054_X0.png)
 
-Keep the doors far enough to avoid a dark occlusion on the
+让车门保持足够远的距离，以避免在
 
 ![p055_X0](/images/pipeline/p055_X0.png)
 
-borders and the doorsill.
-A baked texture is never how we want it in the end. We
-suggest to edit it in Photoshop and create softer intersections
-with objects. Random pixels can create a bad effect when
-they are in a visible place.
-Use Photoshop to make the transitions smoother where
-necessary. The AO textures are globally a kind of soft
-gradients. Avoid sharp, pixelated and unclean transitions.
-IMPORTANT: when baking make sure you use a
-wide-enough padding to avoid bleeding black artifacts around
-the edges with low-resolution textures.
-NOTE: With high-quality occlusion maps, such as those
-baked using V-Ray, will require less retouch in PS later on so it is worth spending more time on how to
-bake the textures at the best possible quality.
+边缘和门槛上出现深色的遮蔽。
+烘焙出来的纹理永远不是我们最终想要的样子。我们
+建议在 Photoshop 中编辑它，让物体之间的交界更柔和。
+随机像素出现在
+可见位置时会造成糟糕的效果。
+必要时用 Photoshop 让过渡
+更平滑。AO 纹理整体上是一种柔和的
+渐变。避免锐利、像素化和不干净的过渡。
+重要：烘焙时务必确保使用
+足够宽的填充，以避免低分辨率纹理
+的边缘周围渗出黑色伪影。
+注意：高质量的遮蔽贴图，比如用 V-Ray 烘焙
+出来的那些，之后在 PS 中需要的修饰会更少，因此值得花更多时间研究
+如何以尽可能好的质量烘焙纹理。

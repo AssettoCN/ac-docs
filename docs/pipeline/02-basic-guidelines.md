@@ -1,137 +1,109 @@
 ---
-title: 2. Basic Guidelines
+title: 2. 基础准则
 ---
 
-# 2. Basic Guidelines
+# 2. 基础准则
 
-## PROJECT AND FOLDER STRUCTURE
+## 项目与文件夹结构
 
-A vehicle project consists of a total of 5 models, including the high-poly model, 3 additional
-Level of Detail (LOD) models and a low-poly collider. The naming of the source files must be
-consistent with the make/type of the vehicle at hand.
-The recommended way to set up your project folder is the following:
+一个车辆项目总共由 5 个模型组成，包括高精度模型、3 个附加的细节层次（LOD）模型以及一个低面数的碰撞体。源文件的命名必须与当前车辆的品牌/型号保持一致。
+推荐按以下方式设置你的项目文件夹：
 
 ![p007_X0](/images/pipeline/p007_X0.png)
 
-The .ini files are created by the AC Editor and include the object and shader properties for the
-models. The folder called texture is obligatory for the editor to load the texture files.
-The .kscp file is a project file created by the AC Editor.
+.ini 文件由 AC Editor 创建，其中包含模型的对象属性和着色器属性。名为 texture 的文件夹是必不可少的，编辑器需要通过它来加载纹理文件。
+.kscp 文件是由 AC Editor 创建的项目文件。
 
-## BUDGET
+## 预算
 
-The following triangle-counts are recommended in most cases.
-Exterior:
-LOD A exterior: 125,000 triangles
-LOD B exterior: 20,000-25,000 triangles
-LOD C exterior: 10,000-12,000 triangles
-LOD D exterior: 2,000-3,000 triangles (as low as possible while you can keep the main shape)
-Interior:
-HR Cockpit: 125,000 triangles
-LR Cockpit: 7,000-10,000 triangles
-LR Cockpit in LOD B: 4,000 triangles (as low as possible while keeping a decent quality)
-LR Cockpit in LOD C: 2,000 triangles (some detail must remain above window level)
-Of course, these numbers are generic and apply to most tin-top cars with elaborate interiors.
-Open-wheelers with small cockpits can use fewer triangles for the interior and more for details
-on the exterior, such as the engine and suspension. It is up to the judgement of the modeller to
-use this budget in accordance with the complexity of the model, but it MUST be optimised as
-much as possible without hurting the overall quality.
-When producing the LODs, the most important guideline to follow is to reduce draw calls
-(number of objects) as well as the number of separate materials. For example, the LR interior
-should only use 1 material, but if there are customizable parts (such as different interior colour
-options, it must be possible to use the detail texture defining the colour on the LR interior model,
-too.
-By LOD C, the number of materials and objects should drastically drop, while for LOD D no
-more than a maximum of 2 materials and a similar number of objects (no rotating wheels are
-required) should be used.
-Here are some examples for the progressive degradation of the mesh in the LOD steps:
+在大多数情况下，建议采用以下三角形数量。
+外部：
+LOD A 外部：125,000 个三角形
+LOD B 外部：20,000-25,000 个三角形
+LOD C 外部：10,000-12,000 个三角形
+LOD D 外部：2,000-3,000 个三角形（在能保留主要形状的前提下越低越好）
+内部：
+HR Cockpit：125,000 个三角形
+LR Cockpit：7,000-10,000 个三角形
+LOD B 中的 LR Cockpit：4,000 个三角形（在保持不错质量的前提下越低越好）
+LOD C 中的 LR Cockpit：2,000 个三角形（车窗线以上必须保留一些细节）
+当然，这些数字只是通用值，适用于大多数拥有精细内饰的封闭座舱车型。
+座舱狭小的开轮式赛车可以为内饰使用更少的三角形，把更多预算用在外部细节上，例如发动机和悬挂。如何根据模型的复杂程度来分配这份预算由建模师自行判断，但必须在不损害整体质量的前提下尽可能优化。
+在制作 LOD 时，要遵循的最重要的准则是减少绘制调用（draw call，即对象数量）以及单独材质的数量。例如，LR 内饰应当只使用 1 种材质，但如果有可自定义的部分（例如不同的内饰颜色选项），也必须能够在 LR 内饰模型上使用定义该颜色的 detail 纹理。
+到 LOD C 时，材质和对象的数量应当大幅下降；而对于 LOD D，最多只能使用 2 种材质和相近数量的对象（不需要转动的车轮）。
+下面是一些在 LOD 步骤中网格逐步简化的示例：
 
 ![p009_X0](/images/pipeline/p009_X0.png)
 
 ![p009_X1](/images/pipeline/p009_X1.png)
 
-The same guidelines apply for the interior:
+同样的准则也适用于内饰：
 
 ![p010_X0](/images/pipeline/p010_X0.png)
 
 ![p010_X1](/images/pipeline/p010_X1.png)
 
-**VERY IMPORTANT:**
+**非常重要：**
 
-NOTE: Keep in mind that the LOD B will be visible at a distance of 15 meters or closer. If you
-create a well-made LOD B, you can reduce the distance of the LOD A switch to LOD B and
-increase game performance.
-To achieve this, try to reduce the model keeping the curved parts smooth, parts that create
-evident reflections, such as glass or curved parts of the body. Try to see how it works in the
-game and refine it. The switch between the LODs must be as smooth as possible without any
-visible “jump”.
-On the LR Cockpit you must keep the most visible parts relatively detailed to ensure that the
-switch is smooth. In tin-top cars this includes the top of the dashboard and the frame around the
-side windows and the rear window. In open-seaters the sensitive parts are usually the area
-around the steering wheel and behind the driver.
-NOTE: The LOD B and LOD C MUST have a separate LR Cockpit mesh that matches the
-reduced topology of each LOD exterior mesh. The interior mesh must fit the exterior mesh and
-the outlining vertices must be snapped. Do NOT use the same LR Cockpit mesh for LOD A,
-LOD B and LOD C. Make sure there are no gaps between the interior and exterior mesh.
-LOD A COCKPIT_HR 125,000 tris LOD A COCKPIT_LR 7,000 tris
-Cockpit HR LOD example Cockpit LR LOD example
+注意：请记住，LOD B 会在 15 米或更近的距离上可见。如果你做出了精良的 LOD B，就可以缩短 LOD A 切换到 LOD B 的距离，
+从而提升游戏性能。
+为了做到这一点，应尽量精简模型，同时保持会产生明显反射的弯曲部件平滑，例如玻璃或车身的曲面部分。在游戏中观察实际效果并加以打磨。LOD 之间的切换必须尽可能平滑，不出现任何可见的“跳变”。
+在 LR Cockpit 上，你必须让最显眼的部分保持相对精细，以确保切换平滑。在封闭座舱车型上，这包括仪表台顶部以及侧窗和后窗周围的框架。在开式座舱赛车上，需要重点关注的部位通常是方向盘周围以及车手背后的区域。
+注意：LOD B 和 LOD C 必须拥有各自独立的 LR Cockpit 网格，与每个 LOD 外部网格的简化拓扑相匹配。内饰网格必须与外部网格吻合，轮廓顶点必须吸附到位。不要在 LOD A、LOD B 和 LOD C 中使用同一个 LR Cockpit 网格。确保内饰网格与外部网格之间没有任何缝隙。
+LOD A COCKPIT_HR 125,000 tris　LOD A COCKPIT_LR 7,000 tris
+Cockpit HR LOD 示例　Cockpit LR LOD 示例
 
 ![p011_X0](/images/pipeline/p011_X0.png)
 
 ![p011_X1](/images/pipeline/p011_X1.png)
 
-In LOD A, the cockpit (see the image above) has 2 LODs, one High Resolution (HR) for the
-cockpit camera and showroom view, and another Low Resolution (LR) LOD for most exterior
-cameras, replays, and distant views.
-NOTE: The HR and LR
+在 LOD A 中，座舱（见上图）有 2 个 LOD：一个是高分辨率（HR）版本，用于座舱相机和展厅视图；另一个是低分辨率（LR）LOD，用于大多数外部相机、回放以及远距离视图。
+注意：HR 和 LR
 
 ![p011_X2](/images/pipeline/p011_X2.png)
 
-cockpit LODs must
-always fit the exterior
-LOD A, because while
-driving, the EXTERIOR
-MESH that is present is
-the LOD A.
-When the camera
-moves farther away, the
-cockpit LR will switch
-and you get a simplified
-version of the cockpit,
-with only one material
-(in most cases) and a look very similar to the HR version.
-In some cases when the car has a customisable interior with multiple colour options, more than
-1 material is allowed on the LR interior but as a general rule, try to keep it as low as possible.
-SCRIPT TO MANAGE LODs
-LODs are a set of simplified models that change in relation of the camera distance.
-This process is necessary in order to optimize the framerate in the game.
-The LOD switch can be controlled via script, named lods.ini, located in
-AssettoCorsa/content/cars/CAR-NAME/data. The script contains the following values:
+座舱 LOD 必须
+始终与外部
+LOD A 相匹配，因为
+行驶过程中，存在的
+EXTERIOR
+MESH
+就是 LOD A。
+当相机
+移得更远时，
+座舱 LR 将会发生切换，
+你会得到一个简化
+版本的座舱，
+只使用一种材质
+（大多数情况下），
+外观与 HR 版本非常相似。
+在某些情况下，当车辆拥有提供多种颜色选项的可自定义内饰时，LR 内饰允许使用超过 1 种材质，但作为一条通用规则，请尽量将其控制在最低。
+## 管理 LOD 的脚本
+LOD 是一组随相机距离而变化的简化模型。
+这一过程对于优化游戏中的帧率而言是必要的。
+LOD 切换可以通过脚本来控制，该脚本名为 lods.ini，位于
+AssettoCorsa/content/cars/CAR-NAME/data。该脚本包含以下值：
+```ini
 [COCKPIT_HR]
-DISTANCE_SWITCH=6 ;Indicates the distance (in meters) when the
-cockpit HR change to the cockpit LR (if present)
+DISTANCE_SWITCH=6 ;表示座舱 HR 切换到座舱 LR 的距离（单位：米，
+如有 LR 的话）
 [LOD_0]
 FILE=abarth500.kn5
 IN=0
-OUT=15 ;Indicates the distance (in meters) when lod_A changes with
-lod_B (if present)
+OUT=15 ;表示 lod_A 切换为 lod_B 的距离（单位：米，如有 lod_B 的话）
 [LOD_1]
 FILE=abarth500_B.kn5
 IN=15
-OUT=45 ;Indicates the distance (in meters) when lod_B changes with
-lod_C (if present)
+OUT=45 ;表示 lod_B 切换为 lod_C 的距离（单位：米，如有 lod_C 的话）
 [LOD_2]
 FILE=abarth500_C.kn5
 IN=45
-OUT=200 ;Indicates the distance (in meters) when lod_C changes with
-lod_D (if present)
+OUT=200 ;表示 lod_C 切换为 lod_D 的距离（单位：米，如有 lod_D 的话）
 [LOD_3]
 FILE=abarth500_D.kn5
 IN=200
-OUT=1500 ;Indicates the distance (in meters) when lod_D disappears
-from visual.
-NOTE: Verify that the distance of LOD “out” value matches the “in” value of the next LOD,
-otherwise your car will disappear before the switch.
-ADDITIONAL INFO: The LOD B must have the same null hierarchy as the LOD A except for
-the nulls COCKPIT_HR, STEER_HR and the FLYCAMS, which should not be present. Based
-on how visible the elements are, it is up to your judgement to remove other non-essential nulls,
-such as wings, bumpers, the hood etc. in LOD C.
+OUT=1500 ;表示 lod_D 从视野中消失的距离（单位：米）。
+```
+注意：请核实每个 LOD 的“out”距离值与下一个 LOD 的“in”值是否匹配，
+否则你的车会在切换发生之前消失。
+补充信息：LOD B 必须拥有与 LOD A 相同的 null 层级，但 COCKPIT_HR、STEER_HR 和 FLYCAMS 这些 null 不应存在。根据各元素的可见程度，是否在 LOD C 中移除其他非必需的 null（例如 wings、bumpers、hood 等）由你自行判断。

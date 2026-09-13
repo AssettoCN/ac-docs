@@ -1,313 +1,245 @@
 ---
-title: 7. Animations
+title: 7. 动画
 ---
 
-# 7. Animations
+# 7. 动画
 
-## SUSPENSION ANIMATION
+## 悬架动画
 
-The 3D suspensions of a car can be animated if needed.
-In order to enable suspension animations, you have to edit the the script “car.ini” with the following
-values:
-“USE_ANIMATED_SUSPENSIONS=1” to enable use of the animations
-“USE_ANIMATED_SUSPENSIONS=0” to leave the animations as by default (disabled)
-Usually this means the animations are disabled, but on some occasions they are always on like the
-steering wheel which is automatically animated.
-NOTE: Animating suspensions do have some disadvantages. Animating suspensions follow
-predetermined arcs and movements, so the wheels do not represent visually the setup values chosen by
-the player in game. i.e. Camber angles might differ visibly from the values selected in setup screen.
-We use a NULL hierarchy to animate the suspension geometry. Here’s an example below
-1. Set your timeline frames to (for example) 20 frames.
-2. The frame 0 will be lower position.
-3. The frame 10 will be the neutral position.
-4. The frame 20 the higher position.
-The engine works as follows: It verifies the position in the y axis of the suspension and finds the right
-frame to match the animation to the position of the physical suspension. It will interpolate the frames to
-generate a smooth movement. Assetto Corsa will search for the following NULL/DUMMY objects, named
-as follows:
+如有需要，可以对汽车的 3D 悬架进行动画。
+要启用悬架动画，你需要编辑脚本 “car.ini”，设置以下值：
+
+```ini
+“USE_ANIMATED_SUSPENSIONS=1” 启用动画
+“USE_ANIMATED_SUSPENSIONS=0” 保持动画为默认状态（禁用）
+```
+
+通常这意味着动画是禁用的，但在某些情况下它们始终开启，例如方向盘就是自动动画的。
+注意：悬架动画确实存在一些缺点。动画化的悬架沿预先设定的弧线和运动轨迹运动，因此车轮无法在视觉上呈现玩家在游戏内选择的设置值，也就是说，外倾角（Camber）可能会与设置界面中选择的值有明显差异。
+我们使用 NULL 层级来为悬架几何体制作动画。下面是一个示例：
+1. 将时间轴帧数设置为（例如）20 帧。
+2. 第 0 帧为较低位置。
+3. 第 10 帧为中立位置。
+4. 第 20 帧为较高位置。
+引擎的工作方式如下：它检查悬架在 Y 轴上的位置，并找到合适的帧，使动画与物理悬架的位置相匹配。引擎会对帧进行插值，以生成平滑的运动。Assetto Corsa 会查找以下按如下方式命名的 NULL/DUMMY 对象：
 
 ![p056_X0](/images/pipeline/p056_X0.png)
 
+```
 SUSP_LF
 SUSP_LR
 SUSP_RF
 SUSP_RR
-The NULL/DUMMY must be designed to move the
-suspension on the Y axis. Example of how to
-animate a suspension correctly:
-NOTE: Before exporting the FBX, timeline needs to
-be set with the same number of total frames as the
-number of animated frames created.
-Example: If you animate 20 frames, do not export
-with a timeline of 30. This will cause a crash.
-Remember to set the timeline to 20 if you have
-animated 20 frames. Empty frames will cause a
-crash and are not supported.
-Suspension Hierarchy
-The suspension must have the hierarchy identical to one of the two FBX examples provided:
-TEMPLATE_Suspension_EASY.fbx and TEMPLATE_Suspension_COMPLEX.fbx
-The first scene contains a simple suspension hierarchy, made for a car with simple suspension system.
-The second is prepared for complex suspension hierarchy, like 60’s Formula 1 cars, with more complex
-arms and particular suspensions. Those examples contains more DUMMY/NULLs
-Some names can be customized and we have named the customizable DUMMY/NULL in an appropriate
-way, inside the template.fbx
-”Custom_name##”. (where # is a number)
-All the DUMMY/NULL are used for animated parts. Their use is optional. You can create the necessary
-number of DUMMY/NULL as you desire.
-The following DUMMY/NULLs are mandatory:
-Suspension Nulls:
-SUSP_LF Left Front
-SUSP_LR Left Rear
-SUSP_RF Right Front
-SUSP_RR Right Rear
-Hub Nulls:
-HUB_LF Left Front
-HUB_LR Left Rear
-HUB_RF Right Front
-HUB_RR Right Rear
-Wheels Nulls:
-WHEEL_LF parent of the TYRE_LF for the tyre mesh, RIM_LF for the Rim mesh,
-and RIM_BLUR_LF for the Rim Blurred mesh
-WHEEL_LR parent of the TYRE_LR for the tyre mesh, RIM_LR for the Rim mesh,
-and RIM_BLUR_LR for the Rim Blurred mesh
-WHEEL_LR parent of the TYRE_LR for the tyre mesh, RIM_LR for the Rim mesh,
-and RIM_BLUR_LR for the Rim Blurred mesh
-WHEEL_RR parent of the TYRE_RR for the tyre mesh, RIM_RR for the Rim mesh,
-and RIM_BLUR_RR for the Rim Blurred mesh
-In some cars, the transmission shafts might be visible. There is a convention name to animate these
-objects automatically.
-Transmission DUMMY/NULL names:
-TRANSMISSION_L_1 for the Left shaft
-TRANSMISSION_R_1 for the Right shaft
-If you have more transmission pieces to animate, you can use sequential of numbering. For example:
-TRANSMISSION_L_2 , TRANSMISSION_L_3 and so on. The same applies to TRANSMISSION_R_2
-and so on.
-The engine recognizes the prefix “TRANSMISSION_L_” and looks for a sequential number after it. There
-is no hard-coded limit on the number of transmission parts that can be animated.
-The transmission nulls rotate on the X axis and needs to be
+```
+
+NULL/DUMMY 的设计必须使悬架沿 Y 轴移动。正确为悬架制作动画的示例：
+注意：在导出 FBX 之前，时间轴的总帧数必须设置为与所创建的动画帧数相同。
+示例：如果你制作了 20 帧的动画，就不要在时间轴为 30 帧的情况下导出，这会导致崩溃。请记住，制作了 20 帧动画，就要把时间轴设置为 20 帧。空白帧会导致崩溃，不受支持。
+悬架层级
+悬架的层级必须与提供的两个 FBX 示例之一完全相同：TEMPLATE_Suspension_EASY.fbx 和 TEMPLATE_Suspension_COMPLEX.fbx
+第一个场景包含简单的悬架层级，面向采用简单悬架系统的车辆。第二个则为复杂的悬架层级而准备，例如 60 年代的 Formula 1 赛车，拥有更复杂的摇臂和特殊悬架。这些示例中包含更多的 DUMMY/NULL。
+有些名称可以自定义，我们已在 template.fbx 中以适当的方式命名了可自定义的 DUMMY/NULL：
+“Custom_name##”（其中 # 是数字）。
+所有 DUMMY/NULL 都用于动画部件。是否使用它们是可选的。你可以按需创建任意数量的 DUMMY/NULL。
+以下 DUMMY/NULL 是必需的：
+
+悬架 Null：
+
+| Null | 说明 |
+| --- | --- |
+| SUSP_LF | 左前 |
+| SUSP_LR | 左后 |
+| SUSP_RF | 右前 |
+| SUSP_RR | 右后 |
+
+轮毂 Null：
+
+| Null | 说明 |
+| --- | --- |
+| HUB_LF | 左前 |
+| HUB_LR | 左后 |
+| HUB_RF | 右前 |
+| HUB_RR | 右后 |
+
+车轮 Null：
+
+| Null | 说明 |
+| --- | --- |
+| WHEEL_LF | 是 TYRE_LF（轮胎网格）、RIM_LF（轮辋网格）和 RIM_BLUR_LF（轮辋模糊网格）的父级 |
+| WHEEL_LR | 是 TYRE_LR（轮胎网格）、RIM_LR（轮辋网格）和 RIM_BLUR_LR（轮辋模糊网格）的父级 |
+| WHEEL_LR | 是 TYRE_LR（轮胎网格）、RIM_LR（轮辋网格）和 RIM_BLUR_LR（轮辋模糊网格）的父级 |
+| WHEEL_RR | 是 TYRE_RR（轮胎网格）、RIM_RR（轮辋网格）和 RIM_BLUR_RR（轮辋模糊网格）的父级 |
+
+在某些车辆上，传动轴可能是可见的。有一个约定名称可以自动为这些对象制作动画。
+传动 DUMMY/NULL 名称：
+
+| Null | 说明 |
+| --- | --- |
+| TRANSMISSION_L_1 | 用于左传动轴 |
+| TRANSMISSION_R_1 | 用于右传动轴 |
+
+如果还有更多需要动画的传动部件，你可以使用连续编号。例如：
+TRANSMISSION_L_2、TRANSMISSION_L_3 等等。TRANSMISSION_R_2 等依此类推。
+引擎会识别前缀 “TRANSMISSION_L_” 并在其后查找连续编号。可以动画的传动部件数量没有硬编码的上限。
+传动 null 绕 X 轴旋转，并且需要
 
 ![p058_X1](/images/pipeline/p058_X1.png)
 
-oriented like the image below:
-This node is useful for animating the joint on the Y axis
-according to the suspension animation, and the engine
-automatically rotates the transmission according to the wheel
-on X axis. Avoid animating on the
-Z axis, as it is not used.
-NOTE: In order to have a correct direction of rotation, the Z
-axis of the transmission nulls always need to point forward.
-The engine recognizes 4 other nodes for the the hubs of every
-wheel. These nodes are designed to allow the hub to rotate in
-accordance with the camber of the wheel.
+按照下图所示的方向取向：
+该节点用于根据悬架动画沿 Y 轴为关节制作动画，而引擎会根据车轮自动绕 X 轴旋转传动部件。避免在 Z 轴上制作动画，因为该轴未被使用。
+注意：为了获得正确的旋转方向，传动 null 的 Z 轴必须始终指向前方。
+引擎还会识别用于每个车轮轮毂的另外 4 个节点。这些节点的作用是让轮毂能够根据车轮的外倾角进行旋转。
+
+```
 HUB_LF
 HUB_LR
 HUB_RF
 HUB_RR
+```
 
 ![p058_X0](/images/pipeline/p058_X0.png)
 
-In the above image example, the hub is the parent of the steer arms.
-This way you can animate up and down movements of the hub or the suspension and during the
-animation you can change the camber of the hub as required by the actual physical suspension layout.
-Inside the TEMPLATE_Suspension_COMPLEX.fbx you can find an example for the correct hierarchy.
-Note: The SUSP_ node must always match the position of the Wheel_ node. The AC engine verifies the
-position of the suspension in 3D space by checking the SUSP_ node. The wheel bounding box is
-recognized between the SUSP_ node and Wheel_ node. Those 2 positions must be the same.
-Again the FBX file TEMPLATE_Suspension_COMPLEX.fbx is a perfect example.
-STEER ARMS and DIRECTION CONSTRAINTS
-We can animate many different parts and just import the animation to the editor and from that export to
-the game, but the STEER arm cannot be animated. Its position changes in the 3D space according to the
-HUB rotation.
-In order to constrain the movement of the steer arm to the HUB’s position and rotation, the convention
-name with a prefix “DIR_customName” must be used. This indicates the direction of the X negative axis
-of this mesh, and the null called “customName” will point the X axis to the correct direction.
-Example: a null called “SteerArm_L” will point the negative X axis in direction of a null named
-“DIR_SteerArm_L”
-Pay attention to the rotation of the null which the animated mesh is linked to. In the image below the
-right-hand side Null point has a positive Z axis. The left Null point has a negative Z axis. This allows the
--X axis to point to the center of the car or any other direction required by the mesh.
-Inside the TEMPLATE_Suspension_COMPLEX.fbx file, you can find a proper hierarchy example.
+在上图的示例中，轮毂是转向臂的父级。
+这样，你就可以为轮毂或悬架的上下运动制作动画，并在动画过程中根据实际物理悬架布局的需要改变轮毂的外倾角。
+在 TEMPLATE_Suspension_COMPLEX.fbx 中，你可以找到正确层级的示例。
+注意：SUSP_ 节点的位置必须始终与 Wheel_ 节点一致。AC 引擎通过检查 SUSP_ 节点来确定悬架在 3D 空间中的位置。车轮包围盒在 SUSP_ 节点与 Wheel_ 节点之间识别。这两个位置必须相同。
+同样，FBX 文件 TEMPLATE_Suspension_COMPLEX.fbx 是一个完美的示例。
+转向臂与方向约束
+我们可以为许多不同的部件制作动画，只需将动画导入编辑器，再从那里导出到游戏即可，但 STEER 臂不能制作动画。它的位置会根据 HUB 的旋转在 3D 空间中变化。
+为了将转向臂的运动约束到 HUB 的位置和旋转，必须使用前缀为 “DIR_customName” 的约定名称。它指示该网格负 X 轴的方向，名为 “customName” 的 null 会把 X 轴指向正确的方向。
+示例：名为 “SteerArm_L” 的 null 会将其负 X 轴指向名为 “DIR_SteerArm_L” 的 null。
+请注意动画网格所链接的 null 的旋转。在下图中，右侧的 Null 指向具有正 Z 轴，左侧的 Null 指向具有负 Z 轴。这样，-X 轴就可以指向车辆中心或网格所需的任何其他方向。
+在 TEMPLATE_Suspension_COMPLEX.fbx 文件中，你可以找到合适的层级示例。
 
 ![p059_X0](/images/pipeline/p059_X0.png)
 
-Note: You can create more constraints, if you have more objects to constraint to the HUB by simply giving
-them different names. Nevertheless, it is always good in terms of optimization to use the lowest possible
-number of constraints.
-You can animate your custom nulls in the following vectors: Rotation - Translation - Scale.
-Inside the TEMPLATE_Suspension_COMPLEX.fbx example file, you can see the animation of the
-suspension spring, on SCALE Y .
-Note: Never animate the mesh. Always animate the NULLs only! With this approach you can change and
-update your mesh every time you want without re-exporting the animations. Use the same technique to
-create animations for any NULL that has to be animated. For example, doors, gearbox levers, or any
-other parts.
+注意：如果有更多需要约束到 HUB 的对象，只需给它们起不同的名称，你就可以创建更多的约束。不过，从优化角度看，始终建议使用尽可能少的约束。
+你可以在以下向量上为自定义 null 制作动画：旋转 - 位移 - 缩放。
+在 TEMPLATE_Suspension_COMPLEX.fbx 示例文件中，你可以看到悬架弹簧沿 Y 轴缩放（SCALE Y）的动画。
+注意：永远不要为网格制作动画，始终只对 NULL 制作动画！采用这种方式，你可以随时更改和更新网格，而无需重新导出动画。对任何需要动画的 NULL 都使用同样的技术来创建动画，例如车门、变速箱换挡杆或任何其他部件。
 
-## CONSTRAINT FULL ANIMATION SETUP
+## 完整约束动画设置
 
-If you don’t want animate the suspension manually you can create a full CONSTRAN setup.
-You can use the DIRECTION CONSTRAINT logic to force you suspension to work automatically without
-animate them
-A example of this kind of suspension setup can be found in the EXAMPLE FBX provided with the SDK.
-Costraint_suspension_Only.fbx for generic FBX 2014 version
-Costraint_suspension_Only_XSI_2014.scn for XSI 2014 version
-Costraint_suspension_Only_MAX_2013.scn for 3ds MAX 2013 version
+如果你不想手动为悬架制作动画，可以创建完整的约束设置。
+你可以利用 DIRECTION CONSTRAINT（方向约束）的逻辑，强制悬架自动运作，而无需为其制作动画。
+这类悬架设置的一个示例可以在 SDK 附带的 EXAMPLE FBX 中找到：
 
-## ANIMATION EXPORT
+| 文件 | 说明 |
+| --- | --- |
+| Costraint_suspension_Only.fbx | 用于通用 FBX 2014 版本 |
+| Costraint_suspension_Only_XSI_2014.scn | 用于 XSI 2014 版本 |
+| Costraint_suspension_Only_MAX_2013.scn | 用于 3ds MAX 2013 版本 |
 
-Once you have animated your NULL/DUMMY inside your scene, using the AC Editor you need to export
-the animation to an AC-specific clip format, called name.ksanim.
+## 动画导出
+
+在场景中为 NULL/DUMMY 制作好动画后，你需要使用 AC 编辑器将动画导出为 AC 专用的剪辑格式，称为 name.ksanim。
 
 ![p060_X0](/images/pipeline/p060_X0.png)
 
-A couple of rules must be followed:
-1) To generate a clip, you only need to animate the nulls.
-Animating the mesh itself is not needed. You can also export the
-mesh, but the editor will only export the objects/nulls that have
-animation keyframes. As we mentioned before, it is a good
-technique to animate only the NULL/DUMMY so that you can
-change your animation independently from the actual 3D mesh.
-2) When you export an animated null, you must also export the
-the hierarchy tree above it, as the name of an object inside the
-editor is determined by its position in the hierarchy tree.
-3) Always export using the FBX format, as it is the only format that supports animation. Do not use any
-other formats.
-In the example shown in the image above, we have two null hierarchies that contain meshes as their
-children. We have animated the shift and steer paddle and we need to export the animation.
-We cannot export the SHIFT PADDLE_L null only. We must take the entire hierarchy from COCKPIT_HR,
-including STEER_HR and SHIFT paddle_L.
-This way the editor will define the null related to the position of SHIFT PADDLE_L in the hierarchy.
+必须遵循以下几条规则：
+1) 生成剪辑只需要为 null 制作动画，不需要为网格本身制作动画。你也可以导出网格，但编辑器只会导出带有动画关键帧的对象/null。如前所述，只对 NULL/DUMMY 制作动画是一种好的做法，这样你就可以独立于实际 3D 网格来更改动画。
+2) 导出带动画的 null 时，还必须导出它上方的层级树，因为在编辑器中，对象的名称由它在层级树中的位置决定。
+3) 始终使用 FBX 格式导出，因为它是唯一支持动画的格式。不要使用任何其他格式。
+在上图所示的示例中，我们有两个以网格为子级的 null 层级。我们为换挡拨片和转向拨片制作了动画，需要将其导出。
+我们不能只导出 SHIFT PADDLE_L 这个 null，而必须导出从 COCKPIT_HR 开始的整个层级，包括 STEER_HR 和 SHIFT paddle_L。
+这样，编辑器就能根据 SHIFT PADDLE_L 在层级中的位置确定相应的 null。
 
-## OPTIMISING ANIMATIONS
+## 动画优化
 
-1) The frames are interpolated in the game. You don't need to export an animation with all the keyframes.
-For simple animations, like doors, gear levers and so on, you can export just the important frames only.
-For a simple door animation, the “close” and “open” frames are enough, the game will interpolate the rest.
-When you have more complex doors, with pistons, vertical openings, like those in a Mclaren P1, you can
-add more frames to animate the door in a more precise way. But always keep in mind that the less frame
-you use, the more optimized the result will be, because the engine interpolates smoothly between the
-keyframes.
-2) Identical frames are optimized. If you create multiple identical frames, and the variation between them
-is 0, the frames will be optimized.
-Example: A gear lever starts animation at frame 15 of the complete animation, because during previous
-frames it stays fixed to its position, waiting for the driver’s hand to first reach it. A keyframe must be
-placed to frame 0 and another one at frame 14, both in static position. The animation of the gear lever
-starts at frame 15.There is no need to place more keyframes between 0 and 14.
+1) 游戏会对帧进行插值。你不需要导出包含所有关键帧的动画。
+对于车门、换挡杆等简单动画，你可以只导出重要的帧。
+对于简单的车门动画，“关闭”和“打开”两帧就足够了，其余的由游戏插值完成。当车门更复杂、带有液压挺杆或垂直开启方式（比如 Mclaren P1 的车门）时，你可以添加更多帧，以更精确的方式为车门制作动画。但请始终记住：使用的帧越少，结果越优化，因为引擎会在关键帧之间平滑插值。
+2) 相同的帧会被优化。如果你创建了多个相同的帧，且它们之间的变化为 0，这些帧将被优化。
+示例：换挡杆在完整动画的第 15 帧才开始动作，因为在此之前的帧里它固定在原位，等待车手的手先够到它。此时必须在第 0 帧放置一个关键帧，在第 14 帧再放置一个，两者都处于静止位置。换挡杆的动画从第 15 帧开始。在 0 到 14 帧之间不需要放置更多关键帧。
 
-## CLIPS AND NAMING CONVENTIONS
+## 剪辑与命名约定
 
-There are two types of pre-programmed playbacks:
-1) Ping-pong: The animation played reaches the end is then played in reverse from back to start.
-2) Loop: When the first frame match the last frame and the animation restarts the loop.
-The specific naming conventions have a pre-programmed playback in-game, so the engine knows
-whether the playback should be LOOP or PING-PONG..
+有两种预编程的播放方式：
+1) 乒乓（Ping-pong）：动画播放到结尾后，再从尾到头反向播放。
+2) 循环（Loop）：首帧与末帧相匹配，动画重新开始循环。
+特定的命名约定在游戏内拥有预编程的播放方式，因此引擎知道播放方式应该是 LOOP 还是 PING-PONG。
 
-**DRIVER ANIMATION CLIP NAMES:**
+**车手动画剪辑名称：**
 
-steer.ksanim Loop for the rotation of the driver’s arms on the steering wheel
-shift.ksanim PingPong for the animation of the driver’s arm to the gearshift lever (we
-usually do a simple animation, check the fbx example)
-shift_dw.ksanim PingPong for the animation of the fingers that operate the paddle to shift down
-(usually left)
-shift_up.ksanim PingPong for the animation of the fingers that operate the paddle to shift up
-(usually right)
+| 剪辑 | 说明 |
+| --- | --- |
+| steer.ksanim | 循环播放，用于车手双臂在方向盘上的转动 |
+| shift.ksanim | 乒乓播放，用于车手手臂伸向换挡杆的动画（我们通常做一个简单的动画，参见 fbx 示例） |
+| shift_dw.ksanim | 乒乓播放，用于操作拨片降挡（通常为左侧）的手指动画 |
+| shift_up.ksanim | 乒乓播放，用于操作拨片升挡（通常为右侧）的手指动画 |
 
-## CAR ANIMATION CLIP NAMES
+## 车辆动画剪辑名称
 
-car_shift.ksanim PingPong to animate the car gear lever
-Important: this clip must have the same number of frames as the shift.ksanim to match the arm
-movement with the shift animation. If in the driver animation, the shifting movement begins at frame 10,
-the shifter must also start to move at the exact same frame!
-car_susp_LF.ksanim Controlled by engine for the animation of the Left Front suspension
-car_susp_LR.ksanim Controlled by engine for the animation of the Left Rear suspension
-car_susp_RF.ksanim Controlled by engine for the animation of the Right Front suspension
-car_susp_RR.ksanim Controlled by engine for the animation of the Right Rear suspension
-car_door_R.ksanim PingPong for the animation to open the right-hand side door (the closing
-animation should be the open animation in reverse. Do not animate the closing sequence!)
-car_door_L.ksanim PingPong for the animation to open the right-hand side door (the closing
-animation should be the open animation in reverse. Do not animate the closing sequence!)
-car_wiper.ksanim Loop for the animation of the wiper (here you must animate the full animation
-back and forth)
-lights.ksanim PingPong for the animation of the car lights that are dynamic (e.g. Ferrari F40.
-Animate the opening sequence ONLY).
-car_shift_up.ksanim PingPong for animating the paddle shift up
-car_shift_dw.ksanim PingPong for animating the paddle shift down
-Note: You can create all the animations needed. You can also use new names and then engage them
-from an .ini script (such as active DRS, wings etc.). The names listed above are recognized automatically
-and managed by the game engine.
-For example: the animation car_wing.ksnim is a custom name. On certain cars we created animations
-called wing_rear.ksanim or wing_side.ksanim. These optional animations are managed from .ini scripts.
-car_wing.ksanim PingPong for the animation of dynamic wings (animate only opening sequence)
+| 剪辑 | 说明 |
+| --- | --- |
+| car_shift.ksanim | 乒乓播放，用于车辆换挡杆的动画 |
 
-## EXPORTING ANIMATIONS FROM THE EDITOR
+重要：该剪辑的帧数必须与 shift.ksanim 相同，以使手臂动作与换挡动画相匹配。如果在车手动画中换挡动作从第 10 帧开始，那么换挡杆也必须在完全相同的帧开始移动！
 
-Follow these steps to export animations:
-- Open the car FBX in the editor.
-- Open the ANIMATION with the Open FBX Animation option under the File tab (see below):
+| 剪辑 | 说明 |
+| --- | --- |
+| car_susp_LF.ksanim | 由引擎控制，用于左前悬架的动画 |
+| car_susp_LR.ksanim | 由引擎控制，用于左后悬架的动画 |
+| car_susp_RF.ksanim | 由引擎控制，用于右前悬架的动画 |
+| car_susp_RR.ksanim | 由引擎控制，用于右后悬架的动画 |
+| car_door_R.ksanim | 乒乓播放，用于打开右侧车门的动画（关闭动画应为开门动画的反向播放。不要为关闭过程制作动画！） |
+| car_door_L.ksanim | 乒乓播放，用于打开右侧车门的动画（关闭动画应为开门动画的反向播放。不要为关闭过程制作动画！） |
+| car_wiper.ksanim | 循环播放，用于雨刮的动画（这里你必须为完整的往返行程制作动画） |
+| lights.ksanim | 乒乓播放，用于动态车灯的动画（例如 Ferrari F40。只为开启过程制作动画）。 |
+| car_shift_up.ksanim | 乒乓播放，用于换挡拨片升挡的动画 |
+| car_shift_dw.ksanim | 乒乓播放，用于换挡拨片降挡的动画 |
+
+注意：你可以创建所需的全部动画，也可以使用新名称，然后通过 .ini 脚本来调用它们（例如主动 DRS、尾翼等）。上面列出的名称会被自动识别并由游戏引擎管理。
+例如：car_wing.ksnim 是一个自定义名称的动画。在某些车辆上，我们创建了名为 wing_rear.ksanim 或 wing_side.ksanim 的动画。这些可选动画通过 .ini 脚本管理。
+
+| 剪辑 | 说明 |
+| --- | --- |
+| car_wing.ksanim | 乒乓播放，用于动态尾翼的动画（只为展开过程制作动画） |
+
+## 从编辑器导出动画
+
+按照以下步骤导出动画：
+- 在编辑器中打开车辆 FBX。
+- 通过 File 标签页下的 Open FBX Animation 选项打开动画（见下文）：
 
 ![p062_X0](/images/pipeline/p062_X0.png)
 
-- Find and load the FBX animation that you had previously exported to the “animations” folder.
-When an animation is loaded it automatically saves a clip_name.ksanim file in the same folder where your
-FBX file is located, there is no need to manually export the animation clip.
-- Select the Animation tab at the bottom part of the editor UI. Drag the animation slider, and you should
-see the animation playback.
+- 找到并加载你之前导出到 “animations” 文件夹的 FBX 动画。
+动画加载后，它会自动在 FBX 文件所在的同一文件夹中保存一个 clip_name.ksanim 文件，无需手动导出动画剪辑。
+- 选择编辑器界面底部的 Animation 标签页。拖动动画滑块，你应该能看到动画播放。
 
 ![p063_X0](/images/pipeline/p063_X0.png)
 
-You can load multiple animations into the scene. Every time you load an animation, a .ksanim file is
-saved with the same name as the source FBX.
-If your fbx is not named properly, you have to rename your clips to match our name conventions, for
-example steer.ksanim for the animation of the driver arms etc.
+你可以在场景中加载多个动画。每次加载动画时，都会以源 FBX 的名称保存一个 .ksanim 文件。
+如果你的 fbx 命名不正确，就必须重命名剪辑以符合我们的命名约定，例如车手手臂的动画应命名为 steer.ksanim 等。
 
-## CHECKING CAR ANIMATIONS
+## 检查车辆动画
 
-When all your suspensions clips are exported to the proper animation folder (see “Project Structure”
-section), you can load your car.fbx in the editor and check if the animations work properly.
-You can do this only after you have created the animation clips and by loading them into the editor.
-NOTE: LOD B must contain the same null hierarchy and names of animated nulls as LOD A for the
-exterior (suspension, wings, pop-up lights), but not for animations in the HR interior (paddle and shifter)
-and the doors nulls under the Cockpit_HR null.
-Open you car_name.fbx
-After the car is loaded, you can load the clip of the suspension that you want to test.
-In the tab called “Car Animations” you’ll find sliders. These are designed to help you test the animation of
-the springs, the constraint of the arms and the wheel rotation.
+当所有悬架剪辑都导出到正确的动画文件夹（参见“项目结构”一节）后，你就可以在编辑器中加载 car.fbx，检查动画是否正常工作。
+只有在创建好动画剪辑并将其加载到编辑器之后，你才能进行这项操作。
+注意：对于外部部件（悬架、尾翼、翻跳大灯），LOD B 必须包含与 LOD A 相同的 null 层级和动画 null 名称，但对于 HR 内饰（拨片和换挡机构）中的动画以及 Cockpit_HR null 下的车门 null，则无需如此。
+打开你的 car_name.fbx
+车辆加载完成后，你可以加载想要测试的悬架剪辑。
+在名为 “Car Animations” 的标签页中，你会找到一些滑块。它们用于帮助你测试弹簧的动画、摇臂的约束以及车轮的旋转。
 
 ![p063_X1](/images/pipeline/p063_X1.png)
 
 ![p064_X0](/images/pipeline/p064_X0.png)
 
-The sliders allow you to check the suspension in the editor and detect any issues, frame by frame. Here
-you can see an example: Moving the slider you can check the hub behaviour.
+这些滑块让你能够在编辑器中逐帧检查悬架并发现任何问题。这里你可以看到一个示例：移动滑块即可检查轮毂的行为。
 
-## GENERIC ANIMATION EXPORTING GUIDELINES
+## 动画导出通用指南
 
-There are some important things to keep in mind when exporting animations, especially door animation
-clips. When exporting a door clip, the following hierarchy should be present:
-Complex door animations
+导出动画（尤其是车门动画剪辑）时，有一些重要事项需要牢记。导出车门剪辑时，应具备以下层级：
+复杂的车门动画
 
 ![p064_X2](/images/pipeline/p064_X2.png)
 
 ![p064_X1](/images/pipeline/p064_X1.png)
 
-may include a higher number
-of nulls, make sure that the
-naming conventions are
-consistent and that you export
-every null that is animated
-(per side). For more
-information, see ANIMATION
-EXPORT.
-Note that the meshes and
-nulls of the interior door
-elements are under the null,
-COCKPIT_HR. This is
-needed because the cockpit switches from high to low resolution. The LR door will be hidden. So we have
-duplicated the door animation nulls with animation included, and placed them outside of COCKPIT_HR.
-When you export, remember to include all the cockpit door nulls (left image).
-NOTE: When exporting the animation of the paddle shifters (car_shift_dw and car_shift_up), make sure
-that you export the parent nulls as well. If the paddles are on the steering wheel, for each animation you
-have to export either of the paddle nulls (SHIFT_R or SHIFT_L), the null for the steering wheel
-(STEER_HR) and the HR cockpit null (COCKPIT_HR).
-To animate wipers, you may use a number of nulls depending on the complexity of the wiper. Usually a
-wiper with 2, maximum 3 pivot points (and thus 2 or 3 dummies) is sufficient.
-The wiper nulls must be located in the root of the scene and they must be present in LOD A through
-LOD C.
+可能包含数量更多的 null，请确保命名约定保持一致，并（按每一侧）导出每个带动画的 null。更多信息请参见“动画导出”一节。
+请注意，车门内饰部件的网格和 null 位于 COCKPIT_HR 这个 null 之下。这是因为座舱会从高分辨率切换到低分辨率，LR 车门将被隐藏。因此，我们复制了带动画的车门动画 null，并将它们放在 COCKPIT_HR 之外。
+导出时，记得包含所有座舱车门 null（左图）。
+注意：导出换挡拨片的动画（car_shift_dw 和 car_shift_up）时，务必确保同时导出父级 null。如果拨片位于方向盘上，那么每个动画都必须导出其中一个拨片 null（SHIFT_R 或 SHIFT_L）、方向盘 null（STEER_HR）以及 HR 座舱 null（COCKPIT_HR）。
+为雨刮制作动画时，可以根据雨刮的复杂程度使用若干个 null。通常，带有 2 个、最多 3 个轴心点（即 2 或 3 个 dummy）的雨刮就足够了。
+雨刮 null 必须位于场景的根节点，并且必须存在于 LOD A 至 LOD C。

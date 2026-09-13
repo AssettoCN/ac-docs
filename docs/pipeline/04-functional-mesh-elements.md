@@ -1,16 +1,14 @@
 ---
-title: 4. Functional Mesh Elements
+title: 4. 功能网格元素
 ---
 
-# 4. Functional Mesh Elements
+# 4. 功能网格元素
 
-## ANALOG INSTRUMENTS
+## 模拟仪表
 
 ![p019_X0](/images/pipeline/p019_X0.png)
 
-To animate a needle on the dashboard, the ARROW_
-mesh needs to be placed under a proper null. Just as other
-objects, ARROW_ nulls must follow specific conventions:
+要让仪表盘上的指针动起来，ARROW_ 网格需要放置在一个合适的 null 之下。与其他对象一样，ARROW_ null 必须遵循特定的命名规范：
 ARROW_SPEED
 ARROW_RPM
 ARROW_TURBO
@@ -18,35 +16,27 @@ ARROW_FUEL
 ARROW_WATER_TEMP
 ARROW_TIME
 *ARROW_LIMITER
-Each ARROW_ null must be linked to the COCKPIT_HR null!
-Each instrument is controlled by specific values in the analog_instruments.ini script, located inside
-“content/cars/car_name/data” folder.
-The needle mesh must be created in neutral position and linked as child of a specific null.
-The arrow then must be rotated to the 0 position as shown in the image above.
-The Y axis determines the arrow position on the gauge and must be placed at 0 (ZERO) or the start of the
-gauge at hand.
-Note: Z axis must always point FORWARD
-*The ARROW_LIMITER is a tell-tale found for example in the Lotus 49 and Lotus 72D cars, showing the
-maximum RPM in a given stint. The rotation of the ARROW_LIMITER null must be the same as the
-ARROW_RPM null, and it requires NO script, as it is controlled from within the core engine.
-You can use the Data Scripts tab in the KS editor to set up the analogue scripts (see EDITOR section).
-To ensure compatibility in the future, if present, set up gauges that are currently not supported by the
-engine in a similar fashion, with name conventions that are consistent with the existing rules and the
-function of the instrument:
+每个 ARROW_ null 都必须链接到 COCKPIT_HR null！
+每个仪表都由 analog_instruments.ini 脚本中的特定值控制，该脚本位于 “content/cars/car_name/data” 文件夹内。
+指针网格必须以中性位置创建，并作为特定 null 的子对象进行链接。
+然后必须将指针旋转到 0 位，如上图所示。
+Y 轴决定指针在仪表上的位置，必须置于 0（零）或当前仪表的起始刻度处。
+注意：Z 轴必须始终指向前方
+*ARROW_LIMITER 是一个指示灯，例如在 Lotus 49 和 Lotus 72D 车型上就有，用于显示某段驾驶时间内达到的最高转速。ARROW_LIMITER null 的旋转必须与 ARROW_RPM null 相同，而且它不需要任何脚本，因为它由核心引擎内部控制。
+你可以使用 KS 编辑器中的 Data Scripts 标签页来设置模拟仪表脚本（参见 EDITOR 章节）。
+为了确保未来的兼容性，如果车上存在引擎目前尚不支持的仪表，请以类似的方式设置它们，命名规范要与现有规则以及仪表的功能保持一致：
 ARROW_VOLTAGE
 ARROW_OIL_TEMP
 ARROW_OIL_PRES
 ARROW_FUEL_PRES
 ARROW_WATER_PRES
-LEDs and DIGITAL DISPLAYS
-It is possible to have various LEDs and indicator lights light up in the cockpit during driving. It is
-recommended to make the cockpit dynamic with as many functional items as possible.
+LED 与数字显示屏
+驾驶时可以让驾驶舱内的各种 LED 和指示灯点亮。建议让驾驶舱尽可能动态化，具备尽可能多的功能元素。
 
 ![p020_X0](/images/pipeline/p020_X0.png)
 
-Each individual LED (such as for RPM, boost or KERS) or bar TAG must be a separate object and
-numbered in a series:
-LED_RPM_# where the “#” is the number of each specific item in a series
+每个独立的 LED（例如用于 RPM、增压或 KERS 的）或条形 TAG 都必须是单独的对象，并按序列编号：
+LED_RPM_# 其中 “#” 是序列中每个具体项目的编号
 TAG_RPM_#
 KERS_CHARGE_#
 KERS_INPUT_#
@@ -54,236 +44,181 @@ TURBO_#
 
 ![p020_X1](/images/pipeline/p020_X1.png)
 
-Some cars have multiple displays and it is possible that
-certain items (such as RPM) are shown in more than one
-screen. In this case, make sure that you differentiate
-between the two readouts: LED_RPM_1_# and
-LED_RPM_2_# etc.
-For functional LEDs or warning lights, each item must be a
-separate object, using the following naming conventions:
-LED_LIGHT headlight indicator light
-LED_FUEL fuel warning light
-LED_KERS KERS status light
-LED_IGNITION ignition status light
-There are two ways to control specific items on the
-dashboard. The first one is where the mesh is always
-present and the script controls the emissive value on a per
-object basis. This is the method used for RPM LED series,
-headlight indicators and ignition status lights.
-With the second method the mesh is disabled by default and the script controls how and when it should
-appear with the shader and object properties set up in the editor. It should be noted that the meshes
-appear in the editor and the showroom. This is used for dynamic RPM bar graphs, boost bar graphs, fuel
-level bars, shift indicators, fuel warning lights and KERS bar graphs.
+有些车拥有多个显示屏，某些项目（例如 RPM）可能显示在不止一块屏幕上。这种情况下，请务必区分两组读数：LED_RPM_1_# 和 LED_RPM_2_# 等。
+对于功能性 LED 或警示灯，每个项目都必须是单独的对象，并使用以下命名规范：
+LED_LIGHT 大灯指示灯
+LED_FUEL 燃油警示灯
+LED_KERS KERS 状态灯
+LED_IGNITION 点火状态灯
+控制仪表盘上特定项目的方法有两种。第一种是网格始终存在，由脚本按对象控制其自发光值。这是 RPM LED 序列、大灯指示灯和点火状态灯所使用的方法。
+在第二种方法中，网格默认处于禁用状态，由脚本结合在编辑器中设置好的着色器和对象属性，来控制它以何种方式、在何时出现。需要注意的是，这些网格会出现在编辑器和展厅中。此方法用于动态 RPM 条形图、增压条形图、燃油液位条、换挡指示、燃油警示灯和 KERS 条形图。
 
 ![p021_X1](/images/pipeline/p021_X1.png)
 
-NOTE: If in the second case the item is a light with
-emissive values, it must also use an individual material
-with the desired emissive value set in the editor (e.g. fuel
-warning light).
-NOTE: It is very important that you do extensive research
-about dashboard functionality and digital screens (if
-present) and prepare the model for dynamic displays.
-When creating the texture for the digital display, you must
-take into consideration the dynamic readouts that are supported by the engine and must not include them
-in the static diffuse texture.
+注意：在第二种情况下，如果该项目是带自发光值的灯光，它还必须使用单独的材质，并在编辑器中设置所需的自发光值（例如燃油警示灯）。
+注意：务必对仪表盘的功能和数字屏幕（如果有）进行充分调研，并为动态显示准备好模型。在为数字显示屏创建纹理时，必须考虑引擎所支持的动态读数，不得将它们包含在静态 diffuse 纹理中。
 
 ![p021_X0](/images/pipeline/p021_X0.png)
 
-NOTE: Do NOT use the convention _01, _02, _03 etc. for single digits for the suffix of tag
-object names, always use _0, _1, _2 etc. E.g. LED_RPM_0, LED_RPM_1 etc.
-The following items are currently supported by the game engine:
-Time
-Gear
-Speed
+注意：不要对 TAG 对象名称的后缀使用 _01、_02、_03 这类个位数写法，始终使用 _0、_1、_2 等。例如 LED_RPM_0、LED_RPM_1 等。
+游戏引擎目前支持以下项目：
+时间
+档位
+车速
 RPM
-Water temperature
-Fuel level (bar graph)
-Fuel level (litres)
-KERS charge (bar graph)
-KERS input (bar graph)
-Turbo boost (bar graph)
-Turbo boost (pressure)
-Lap time
-Previous lap time
-Difference from previous lap
-TC setting
-ABS setting
-Headlight indicator
-Fuel warning light
-Current lap
-Total laps
-Ambient temperature
-Km with current fuel left
-KERS charge readout
-Estimated fuel
-Any RPM-dependent status indicator
-Tyre pressure
-G-meter
-Placeholder script for any static text or numbers
-IMPORTANT: If there is a digital display, create a NULL called DISPLAY_DATA with the orientation
-shown in the image below. If there are more displays, use a serial number (DISPLAY_DATA_1 etc.) to
-specify each individual screen. The DISPLAY_DATA null is the reference for the items in the
-digital_instruments.ini, it serves as a reference point and makes sure the text appears on the same
-surface as the display. For this reason if the display is rotated/tilted, the null must follow the same
-orientation. To avoid clipping, place the null so that its pivot point is in front of the mesh by a few
-millimetres and not directly on it.
-NOTE that the above list is not complete. Please visit the following link to see a community and
-dev-assisted thread on the official support forum for a complete list of digital scripts and their
-implementation:
+水温
+燃油液位（条形图）
+燃油液位（升）
+KERS 电量（条形图）
+KERS 输入（条形图）
+涡轮增压值（条形图）
+涡轮增压值（压力）
+单圈时间
+上一圈时间
+与上一圈的差值
+TC 设置
+ABS 设置
+大灯指示灯
+燃油警示灯
+当前圈数
+总圈数
+环境温度
+当前剩余燃油可行驶的公里数
+KERS 电量读数
+预计燃油量
+任何依赖 RPM 的状态指示
+轮胎压力
+G 力计
+用于任何静态文本或数字的占位符脚本
+重要：如果有数字显示屏，请创建一个名为 DISPLAY_DATA 的 NULL，其朝向如下图所示。如果有多个显示屏，请使用序号（DISPLAY_DATA_1 等）来指定每一块屏幕。DISPLAY_DATA null 是 digital_instruments.ini 中各项目的参照，它作为一个参考点，确保文字出现在与显示屏相同的表面上。因此，如果显示屏是旋转/倾斜的，null 必须保持相同的朝向。为了避免裁切，放置 null 时要让它的轴心点位于网格前方几毫米处，而不是直接贴在网格上。
+注意，以上列表并不完整。请访问以下链接，查看官方支持论坛上由社区和开发人员协助维护的帖子，其中包含数字脚本及其实现方法的完整列表：
 http://www.assettocorsa.net/forum/index.php?threads/analog-digital-instruments-lights-q-a-request-official
 -support-here-check-first-post.12249/
-DISPLAY_DATA null orientation and example for KERS bar graph:
+DISPLAY_DATA null 的朝向以及 KERS 条形图示例：
 
 ![p023_X0](/images/pipeline/p023_X0.png)
 
-NOTE: When the display is located on the steering wheel, the DISPLAY_DATA null and all the TAG/RPM
-mesh objects must be a child of the STEER_HR null to make sure they rotate along with the steering
-wheel.
+注意：当显示屏位于方向盘上时，DISPLAY_DATA null 和所有 TAG/RPM 网格对象都必须作为 STEER_HR null 的子对象，以确保它们随方向盘一起旋转。
 
 ![p023_X2](/images/pipeline/p023_X2.png)
 
 ![p023_X1](/images/pipeline/p023_X1.png)
 
-## DIGITAL PANELS
+## 数字面板
 
-Digital panels can be used for two functions: Push-to-Pass status and on-track Position.
-This feature requires a digital_panels.ini in the car’s data folder and pre-drawn numbers in the
-your_car/texture/display_panel folder. As an example, take a look at the
-content/cars/ks_audi_tt_cup/texture folder in your game install folder.
-You will also need a parent NULL (e.g. DISPLAY_PANEL), with the same orientation rules that exist for
-the digital instruments (see above).
-Position
-Use the following script to activate the function:
+数字面板可用于两种功能：Push-to-Pass 状态和场上名次。
+此功能需要在车辆的 data 文件夹中有一个 digital_panels.ini，并在 your_car/texture/display_panel 文件夹中放置预先绘制好的数字。示例请查看游戏安装文件夹中的 content/cars/ks_audi_tt_cup/texture 文件夹。
+你还需要一个父 NULL（例如 DISPLAY_PANEL），其朝向规则与数字仪表的相同（见上文）。
+名次
+使用以下脚本激活该功能：
+```ini
 [FULLPOSITION_SERIES_0]
-PREFIX=textName_ prefix of texture names located in car_folder/texture/display_panel
+PREFIX=textName_ 位于 car_folder/texture/display_panel 中的纹理名称的前缀
 POSITION=
-PARENT=DUMMY parent dummy name
-START=0 postfix start
-END=9 postfix end
-DIGIT=1 set 1 for second digit, 10 for first digit
+PARENT=DUMMY 父 dummy 的名称
+START=0 后缀起始值
+END=9 后缀结束值
+DIGIT=1 第二位数字设为 1，第一位数字设为 10
 WIDTH=30
 HEIGHT=40
 COLOR=255,255,255,255
 INTENSITY=2
+```
 Push-to-Pass
-Use the following script to activate the function:
+使用以下脚本激活该功能：
+```ini
 [PUSH2PASS_SERIES_0]
-PARENT=PANEL_P2P name of parent dummy
+PARENT=PANEL_P2P 父 dummy 的名称
 POSITION=0.0615,-0.068,0
 WIDTH=0.124
 HEIGHT=0.137
 TRIGGER=0
-PREFIX=num_ prefix of texture names
+PREFIX=num_ 纹理名称的前缀
 COLOR=255,255,255,255
 INTENSITY=40.0
-START=0 name postfix to start from
-END=9 name postfix to end at
-DIGIT=1 (=1 for second digit, =10 for first digit)
-BLINK_HZ=5 blink rate when activated (=0 for no flashing)
-P2P status led
+START=0 名称后缀从该值开始
+END=9 名称后缀到该值结束
+DIGIT=1（第二位数字 =1，第一位数字 =10）
+BLINK_HZ=5 激活时的闪烁频率（=0 表示不闪烁）
+```
+P2P 状态 LED
+```ini
 [PUSH2PASS_LED_0]
 OBJECT_NAME=LED_P2P
 EMISSIVE=0,0,800
 DIFFUSE=0.35
-INVERTED=0 for inverse function
-BLINK_HZ=0 if higher than 0, it blinks
-Known limitation: in replays, the P2P and displayed position status is not communicated, which is why
-the panels will show incorrect or placeholder values.
+INVERTED=0 用于反向功能
+BLINK_HZ=0 大于 0 时会闪烁
+```
+已知限制：在回放中，P2P 和所显示的名次状态不会被传递，因此面板会显示不正确的值或占位值。
 
-## SEATBELTS
+## 安全带
 
-The cockpit contains two different mesh objects for the belts: One for the belt ON and another for the belt
-OFF. These two meshes must be linked as a child of the null COCKPIT_HR and must be named as
-follows:
-CINTURE_ON for the belt on the driver when is driving
-CINTURE_OFF for the belt on the seat, without driver (showroom view)
-NOTE: The names are in ITALIAN (CINTURE = SEATBELT)….
-To create the proper mesh of the belt on a driver, place the driver first, then animate it and verify how the
-arms move in order to avoid compenetration with the belt mesh.
+驾驶舱中包含两个不同的安全带网格对象：一个对应系上安全带的状态，另一个对应解开安全带的状态。这两个网格必须作为 null COCKPIT_HR 的子对象链接，并且必须按如下方式命名：
+CINTURE_ON 驾驶时系在车手身上的安全带
+CINTURE_OFF 放在座椅上的安全带，没有车手（展厅视图）
+注意：这些名称是意大利语（CINTURE = 安全带）……。
+要正确制作系在车手身上的安全带网格，请先放置车手，然后为其制作动画，并检查手臂如何移动，以避免与安全带网格发生穿插。
 
 ![p026_X1](/images/pipeline/p026_X1.png)
 
-The seatbelt mesh must be modelled also in the cockpit LR but only the CINTURE_ON mesh.
-When you see the cockpit LR it means that you are in game, not in the showroom, so a driver is
-in the car and you have to show the CINTURE_ON configuration only, without the belt being
-separated from the rest of the cockpit mesh.
+安全带网格在 cockpit LR 中也必须建模，但只建 CINTURE_ON 网格。当你看到的是 cockpit LR 时，就意味着你处于游戏中而不是展厅里，因此车内有一名车手，你只需展示 CINTURE_ON 配置，并且安全带不与驾驶舱网格的其余部分分离。
 
-## LIGHT MESH AND SCRIPTS
+## 灯光网格与脚本
 
-Each car must have individual objects. The light mesh objects must be separated and detached from the
-body of the car and use specific naming
+每辆车都必须有各自独立的对象。灯光网格对象必须从车身上分离并拆分出来，并使用特定的命名
 
 ![p027_X1](/images/pipeline/p027_X1.png)
 
-conventions. The mesh name must be
-controlled from the lights.ini script. The
-same scripts include the instructions for
-the ON/OFF conditions, as well as the
-light emission colour.
-Example image on the right: The mesh of
-the light is made from different parts,
-which are divided according to their
-function.
-Some examples:
-Position lights, brake, rear, standard front
-lights, high beams etc.
-Note: There is no need to split the lights
-up as “right” and “left”. They can be one
-mesh because they turn on together.
-IMPORTANT: similarly to the dashboard, please do an extensive research about light functionality, and
-strive to implement as many functions as possible. Each light source must be detached as a separate
-object, avoid keeping all the difference reflectors and bulbs in one object. This way, each element can be
-controlled individually to achieve realistic results. A good example is shown in the image below:
+规范。网格名称必须由 lights.ini 脚本控制。同样的脚本中还包含点亮/熄灭条件以及发光颜色的指令。
+右侧示例图：灯光网格由不同的部分组成，这些部分按其功能划分。
+一些例子：
+位置灯、刹车灯、尾灯、标准前大灯、远光灯等。
+注意：无需将车灯拆分为“右”和“左”。它们可以是同一个网格，因为它们是一起点亮的。
+重要：与仪表盘类似，请对灯光功能进行充分调研，并尽力实现尽可能多的功能。每个光源都必须拆分为单独的对象，避免把所有不同的反光罩和灯泡都放在一个对象中。这样，每个元素都可以被单独控制，从而获得逼真的效果。下图展示了一个很好的例子：
 
 ![p027_X0](/images/pipeline/p027_X0.png)
 
-Open the lights.ini script located in the “data” folder
-The script contains the following values:
+打开位于 “data” 文件夹中的 lights.ini 脚本
+该脚本包含以下值：
+```ini
 [HEADER]
-VERSION=3 Script version. Keep this value like is.
+VERSION=3 脚本版本。保持此值不变。
 [BRAKE_0]
-NAME=REAR_LIGHT name of the mesh to light up
-COLOR=500,60,40 RGB value when you press the brake pedal
-OFF_COLOR=50,12,8 RGB value for position light when brakes are off
+NAME=REAR_LIGHT 要点亮的网格的名称
+COLOR=500,60,40 踩下刹车踏板时的 RGB 值
+OFF_COLOR=50,12,8 刹车松开时位置灯的 RGB 值
 [LIGHT_0]
-NAME=FRONT_LIGHT name of the mesh to light up
-COLOR=240,195,180 RGB emissive value when the front light is on
-OFF_COLOR=50,50,70 RGB emissie value for day-light (optional)
-In the above example: The NAME= value affects a mesh called REAR_LIGHT (as seen in the image
-above). The COLOR= value assigns a colour when the brakes are on (you are pressing brake pedal).
-The line below OFF_COLOR= is the emissive value of the brake light (in some cars, the same mesh is lit
-up when you turn the lights on and when you brake).
-Different functions and colours can be assigned to different meshes.
-As an example, the value COLOR=3,0,0 assigns a specific colour to the light. The mesh is lit using HDR
-and there is no maximum limit of intensity.
-The values for the COLOR= parameter are in RGB 0 to 1 range, so a value of 1 means the maximum
-value of the RGB scale (256). The values can go over 1 if more intensity is needed. As an example, a
-value of 240 is given to the [LIGHT_0] section, in order to produce a strong glow.
-NOTE: for a glowing brake light we recommend an R (red) value between 150 and 850. For day running
-lights, we recommend values between 40 and 100, while for high beams, we recommend values ranging
-from 250 to 800.
-NOTE: the dashboard headlight indicator lights and the dashboard lighting are also controlled by the
-lights.ini. The dashboard objects and any other objects that light up in the interior must be detached and
-named according to the following convention:
+NAME=FRONT_LIGHT 要点亮的网格的名称
+COLOR=240,195,180 前大灯点亮时的 RGB 自发光值
+OFF_COLOR=50,50,70 日间行车时的 RGB 自发光值（可选）
+```
+在上面的例子中：NAME= 的值作用于名为 REAR_LIGHT 的网格（如上图所示）。COLOR= 的值为刹车起效时（你正踩着刹车踏板）指定的颜色。下面一行 OFF_COLOR= 是刹车灯的自发光值（在某些车上，开灯时和刹车时点亮的是同一个网格）。
+可以为不同的网格指定不同的功能和颜色。
+例如，COLOR=3,0,0 这个值为灯光指定了特定的颜色。网格使用 HDR 进行照明，强度没有最大上限。
+COLOR= 参数的取值范围为 RGB 0 到 1，因此数值 1 表示 RGB 刻度的最大值（256）。如果需要更高的强度，数值可以超过 1。例如，[LIGHT_0] 小节中给出的值 240 就是为了产生强烈的辉光。
+注意：对于点亮的刹车灯，我们建议 R（红色）值在 150 到 850 之间。对于日间行车灯，建议值在 40 到 100 之间；而对于远光灯，建议值在 250 到 800 之间。
+注意：仪表盘上的大灯指示灯以及仪表盘照明也同样由 lights.ini 控制。仪表盘对象以及内饰中任何会点亮的对象都必须拆分出来，并按照以下规范命名：
 LIGHT_GAUGE_#
 LIGHT_INTERIOR_#
-Don’t forget to detach the objects and link them to their respective dummies if they are located on moving
-objects (e.g. the steering wheel)
-Modern Formula cars can use the following script for ERS status flash light at the rear:
+如果这些对象位于运动对象上（例如方向盘），别忘了拆分它们并将它们链接到各自的 dummy。
+现代方程式赛车可以为车尾的 ERS 状态闪光灯使用以下脚本：
+```ini
 [HEADER]
 VERSION=3
-FLASHING_BLINK_TIME=0.35 Blink length in seconds
-FLASHING_REPEAT=1 Number of flashes on activation
-KERS_BLINKING=1 Line means KERS blinking is enabled
-NO_LIGHT_SWITCH=1 Line means it will not work as headlight
+FLASHING_BLINK_TIME=0.35 闪烁时长，以秒为单位
+FLASHING_REPEAT=1 激活时的闪烁次数
+KERS_BLINKING=1 此行表示启用 KERS 闪烁
+NO_LIGHT_SWITCH=1 此行表示它不会作为大灯工作
 [LIGHT_0]
 NAME=g_Rain_Lights
 COLOR=180,0,0
-PITLINE=1 1 means it flashes in pitlane
-KERS=1 1 means it flashes when KERS harvest is active
-SPECIAL=1 1 means light toggle is disabled
-Use the following script to use flash function for headlights and flashing pitlane lights:
+PITLINE=1 1 表示在维修区内闪烁
+KERS=1 1 表示在 KERS 回收处于活动状态时闪烁
+SPECIAL=1 1 表示禁用灯光开关
+```
+使用以下脚本为前大灯启用闪光功能并实现闪烁的维修区灯：
+```ini
 [HEADER]
 VERSION=3
 FLASHING_BLINK_TIME=0.15
@@ -291,251 +226,144 @@ FLASHING_REPEAT=8
 [LIGHT_0]
 NAME=LIGHT_FRONT
 COLOR=530,420,50
-FLASH=1 1 means will flash when flash toggle is pressed
+FLASH=1 1 表示按下闪光切换开关时会闪烁
 [LIGHT_1]
 NAME=LIGHT_RAIN
 COLOR=95,0,0
-PITLINE=1 1 means it will flash in pitlane
-SPECIAL=1 1 means light toggle is disabled
+PITLINE=1 1 表示在维修区内闪烁
+SPECIAL=1 1 表示禁用灯光开关
+```
 
-## SKINNED MESH
+## 蒙皮网格
 
 ![p030_X0](/images/pipeline/p030_X0.png)
 
-FBX skinned mesh
-objects are
-supported by the
-game engine.
-Skinned mesh
-objects can have
-as many bones as
-necessary but no
-more than 4 bones
-influencing a single
-vertex.
-A good example of
-skinned mesh is
-the driver
-(explained later) or the gearshift lever with a fabric skirt at the base of the lever.
-The example image up here show kind of usage that you can do.
-Rules for creating a skinned mesh:
-1) All vertices must be influenced by at least one bone. If a vertex is not influenced by a bone, its world
-coordinates will be 0,0,0, resulting in a long polygon that spawns from the center of the 3D world until
-your space position.
-A non-skinned object can be linked with a skinned mesh. Connect the non skinned object as a child of the
-skinned mesh. In the above image, the skin has 2 bones but the handle is a parent of the non-skinned
-yellow null.
-2) Every material with a skin rig must be unique. A material cannot be used on a standard mesh and at
-the same time on a skinned mesh. Two different materials must be created, one for the standard mesh
-and another one for the skinned mesh.
-3) The skinned-mesh dedicated material, must be KsSkinnedMesh or the KsSkinnedMesh_NMDetail.
-The animation works only when the skinned material is assigned to the skinned mesh.
-4) The skinned mesh must have the pivot in the 0.0.0 coordinates of the world. It can be child of another
-dummy, but this dummy must also have the coordinates of 0.0.0.
-We usually put the skinned mesh of the gearshift or something else in the cockpit as the child of the
-cockpit dummy/null. And the cockpit Dummy/null is usually in the 0.0.0 coordinates. Or you can simply
-leave the mesh free without linking it to any node.
-NOTE: Do not use this material on a standard mesh without bones. Avoid using skinned mesh on
-suspension parts! For springs and rubber parts use scale animation.
+游戏引擎支持 FBX 蒙皮网格对象。蒙皮网格对象可以拥有任意数量的骨骼，但影响单个顶点的骨骼不得超过 4 根。蒙皮网格的一个好例子是车手（稍后说明），或是底部带有织物裙罩的换挡杆。上面的示例图展示了你可以实现的使用方式。
+创建蒙皮网格的规则：
+1) 所有顶点都必须至少受到一根骨骼的影响。如果某个顶点没有受到骨骼的影响，它的世界坐标将为 0,0,0，从而产生一条从 3D 世界中心一直延伸到你的空间位置的长多边形。
+非蒙皮对象可以与蒙皮网格链接。将非蒙皮对象连接为蒙皮网格的子对象。在上图中，蒙皮有 2 根骨骼，而手柄是非蒙皮黄色 null 的父级。
+2) 每个带蒙皮绑定的材质都必须是唯一的。一个材质不能同时用在标准网格和蒙皮网格上。必须创建两个不同的材质，一个用于标准网格，另一个用于蒙皮网格。
+3) 蒙皮网格专用的材质必须是 KsSkinnedMesh 或 KsSkinnedMesh_NMDetail。只有当蒙皮材质被指定给蒙皮网格时，动画才能起作用。
+4) 蒙皮网格的轴心必须位于世界的 0.0.0 坐标处。它可以是另一个 dummy 的子对象，但这个 dummy 的坐标也必须是 0.0.0。
+我们通常把换挡杆或其他部件的蒙皮网格放在驾驶舱内，作为驾驶舱 dummy/null 的子对象。而驾驶舱的 Dummy/null 通常位于 0.0.0 坐标处。或者，你也可以直接让网格保持自由，不链接到任何节点。
+注意：不要在没有骨骼的标准网格上使用此材质。避免在悬挂部件上使用蒙皮网格！弹簧和橡胶部件请使用缩放动画。
 
-## DRIVER POSITION AND MESH
+## 车手位置与网格
 
 ![p031_X0](/images/pipeline/p031_X0.png)
 
-A copy of AC driver with the bones skinned,
-basic animation of the steer rotation, helmet
-and some textures, is provided as an
-example template. It can be placed inside
-any custom car.
-For a proper placement follow these steps:
-If you want to use a custom driver mesh go
-to the section CUSTOM DRIVER, otherwise
-follow these steps:
-1) Import the template file
-DRIVER_BASE.fbx in your 3D application.
-You should see the driver as in picture.
-Inside the template, a basic steering wheel
-rotation animation is provided as an
-example.
-The animation consists of 200 frames.
-The neutral position is on frame 100. From neutral (100) to 0, the steering wheel rotates to the left. From
-neutral (100) to 200, it rotates to the right.
-2) place your driver on the seat, with his hands on the steering wheel. Probably some modifications of our
-animation template will be necessary.
+我们提供了一份 AC 车手的副本作为示例模板，其中包含已完成蒙皮的骨骼、方向盘旋转的基础动画、头盔以及一些纹理。它可以被放入任何自定义车辆中。
+要进行正确的摆放，请遵循以下步骤：
+如果你想使用自定义车手网格，请转到 CUSTOM DRIVER 章节；否则请遵循以下步骤：
+1) 将模板文件 DRIVER_BASE.fbx 导入到你的 3D 软件中。你应该能看到如图所示的车手。模板内提供了一个基础的方向盘旋转动画作为示例。
+该动画由 200 帧组成。中性位置在第 100 帧。从中性（100）到 0，方向盘向左转动。从中性（100）到 200，方向盘向右转动。
+2) 将车手放到座椅上，双手放在方向盘上。可能需要对我们的动画模板做一些修改。
 
 ![p031_X1](/images/pipeline/p031_X1.png)
 
-The image here
-shows an example
-placement:
-The driver mesh and
-position can now be
-exported and it will
-contain the correct
-hierarchy, and the
-correct names for the
-bones and various
-objects.
+这里的图片展示了一个摆放示例：
+现在可以导出车手网格及其位置了，其中将包含正确的层级，以及骨骼和各种对象的正确名称。
 
-**IMPORTANT:**
+**重要：**
 
-Remember to set the unit in EXPORT (for the provided pilot) to Meters. If not, the editor will produce a
-weird position of the bones and a wrong result. Keep the same GENERIC UNITs in your 3D software.
-This is needed because of the original scale of our pilot is 1 and must remain 1 even when exported. For
-a bone created with a scale of 1 inside 3dsMAX or MAYA, this problem should be not present.
+请记住在 EXPORT 时（对于所提供的车手）将单位设置为 Meters。否则，编辑器会产生异常的骨骼位置和错误的结果。在你的 3D 软件中保持相同的 GENERIC UNIT。这是因为我们车手的原始缩放为 1，即使在导出后也必须保持为 1。对于在 3dsMAX 或 MAYA 中以缩放 1 创建的骨骼，应该不会存在此问题。
 
 ![p032_X0](/images/pipeline/p032_X0.png)
 
 ![p032_X1](/images/pipeline/p032_X1.png)
 
-How to export the driver base position from the editor:
-1) Open in the editor the FBX file with the driver placed in the correct
-base position.
+如何从编辑器导出车手基础位置：
+1) 在编辑器中打开已将车手摆放到正确基础位置的 FBX 文件。
 
 ![p032_X2](/images/pipeline/p032_X2.png)
 
 2) Save Driver Base Pos
-A file named driver_base_pos.knh is created and stored in the same
-folder where the source FBX is located.
-This file must be placed in the following path:
-AssettoCorsa/content/cars/CAR-NAME/ where car-name is the car’s
-folder.
-The game engine will load the driver and place it using the correct
-position information stored in the driver_base_pos.knh file.
+此时会创建一个名为 driver_base_pos.knh 的文件，并存储在源 FBX 所在的同一文件夹中。
+此文件必须放置在以下路径：
+AssettoCorsa/content/cars/CAR-NAME/，其中 car-name 是车辆的文件夹。
+游戏引擎会加载车手，并使用 driver_base_pos.knh 文件中存储的正确位置信息来摆放它。
 
-## DRIVER ANIMATIONS
+## 车手动动画
 
-The provided template file DRIVER_BASE.fbx contains a basic example of a 360° steer rotation loop
-animation.
-This animation will probably not match the steering wheel of your car’s design. The animation must be
-modified to match your custom steering wheel dimensions and placement.
-Note: The animation must be 200 frames where frame 0, frame 100 and frame 200 match to allow a
-LOOP animation. For 3DS Max users we have prepared an animation rig that can be downloaded from
-the Driver animation folder in the Dropbox link.
-After editing the animation, save the keyframes of the arms NULLs only and export the FBX with ONLY
-the animated parts. Animating the pedals is not supported yet. The image below shows the hierarchy:
+提供的模板文件 DRIVER_BASE.fbx 包含一个 360° 方向盘旋转循环动画的基础示例。
+此动画很可能与你车辆设计的方向盘不匹配。必须修改该动画，使其匹配你自定义方向盘的尺寸和位置。
+注意：该动画必须是 200 帧，并且第 0 帧、第 100 帧和第 200 帧要相互匹配，以实现循环（LOOP）动画。针对 3DS Max 用户，我们准备了一套动画绑定（rig），可以从 Dropbox 链接的 Driver animation 文件夹中下载。
+编辑动画后，仅保存手臂 NULL 的关键帧，并只导出带动画部件的 FBX。踏板动画目前尚不支持。下图展示了层级结构：
 
 ![p033_X0](/images/pipeline/p033_X0.png)
 
-The bones of the arms are highlighted in the blue and red area in the image, and every bone is parent of
-the RIG_Clave_L and RIG_Clave_R bones.
-To animate the hand that does the shifting, animate the arm bones from RIG_Clave_L/R up to the fingers.
-To animate the paddle gear change, animate the fingers only.
-For every animation you must export a copy of the driver.fbx with ONLY the animated parts needed for
-the desired clip. Example: Export driver.fbx with the steering wheel animation only, then another one with
-gear animation only etc.
-Store the driver animations with the names indicated below in the animation folder of your car project
-folder with all the fbx files and textures.
-Steer.fbx for the 360° steer rotation
-Shift.fbx for the gearshift animation
-Shift_up.fbx for the paddle shift up
-Shift_dw.fbx for the paddle shift down
-See the section EXPORT ANIMATIONS FROM THE EDITOR for instructions on how to create a clip.
-Note: Always verify that the car shift animation and the driver shift animation have the same number of
-frames so that the animation is perfectly synchronized in the game.
-Warning: There is typo in the name of the “neck” bone, which is spelt as “nek” by error. Albeit
-being incorrect, the game still works with this wrong name, so please do NOT correct the typo and
-keep it “nek”.
+手臂的骨骼在图中的蓝色和红色区域高亮显示，而每根骨骼都是 RIG_Clave_L 和 RIG_Clave_R 骨骼的父级。
+要为执行换挡动作的那只手制作动画，需要为从 RIG_Clave_L/R 直到手指的手臂骨骼制作动画。
+要为拨片换挡制作动画，只需为手指制作动画。
+对于每一个动画，你都必须导出一份 driver.fbx 副本，其中只包含所需片段需要的动画部件。例如：导出只带方向盘动画的 driver.fbx，然后再导出另一份只带换挡动画的，等等。
+将车手动画以下面指定的名称，与所有 fbx 文件和纹理一起存储到车辆项目文件夹的 animation 文件夹中。
+Steer.fbx 用于 360° 方向盘旋转
+Shift.fbx 用于换挡动画
+Shift_up.fbx 用于拨片升挡
+Shift_dw.fbx 用于拨片降挡
+有关如何创建片段的说明，请参见 EXPORT ANIMATIONS FROM THE EDITOR 章节。
+注意：务必确认车辆的换挡动画与车手的换挡动画具有相同的帧数，这样动画在游戏中才能完全同步。
+警告：“neck” 骨骼的名称存在拼写错误，被误拼成了 “nek”。尽管并不正确，但游戏仍使用这个错误的名称正常工作，因此请不要修正这个拼写错误，保留 “nek”。
 
 ![p034_X0](/images/pipeline/p034_X0.png)
 
-Example: When
-the driver changes
-gear, his arm starts
-the animation with
-the hand slightly
-distant from the
-steering wheel.
-(see image below)
-On frame 0 the
-hand is slightly
-away from the
-steering wheel. On
-frame 10 the hand
-is on the gear
-lever. On frame 20
-the hand moves
-the gear lever. Be sure that the gear lever animation is synchronized with the hand.
-For example, if the hand needs 10 frames to reach the gear level, the gear lever must have 10 frames in
-the static position before it starts to move.
-NOTE: See the following forum thread for a driver rig and explanation to be used in 3DS Max (many
-thanks for the_meco):
+示例：当车手换挡时，他的手臂开始动画时手会稍微离开方向盘。
+（见下图）
+第 0 帧时，手稍微离开方向盘。第 10 帧时，手位于换挡杆上。第 20 帧时，手移动换挡杆。请确保换挡杆动画与手部同步。
+例如，如果手需要 10 帧才能到达换挡杆，那么换挡杆必须先在静止位置停留 10 帧，然后才开始移动。
+注意：请在以下论坛帖子中查看可用于 3DS Max 的车手绑定（rig）和说明（非常感谢 the_meco）：
 http://www.assettocorsa.net/forum/index.php?threads/custom-steering-animation-rig-1-7.18201/
 
-## DRIVER SCRIPTS
+## 车手脚本
 
-The driver is managed by driver3d.ini script in “AssettoCorsa/content/cars/CAR-NAME/data”.
-The file structure is the following:
+车手由 “AssettoCorsa/content/cars/CAR-NAME/data” 中的 driver3d.ini 脚本管理。
+文件结构如下：
+```ini
 [MODEL]
 NAME=driver
 POSITION=0,0,0
-- This section determines the model of the driver that will be used (there are different models available)
+```
+- 此小节决定要使用的车手模型（有多种不同的模型可供选择）
+```ini
 [STEER_ANIMATION]
 NAME=steer.ksanim
 LOCK=360
-- This section determines the clip to use for the steering wheel animation and its rotation limit (in this case
-360 degrees)
+```
+- 此小节决定用于方向盘动画的片段及其旋转锁止角（本例中为 360 度）
+```ini
 [SHIFT_ANIMATION]
-BLEND_TIME=200 ; (MS) Time used to move the driver’s hand
-from the steer position to the first frame of the
-animation.
-POSITIVE_TIME=400 ; (MS) Time needed to move the driver’s hand from the
-first frame of the animation to the gear lever (forward
-animation).
-STATIC_TIME=10 ; (MS) Interval of time were the driver hand is still
-on the gear lever (Wait Time between forward and
-reverse animation)
-NEGATIVE_TIME=400 ; (MS) Time needed to move the driver’s hand from the
-gear lever back to the first frame of the animation
-(reverse animation).
-PRELOAD_RPM=6000 ; (MS) when the engine reaches this RPM value the
-forward animation is automatically played
-INVERT_SHIFTING_HANDS=0 ; Set to 1 if the driver shifts with the left hand.
+BLEND_TIME=200 ; (MS) 用于将车手的手从方向盘位置移动到动画第一帧所需的时间。
+POSITIVE_TIME=400 ; (MS) 将车手的手从动画第一帧移动到换挡杆所需的时间（前进动画）。
+STATIC_TIME=10 ; (MS) 车手的手停留在换挡杆上的时间间隔（前进动画与反向动画之间的等待时间）
+NEGATIVE_TIME=400 ; (MS) 将车手的手从换挡杆移回动画第一帧所需的时间（反向动画）。
+PRELOAD_RPM=6000 ; (MS) 当引擎达到此 RPM 值时，会自动播放前进动画
+INVERT_SHIFTING_HANDS=0 ; 如果车手用左手换挡，则设为 1。
 [HIDE_OBJECT_0]
-NAME=DRIVER:HELMET; Hide the specific mesh (copy the correct name
-from the editor) when in cockpit camera. In this case,
-the helmet is hidden.
+NAME=DRIVER:HELMET; 在驾驶舱摄像机视图中隐藏特定网格（从编辑器中复制正确的名称）。本例中隐藏的是头盔。
 [HIDE_OBJECT_1]
-NAME=DRIVER:GEO_Driver_FACE ; Here the driver’s head mesh is hidden.
-Note: The driver face mesh can have different name if you use a custom driver mesh.
+NAME=DRIVER:GEO_Driver_FACE ; 这里隐藏的是车手的头部网格。
+```
+注意：如果你使用自定义车手网格，车手面部网格可能会有不同的名称。
 
-## COLLIDER
+## 碰撞体
 
-Collisions between vehicles are one of the
-most resource-demanding activities of any
+车辆之间的碰撞是任何游戏中对资源消耗最大的活动之一，
 
 ![p036_X1](/images/pipeline/p036_X1.png)
 
-game, especially if 20 cars collide in a turn at
-the same time. To optimize such scenarios, a
-simple collider shape is used to calculate
-collisions between car bodies and track
-objects.
-The collider shape must be a simple solid
-object with as low polygon count as possible,
-without any UV or texture.
-The collider’s pivot must be in the 0,0,0
-coordinates and have the same orientation as
-the wheel dummies.
-Rules for collider objects:
-1) The collider should have no more than 40/60 triangles.
-2) A material called “GL” must be assigned to the collider inside the editor. This is a special material
-specifically made for a mesh that is not rendered. Meshes with this material are used only for collisions.
+尤其是在弯道中 20 辆车同时相撞时。为了优化此类场景，需要使用一个简单的碰撞体形状来计算车身与赛道物体之间的碰撞。
+碰撞体形状必须是一个尽可能简单的实体对象，多边形数量尽可能少，不带任何 UV 或纹理。
+碰撞体的轴心必须位于 0,0,0 坐标处，并且与车轮 dummy 的朝向相同。
+碰撞体对象的规则：
+1) 碰撞体的三角形数量不应超过 40/60 个。
+2) 必须在编辑器中为碰撞体指定一个名为 “GL” 的材质。这是一种专门为不进行渲染的网格制作的特殊材质。带有此材质的网格仅用于碰撞。
 
 ![p036_X0](/images/pipeline/p036_X0.png)
 
-3) The collider must not
+3) 碰撞体不得
 
 ![p036_X2](/images/pipeline/p036_X2.png)
 
-extend below the floor of
-the car.
-4) The collider must have
-no holes. The mesh must
-be completely closed.
-Once the collision mesh is
-done, simply export the kn5
-from the editor, using name
-“collider.kn5”.
-Make sure you save with NO textures! The file must be placed in the same folder as the car LODs with
-the name collider.kn5.
+延伸到车辆底板以下。
+4) 碰撞体不得有孔洞。网格必须是完全封闭的。碰撞网格完成后，只需在编辑器中导出 kn5，并命名为 “collider.kn5”。
+务必在不带任何纹理的情况下保存！该文件必须与车辆 LOD 位于同一文件夹中，并命名为 collider.kn5。

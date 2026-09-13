@@ -1,341 +1,343 @@
 ---
-title: 5. Functional Textures
+title: 5. 功能纹理
 ---
 
-# 5. Functional Textures
+# 5. 功能纹理
 
-## CAR SHADOWS
+## 车辆阴影
 
-The car ground shadows are not generated in real time, such as the sun shadows, but they are very
-important in order to improve the visual effect of the ground position of the car and emulate an ambient
-occlusion effect on the ground.
-For each car there are five
+车辆的地面阴影并不是像太阳阴影那样实时生成的，但它们非常重要，
+有助于改善车辆位于地面上的视觉效果，并在地面上模拟出环境光遮蔽
+效果。
+每辆车都有五张
 
 ![p037_X0](/images/pipeline/p037_X0.png)
 
-shadow textures. Four
-textures dedicated to each
-wheel and another one for
-the car body.
-If not present, the car body texture is automatically generated once in game, otherwise an existing one is
-used. A pre-made texture is used for the wheels shadows. All shadows must be placed in the root custom
-car folder (see “Asset Organization”)
+阴影纹理。其中四张
+纹理分别对应每个
+车轮，另一张用于
+车身。
+如果车身阴影纹理不存在，游戏会自动生成一次，否则就会使用已有的纹理。车轮阴影使用一张预先制作好的纹理。所有阴影都必须放在自定义车辆
+文件夹的根目录中（参见“Asset Organization”）
 
 ![p037_X1](/images/pipeline/p037_X1.png)
 
-Examples:
-This is the BODY shadow of the FIAT 500 car. In game it looks as in the image
-above: The shadow is blended with the dynamic shadow.
-Remember to place in the folder also the 4 wheel textures (see example on the left
+示例：
+这是 FIAT 500 车辆的 BODY 阴影。在游戏中它看起来如上图
+所示：该阴影会与动态阴影混合。
+记得在文件夹中同样放入 4 张车轮纹理（参见左侧
 
 ![p037_X2](/images/pipeline/p037_X2.png)
 
-image). Those work in the same way as the body shadow, but they are attached to
-the wheels. You can take the automatically generated car body shadow and further
-refine it in photoshop or your favourite application.
-NOTE: The auto-generated shadow of the car is very ROUGH. They must be edited in order to
-obtain a smoother result.
+图中的示例）。它们的工作方式与车身阴影相同，只是附着在
+车轮上。你可以把自动生成的车身阴影拿出来，在 photoshop 或你喜欢的应用程序中进一步
+细化它。
+注意：自动生成的车辆阴影非常粗糙。必须对它进行编辑，才能
+得到更平滑的结果。
 
-## CAR MIRRORS
+## 车辆后视镜
 
-In order to make car mirrors work, a material must be created (the name is not important), and assigned
-to the mirror mesh objects. The mesh must be mapped with the texture called MIRROR_PLACEMENT.
-This texture is
+要让车辆后视镜正常工作，必须创建一个材质（名称并不重要），并把它指定
+给后视镜网格对象。网格必须使用名为 MIRROR_PLACEMENT 的纹理进行贴图映射。
+这张纹理是
 
 ![p038_X1](/images/pipeline/p038_X1.png)
 
-mirrored and the
-UV must be
-mirrored as well
-to make sure it
-appears
-correctly.
-The texture is
-divided in three areas. CENTRAL must fit the central internal mirror of the car. The red shows the left,
-while the blue shows the right hand side mirror.
-The 2 points at the center of the lines indicate a point that must be placed in the center of the mirror to
-make sure that the cars behind can be clearly seen.
-Note: remember to keep the correct aspect ratio of mirror UV, otherwise the image of the reflection will be
-distorted. The image ratio of the MIRROR PLACEMENT template is 4:1.
-Example of the MIRROR_PLACEMENT file, applied to the various mirror mesh objects:
+镜像的，并且
+UV 也必须
+同样进行镜像，
+以确保它能
+正确地
+显示。
+这张纹理
+分为三个区域。CENTRAL 必须对应车内的中央后视镜。红色表示左侧，
+蓝色表示右侧后视镜。
+线条中心的 2 个点所指示的点，必须放置在后视镜的中心，
+以确保能够清楚地看到后方的车辆。
+注意：记得保持后视镜 UV 正确的宽高比，否则反射出的图像会发生
+失真。MIRROR PLACEMENT 模板的图像比例是 4:1。
+将 MIRROR_PLACEMENT 文件应用到各个后视镜网格对象上的示例：
 
 ![p038_X0](/images/pipeline/p038_X0.png)
 
-NOTE: Only use the MIRROR_PLACEMENT texture for UV mapping, the actual texture in the editor
-should be a flat texture named mirror.dds.
+注意：只在 UV 贴图映射时使用 MIRROR_PLACEMENT 纹理，编辑器中实际
+使用的纹理应该是一张名为 mirror.dds 的纯色纹理。
 
-## INTERNAL WINDSCREEN AND DOOR GLASS REFLECTION
+## 内部前挡风玻璃与车门玻璃反射
 
 ![p039_X0](/images/pipeline/p039_X0.png)
 
-A specific shader is used for the internal of the cars, made
-specifically to emulate the sun reflection effect when the surface is
-not completely clear. This effect can be increased or reduced by
-editing the glass texture provided.
-The shader to apply at the internal glass is KsWindscreen
-NOTE: the internal GLASS must be not part of the cockpit HR.
-Internal GLASS objects on the doors must be linked to the
-appropriate EXTERIOR door nulls. When the cockpit LR switches,
-the internal glass must remain visible on the LOD A.
+车辆内部使用了一个专用的着色器，它是
+专门为模拟表面不完全清澈透明时的
+太阳反射效果而制作的。通过编辑所提供的玻璃纹理，
+可以增强或减弱这一效果。
+应用于内部玻璃的着色器是 KsWindscreen
+注意：内部 GLASS 不得属于
+cockpit HR 的一部分。车门上的
+内部 GLASS 对象必须链接到
+相应的 EXTERIOR 车门 null 上。当 cockpit LR 切换时，
+内部玻璃必须仍然显示在 LOD A 上。
 
 ![p039_X1](/images/pipeline/p039_X1.png)
 
-Shader
-parameters
-are shown in
-the image on
-the right.
-An example of
-the shader effect is shown here to the left.
-The texture for the INTERNAL GLASS must be
-saved in DDS and it must have an alpha channel and the following layout.
+着色器
+参数显示在
+右侧的
+图中。
+这里在左侧展示了
+着色器效果的一个示例。
+INTERNAL GLASS 的纹理必须
+保存为 DDS 格式，并且必须带有 alpha 通道和以下布局。
 
 ![p039_X2](/images/pipeline/p039_X2.png)
 
 ![p039_X3](/images/pipeline/p039_X3.png)
 
-The left image
-shows the diffuse
-of the glass
-texture.
-The right image
-shows the alpha
-channel.
-A soft shadow of
-the cockpit
-dashboard is
-painted on top of
-the texture.
-This trick allows an emulation of the internal reflection of the dashboard on the glass when the sun
-is in front of the car.
-Note: The internal glass mesh is just a copy ot the external polygons of the glass, but it should have the
-normals pointing to the interior. Do likewise for all the internal windows.
+左图
+显示玻璃纹理的
+漫反射。
+右图
+显示 alpha
+通道。
+在纹理上绘制了
+驾驶舱仪表台的
+柔和阴影。
+当太阳位于车辆前方时，这一技巧可以模拟仪表台在玻璃上的内部反射。
+注意：内部玻璃网格只是玻璃外部多边形的一份副本，但它的
+法线应当指向车内。所有内部车窗也都照此处理。
 
-## DAMAGE GLASS
+## 损坏玻璃
 
 ![p040_X0](/images/pipeline/p040_X0.png)
 
-The car can have 2 kinds of damage: damage to glass
-objects and the body.
-For the glass we have to do the following:
-Duplicate the glass object, assign to it a new material and
-map it using the texture
-you can find in the Texture common folder called
-Glass_Crack_00.psd.
-Then, move it away (0.5mm or less) from the original
-glass to avoid clipping. See here:1
-Try to map the glass approximately as shown here (at
+车辆可以有两种损坏形式：玻璃
+对象的损坏和车身的损坏。
+对于玻璃，我们要做以下工作：
+复制玻璃对象，为它指定一个新材质，并
+使用你在 Texture 公共文件夹中可以找到的、
+名为 Glass_Crack_00.psd 的纹理
+对它进行贴图映射。
+然后，把它从原始玻璃处移开（0.5mm 或更少），
+以避免穿插。参见此处：1
+请尝试按此处所示的方式对玻璃进行大致贴图（
 
 ![p040_X1](/images/pipeline/p040_X1.png)
 
-least for the front windscreen), because the broken glass must allow the driver to see the road in the
-game. The cracks must be more visible in the corners and less so in the center (see image above).
-You can map other glass objects on a different area in
+至少对于前挡风玻璃），因为破碎的玻璃必须让驾驶员在游戏中
+看得到道路。裂缝在边角处必须更明显，而在中心处较弱（见上图）。
+你可以把其他玻璃对象贴图到
 
 ![p040_X2](/images/pipeline/p040_X2.png)
 
-UV, such as the bottom part. Use the radial or
-fragmented cracks depending on the shape of the
-object.
-Radial is good for rounded headlight glass, while the
-fragmented pattern is usually used for square-shaped
-headlights or side windows. You can see an example
-for the side glass: Note that we taken also the mirror
-glass, because it part of the glass objects that can be
-broken during side impacts.
-Once you have extracted your glass damage mesh you must place them under the appropriate nulls that
-use the following naming conventions. NOTE: the numbers must always be present.
-DAMAGE_GLASS_CENTER_1 central glass, usually windscreen
-DAMAGE_GLASS_FRONT_1 front headlight glass or similar
-DAMAGE_GLASS_REAR_1 rear/brake light glass or similar
-DAMAGE_GLASS_LEFT_1 left side windows of the door and near
-DAMAGE_GLASS_RIGHT_1 right side windows of the door and near
+UV 中的另一个区域，
+比如底部。根据对象的
+形状选用放射状或
+碎片状裂缝。
+放射状适合圆形的大灯玻璃，而
+碎片状图案通常用于
+方形大灯或侧窗。你可以看到
+侧窗玻璃的一个示例：注意，我们也把后视镜的
+镜面玻璃包含了进来，因为它属于
+可能在侧面撞击中
+破碎的玻璃对象之一。
+提取出你的玻璃损坏网格后，你必须把它们放在使用以下命名规范的相应 null 之下。
+注意：数字必须始终存在。
+DAMAGE_GLASS_CENTER_1 中央玻璃，通常是前挡风玻璃
+DAMAGE_GLASS_FRONT_1 前大灯玻璃或类似对象
+DAMAGE_GLASS_REAR_1 尾灯/刹车灯玻璃或类似对象
+DAMAGE_GLASS_LEFT_1 车门及附近的左侧车窗
+DAMAGE_GLASS_RIGHT_1 车门及附近的右侧车窗
 
 ![p041_X0](/images/pipeline/p041_X0.png)
 
-Above you can see an example for how to separate damage glass parts.
-For the windows you usually have to create more than one object. The same can happen when there are
-glass objects on the main body as well as on the front bumper. In this case, you can create a new
-dummy/null and call it DAMAGE_GLASS_FRONT_2. Place this dummy/null as the child of the
-FRONT_BUMPER null to force the broken front bumper light glass to move along with the
-FRONT_BUMPER object. Do the same for other glass objects located on various moving parts.
-You can create as many damage_glass nulls as objects as you need. (for better optimization, use as few
-as possible….)
+上面你可以看到一个关于如何分离损坏玻璃部件的示例。
+对于车窗，通常你必须创建不止一个对象。当主车身上
+以及前保险杠上都存在玻璃对象时，也会出现同样的情况。在这种情况下，你可以创建一个新的
+dummy/null 并把它命名为 DAMAGE_GLASS_FRONT_2。把这个 dummy/null 作为
+FRONT_BUMPER null 的子对象放置，以强制破碎的前保险杠灯玻璃跟随
+FRONT_BUMPER 对象一起移动。对位于各种活动部件上的其他玻璃对象也照此处理。
+你可以根据需要创建任意数量的 damage_glass null。（为了更好的优化，请尽量
+少用……）
 
 ![p041_X1](/images/pipeline/p041_X1.png)
 
-Once you have created, UV mapped and linked the objects,
-you must assign the proper material with the parameter
-indicated in the image on the left.
-Every object of damage glass must be set TRANSPARENT
-under the object settings and must not cast shadows.
-As the diffuse and normal map we must apply a PROXY
-TEXTURE. The Proxy texture is a placeholder texture that
-substitutes the texture that the game loads automatically from
-a common folder.
-For txDIFFUSE use the DDS named
+创建、UV 贴图并链接好这些对象后，
+你必须为它们指定正确的材质，
+并使用左图中
+所示的参数。
+每个损坏玻璃对象都必须在
+对象设置中设为 TRANSPARENT，
+并且不得投射阴影。
+作为漫反射贴图和法线贴图，我们必须应用一张 PROXY
+TEXTURE。代理纹理是一张占位纹理，
+它替代游戏自动从
+公共文件夹加载的纹理。
+对于 txDIFFUSE，使用名为
 
 ![p041_X2](/images/pipeline/p041_X2.png)
 
-DAMAGE_GLASS_color.dds in the
-Common Texture folder
+DAMAGE_GLASS_color.dds 的 DDS，
+位于 Common Texture 文件夹中
 
 ![p041_X3](/images/pipeline/p041_X3.png)
 
-For txNORMAL use the DDS named
-DAMAGE_GLASS.dds in the Common
-Texture folder
-After you have set up the material, you must change the draw priority. Select every
-DAMAGE_GLASS dummy/null (not the object!) and set the priority to -2 and press REORDER.
-You can check if the
+对于 txNORMAL，使用名为
+DAMAGE_GLASS.dds 的 DDS，
+位于 Common
+Texture 文件夹中
+设置好材质后，你必须更改绘制优先级。选中每一个
+DAMAGE_GLASS dummy/null（而不是对象！），把优先级设置为 -2，然后按下 REORDER。
+你可以检查
 
 ![p042_X0](/images/pipeline/p042_X0.png)
 
-damage glass works
-correctly by
+损坏玻璃是否
+正常工作，方法是
 
 ![p042_X1](/images/pipeline/p042_X1.png)
 
-pressing the
-appropriate
-button in the
-editor. The
-shortcut to see DAMAGE
-GLASS in the editor is
-F4.
-In the editor you should see the DAMAGE glass as in the image below:
+在编辑器中
+按下相应的
+按钮。在编辑器中
+查看 DAMAGE
+GLASS 的快捷键
+是 F4。
+在编辑器中，你应该能看到如下图所示的 DAMAGE 玻璃：
 
 ![p042_X2](/images/pipeline/p042_X2.png)
 
-For naming the mesh objects, use a naming convention that is easy to follow, such as
-MESH_DAMAGE_GLASS_FRONT_1 etc.
+在为网格对象命名时，请使用一种易于遵循的命名规范，例如
+MESH_DAMAGE_GLASS_FRONT_1 等。
 
-## CAR DAMAGE
+## 车辆损坏
 
 ![p043_X1](/images/pipeline/p043_X1.png)
 
 ![p043_X0](/images/pipeline/p043_X0.png)
 
-Certain body parts must be detached and placed under a Dummy/null that
-acts like a pivot/center of rotation for the element when it receives
-damage. Upon impact, a script is activated that makes the parts
-vibrate/rotate on the basis of the location and pivot of these nulls.
-Keep the nulls and also these parts separate in LOD B. In LOD C, the
-elements can be attached to the main body and they do not have to be
-movable. If the damaged parts are significant in size (massive front and
-rear wings on formula cars, you can keep the most important items on the
-LOD C to make sure there is no visible LOD switch when the car is
-damaged.
-Use the following guidelines:
-1) Make sure that you have closed the mesh in the interior. You put
-a black texture or something very dark to ensure that there is no gaping
-hole behind the moving objects.
-2) Place the dummy/null in the rotation point that is logical for the
-part. For the MOTORHOOD it can be the hinges, for a FRONT_BUMPER
-it can be a point that allows rotation but avoiding any intersection with the
-main body mesh.
-3) Detach parts only that don’t leave holes in the car when moving,
-or carefully cap the holes.
-Parts that take damage may be:
-Front Bumper, Rear Bumper, Front and Rear Hood, Exhaust, Wing and
-the Extractor (diffuser) on various GT cars etc. It depends on the model at
-hand.
-After the parts are done, you must set up the material properly and edit a script.
-Damage needs 4 different textures to work properly:
-The damage feature to work properly you need the following textures: DAMAGE_NORMAL map,
-DAMAGE_SCRATCHES map, a DUST map and a DAMAGE_MASK map.
-The DAMAGE MASK must be called DAMAGE_Mask.dds and must be created in the following way:
+某些车身部件必须被分离出来，并放置在一个 Dummy/null 之下，
+这个 Dummy/null 在元素受损时
+充当该元素的轴心/旋转中心。
+发生碰撞时，会激活一个脚本，根据
+这些 null 的位置和轴心
+使部件振动/旋转。
+在 LOD B 中，保持这些 null 以及这些部件相互独立。在 LOD C 中，
+这些元素可以附加到主体上，并且不必
+是可移动的。如果损坏部件的尺寸相当大（方程式赛车上
+巨大的前后翼，你可以把最重要的部件保留在
+LOD C 上，以确保车辆受损时
+不会出现可见的 LOD 切换。
+请遵循以下准则：
+1) 确保你已经在车辆内部将网格封闭。你
+可以放上黑色或非常暗的纹理，以确保活动物体
+后面不会露出大洞。
+2) 将 dummy/null 放在对该部件而言合乎逻辑的
+旋转点上。对于 MOTORHOOD，可以是铰链；对于 FRONT_BUMPER，
+可以是一个允许旋转、但能避免与
+主体网格相交的点。
+3) 只分离那些在移动时不会在车上留下洞的
+部件，或者仔细地把洞封住。
+可能会承受损伤的部件有：
+前保险杠、后保险杠、前引擎盖和后引擎盖、排气管、尾翼，
+以及各种 GT 车上的 Extractor（扩散器）等。这取决于
+手头的模型。
+部件完成后，你必须正确设置材质并编辑脚本。
+损坏功能需要 4 张不同的纹理才能正常工作：
+要让损坏功能正常工作，你需要以下纹理：DAMAGE_NORMAL 贴图、
+DAMAGE_SCRATCHES 贴图、一张 DUST 贴图和一张 DAMAGE_MASK 贴图。
+DAMAGE MASK 必须命名为 DAMAGE_Mask.dds，并且必须按以下方式创建：
 
 ![p044_X0](/images/pipeline/p044_X0.png)
 
-The WHITE part indicates the front of the car (painted in the alpha channel), the RED the left-hand side,
-the BLUE the right-hand side, and the GREEN the rear of the car. We use this mask to control which
-areas are affected by the damage.
-The mask must be painted as shown here:
+白色部分表示车头（绘制在 alpha 通道中），红色表示
+左侧，蓝色表示右侧，绿色表示车尾。我们用这个遮罩来控制
+哪些区域会受到损坏的影响。
+该遮罩必须按此处所示进行绘制：
 
 ![p044_X1](/images/pipeline/p044_X1.png)
 
-Remember to blend the colors, do NOT create sharp transitions. Never paint the roof and the top of the
-bonnet.
-Assign this texture to the slot txDamageMask
-Resolution must be 512x512 pixels and the texture can be exported as DXT5.
+记得让颜色相互混合，不要创建尖锐的过渡。绝不要绘制车顶和
+引擎盖的顶部。
+把这张纹理指定到 txDamageMask 插槽
+分辨率必须为 512x512 像素，纹理可以导出为 DXT5。
 
 ![p044_X2](/images/pipeline/p044_X2.png)
 
-For the NORMAL MAP texture
-we must create a normal map
-with the metal deformation as
-shown in the example.
-You can use your preferred
-tool, such as Mudbox, Zbrush,
-or anything else you’re familiar
-with.
-Look at the example:
+对于 NORMAL MAP 纹理，
+我们必须创建一张
+如示例所示带有
+金属形变的
+法线贴图。
+你可以使用你偏好的
+工具，比如 Mudbox、Zbrush，
+或任何你熟悉的其他
+工具。
+看看这个示例：
 
 ![p045_X0](/images/pipeline/p045_X0.png)
 
-in the alpha channel
-you must paint the
-part of the chassis
-with scratches, which
-becomes less
-reflective, to visualize
-better the wrecked
-appearance.
-This texture must be
-assigned to the slot
-called txNormal.
-Texture must be done
-in DXT5 and size can
-be 512X512 pixels.
-For the DAMAGE
+在 alpha 通道中，
+你必须绘制
+底盘上带有划痕的
+部分，它会变得
+不那么反光，
+以便更好地
+呈现出
+残破的外观。
+这张纹理必须
+指定到名为
+txNormal 的插槽。
+纹理必须制作为
+DXT5 格式，尺寸可以
+是 512X512 像素。
+对于 DAMAGE
 
 ![p045_X1](/images/pipeline/p045_X1.png)
 
-SCRATCHES texture you
-must paint a texture that,
-working along with the
-normal map, shows
-scratches and damage on
-the surface. Have a look
-at example image. The
-scratches appear in front
-of a red background here
-but in the texture use a
-grey background shown in
-the texture example
-below.
-The scratches on the edges must have a highlight and they must be visible on the sides, too.
-Scratches appear over the car paint texture so the texture needs an alpha channel to use as a mask for
-opacity.
+SCRATCHES 纹理，你
+必须绘制一张纹理，
+它与法线贴图
+配合工作，在
+表面上显示出
+划痕和损伤。请看
+示例图像。这里的
+划痕出现在红色背景之前，
+但在纹理中请使用
+下方纹理示例中
+所示的灰色
+背景。
+边缘处的划痕必须有高光，并且它们在侧面也必须可见。
+划痕会叠加在车漆纹理之上，因此纹理需要一个 alpha 通道来用作
+不透明度的蒙版。
 
 ![p045_X2](/images/pipeline/p045_X2.png)
 
-This texture must be
-assigned to the slot called
-txDamage.
-The texture must be
-exported as DXT5 and the
-size must be 2048x2048
-pixels.
-The last texture is the DUST texture that shows dirt on the car after driving off-road.
+这张纹理必须
+指定到名为
+txDamage 的插槽。
+该纹理必须
+导出为 DXT5 格式，
+并且尺寸
+必须为 2048x2048
+像素。
+最后一张纹理是 DUST 纹理，用于显示车辆在越野行驶后车身上的污垢。
 
 ![p046_X1](/images/pipeline/p046_X1.png)
 
-We must draw a dust
-layer to visualize dry dust.
-Texture must be done in
-DXT5 and size must be
-2048x2048 pixels or
-1024x1024 if the car is
-heavy on textures.
-This texture must be
-placed in the slot called
-txDust.
+我们必须绘制一层
+尘土来表现干燥的灰尘。
+纹理必须制作为
+DXT5 格式，尺寸必须
+为 2048x2048 像素；如果车辆的
+纹理负担较重，
+也可以是 1024x1024。
+这张纹理必须
+放置在名为
+txDust 的插槽中。
 
 ![p046_X0](/images/pipeline/p046_X0.png)
 
-To visualize the global effect of the damage you can use the show damage button in editor:
+要查看损坏的整体效果，你可以使用编辑器中的 show damage 按钮：
 
 ![p046_X2](/images/pipeline/p046_X2.png)
 

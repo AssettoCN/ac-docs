@@ -381,18 +381,19 @@ export default defineConfig({
               collapsed: false,
               items: [
                 { text: '概述', link: '/pipeline/' },
-                { text: '1. Requirements', link: '/pipeline/01-requirements' },
-                { text: '2. Basic Guidelines', link: '/pipeline/02-basic-guidelines' },
-                { text: '3. Scene Structure', link: '/pipeline/03-scene-structure' },
-                { text: '4. Functional Mesh Elements', link: '/pipeline/04-functional-mesh-elements' },
-                { text: '5. Functional Textures', link: '/pipeline/05-functional-textures' },
-                { text: '6. Texturing Guidelines', link: '/pipeline/06-texturing-guidelines' },
-                { text: '7. Animations', link: '/pipeline/07-animations' },
-                { text: '8. Materials and AC Editor', link: '/pipeline/08-materials-ac-editor' },
-                { text: '9. In-game Console Commands', link: '/pipeline/09-console-commands' },
+                { text: '1. 需求', link: '/pipeline/01-requirements' },
+                { text: '2. 基础准则', link: '/pipeline/02-basic-guidelines' },
+                { text: '3. 场景结构', link: '/pipeline/03-scene-structure' },
+                { text: '4. 功能网格元素', link: '/pipeline/04-functional-mesh-elements' },
+                { text: '5. 功能纹理', link: '/pipeline/05-functional-textures' },
+                { text: '6. 贴图准则', link: '/pipeline/06-texturing-guidelines' },
+                { text: '7. 动画', link: '/pipeline/07-animations' },
+                { text: '8. 材质与 AC 编辑器', link: '/pipeline/08-materials-ac-editor' },
+                { text: '9. 游戏内控制台命令', link: '/pipeline/09-console-commands' },
               ],
             },
           ],
+
 
           '/networking/': [
             {
@@ -471,6 +472,10 @@ export default defineConfig({
             link: '/en/networking/',
           },
           {
+            text: 'Car Pipeline',
+            link: '/en/pipeline/',
+          },
+          {
             text: 'GitHub',
             link: 'https://github.com/AssettoCN/ac-docs',
           },
@@ -513,6 +518,25 @@ export default defineConfig({
               ],
             },
           ],
+          '/en/pipeline/': [
+            {
+              text: 'AC Official Car Pipeline R2.0',
+              collapsed: false,
+              items: [
+                { text: 'Overview', link: '/en/pipeline/' },
+                { text: '1. Requirements', link: '/en/pipeline/01-requirements' },
+                { text: '2. Basic Guidelines', link: '/en/pipeline/02-basic-guidelines' },
+                { text: '3. Scene Structure', link: '/en/pipeline/03-scene-structure' },
+                { text: '4. Functional Mesh Elements', link: '/en/pipeline/04-functional-mesh-elements' },
+                { text: '5. Functional Textures', link: '/en/pipeline/05-functional-textures' },
+                { text: '6. Texturing Guidelines', link: '/en/pipeline/06-texturing-guidelines' },
+                { text: '7. Animations', link: '/en/pipeline/07-animations' },
+                { text: '8. Materials and AC Editor', link: '/en/pipeline/08-materials-ac-editor' },
+                { text: '9. In-game Console Commands', link: '/en/pipeline/09-console-commands' },
+              ],
+            },
+          ],
+
 
           '/en/car/': [
             {
